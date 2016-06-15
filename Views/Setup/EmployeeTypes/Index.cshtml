@@ -5,7 +5,33 @@
     Layout = ViewBag.Layout;
 }
 
-<div class="ui huge red header">
-    Todo
-    <div class="sub header">@ViewBag.Title</div>
-</div>
+<script>
+	var scrudFactory = new Object();
+    scrudFactory.title = window.Resources.Titles.EmployeeTypes();
+
+    scrudFactory.viewAPI = "/api/views/hrm/employee-type-scrud-view";
+    scrudFactory.viewTableName = "hrm.employee_type_scrud_view";
+
+    scrudFactory.formAPI = "/api/forms/hrm/employee-types";
+    scrudFactory.formTableName = "hrm.employee_types";
+
+    scrudFactory.allowDelete = true;
+    scrudFactory.allowEdit = true;
+    scrudFactory.excludedColumns = ["AuditUserId", "AuditTs"];
+
+
+    scrudFactory.live = "EmployeeTypeName";
+
+
+    $.get('/ScrudFactory/View.html', function (view) {
+        $.get('/ScrudFactory/Form.html', function (form) {
+            $("#ScrudFactoryView").html(view);
+            $("#ScrudFactoryForm").html(form);
+            $.cachedScript("/assets/js/scrudfactory-view.js");
+            $.cachedScript("/assets/js/scrudfactory-form.js");
+        });
+    });
+</script>
+
+<div id="ScrudFactoryForm"></div>
+<div id="ScrudFactoryView"></div>

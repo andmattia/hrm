@@ -21,7 +21,7 @@
 
     scrudFactory.allowDelete = true;
     scrudFactory.allowEdit = true;
-    scrudFactory.viewUrl = "EmployeeInfo.mix?EmployeeId={Key}";
+    scrudFactory.viewUrl = "/dashboard/hrm/tasks/employee-info/{Key}";
 
     scrudFactory.live = "EmployeeName";
     scrudFactory.layout = [
@@ -124,6 +124,8 @@
 
     scrudFactory.returnUrl = "../Employees.mix";
     scrudFactory.queryStringKey = "EmployeeId";
+    scrudFactory.uploadHanlder = "/dashboard/hrm/services/attachments";
+
     scrudFactory.keys = [
         {
             property: "GenderCode",
@@ -169,7 +171,7 @@
         },
         {
             property: "CurrentRoleId",
-            url: '/api/forms/account/roles/display-fields',
+            url: '/api/forms/hrm/roles/display-fields',
             data: null,
             valueField: "Key",
             textField: "Value"
@@ -230,8 +232,8 @@
         $.get('/ScrudFactory/Form.html', function (form) {
             $("#ScrudFactoryView").html(view);
             $("#ScrudFactoryForm").html(form);
-            $.cachedScript("/bundles/scrudfactory-view.js");
-            $.cachedScript("/bundles/scrudfactory-form.js");
+            $.cachedScript("/assets/js/scrudfactory-view.js");
+            $.cachedScript("/assets/js/scrudfactory-form.js");
         });
     });
 </script>

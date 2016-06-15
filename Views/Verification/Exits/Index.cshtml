@@ -4,8 +4,23 @@
     ViewBag.Title = "Exits";
     Layout = ViewBag.Layout;
 }
+<script>
+    var scrudFactory = new Object();
 
-<div class="ui huge red header">
-    Todo
-    <div class="sub header">@ViewBag.Title</div>
-</div>
+    scrudFactory.title = window.Resources.Titles.VerifyExits();
+
+    scrudFactory.viewAPI = "/api/views/hrm/exit-scrud-view";
+    scrudFactory.viewTableName = "hrm.exit_scrud_view";
+
+    scrudFactory.formAPI = "/api/forms/hrm/exit";
+    scrudFactory.formTableName = "hrm.exits";
+    scrudFactory.hasVerfication = true;
+
+    scrudFactory.excludedColumns = ["Photo"];
+    $.get('/ScrudFactory/View.html', function (view) {
+        $("#ScrudFactoryView").html(view);
+        $.cachedScript("/assets/js/scrudfactory-view.js");
+    });
+</script>
+
+<div id="ScrudFactoryView"></div>

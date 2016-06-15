@@ -1,7 +1,11 @@
-﻿using System.Web.Mvc;
+﻿using System.Net;
+using System.Threading.Tasks;
+using System.Web.Mvc;
+using Frapid.Areas;
 using Frapid.Areas.Authorization;
 using Frapid.Dashboard;
 using Frapid.Dashboard.Controllers;
+using MixERP.HRM.Models;
 
 namespace MixERP.HRM.Controllers.Tasks
 {
@@ -10,9 +14,70 @@ namespace MixERP.HRM.Controllers.Tasks
         [Route("dashboard/hrm/tasks/employees")]
         [RestrictAnonymous]
         [MenuPolicy]
+        [ScrudFactory]
         public ActionResult Index()
         {
-            return this.FrapidView(this.GetRazorView<AreaRegistration>("Tasks/Employees/Index.cshtml"));
+            return this.FrapidView(this.GetRazorView<AreaRegistration>("Tasks/Employees/Index.cshtml", this.Tenant));
+        }
+
+        [Route("dashboard/hrm/tasks/employees/experiences")]
+        [RestrictAnonymous]
+        [MenuPolicy(OverridePath = "/dashboard/hrm/tasks/employees")]
+        [ScrudFactory]
+        public ActionResult DisplayExpriences()
+        {
+            return this.FrapidView(this.GetRazorView<AreaRegistration>("Tasks/Employees/Experiences.cshtml", this.Tenant));
+        }
+
+        [Route("dashboard/hrm/tasks/employees/identification-details")]
+        [RestrictAnonymous]
+        [MenuPolicy(OverridePath = "/dashboard/hrm/tasks/employees")]
+        [ScrudFactory]
+        public ActionResult DisplayIdentificationDetails()
+        {
+            return this.FrapidView(this.GetRazorView<AreaRegistration>("Tasks/Employees/IdentificationDetails.cshtml", this.Tenant));
+        }
+
+        [Route("dashboard/hrm/tasks/employees/leave-application")]
+        [RestrictAnonymous]
+        [MenuPolicy(OverridePath = "/dashboard/hrm/tasks/employees")]
+        [ScrudFactory]
+        public ActionResult DisplayLeaveApplication()
+        {
+            return this.FrapidView(this.GetRazorView<AreaRegistration>("Tasks/Employees/LeaveApplication.cshtml", this.Tenant));
+        }
+
+        [Route("dashboard/hrm/tasks/employees/qualifications")]
+        [RestrictAnonymous]
+        [MenuPolicy(OverridePath = "/dashboard/hrm/tasks/employees")]
+        [ScrudFactory]
+        public ActionResult DisplayQualifications()
+        {
+            return this.FrapidView(this.GetRazorView<AreaRegistration>("Tasks/Employees/Qualifications.cshtml", this.Tenant));
+        }
+
+        [Route("dashboard/hrm/tasks/employees/social-networks")]
+        [RestrictAnonymous]
+        [MenuPolicy(OverridePath = "/dashboard/hrm/tasks/employees")]
+        [ScrudFactory]
+        public ActionResult DisplaySocialNetworks()
+        {
+            return this.FrapidView(this.GetRazorView<AreaRegistration>("Tasks/Employees/SocialNetworks.cshtml", this.Tenant));
+        }
+
+        [Route("dashboard/hrm/tasks/employee-info/{employeeId}")]
+        [RestrictAnonymous]
+        [MenuPolicy(OverridePath = "/dashboard/hrm/tasks/employees")]
+        public async Task<ActionResult> EmployeeInfoAsync(int employeeId)
+        {
+            var model = await EmployeeInfoModel.GetAsync(this.Tenant, employeeId).ConfigureAwait(false);
+
+            if (model == null)
+            {
+                return this.Failed("Employee not found", HttpStatusCode.Gone);
+            }
+
+            return this.FrapidView(this.GetRazorView<AreaRegistration>("Tasks/Employees/Info.cshtml", this.Tenant), model);
         }
     }
 }

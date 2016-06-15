@@ -1,3 +1,85 @@
+INSERT INTO core.offices(office_code, office_name)
+SELECT 'BR', 'Branch Office';
+
+INSERT INTO hrm.roles(role_code,role_name)
+SELECT 'USER', 'Users'                  UNION ALL
+SELECT 'EXEC', 'Executive'              UNION ALL
+SELECT 'MNGR', 'Manager'                UNION ALL
+SELECT 'SALE', 'Sales'                  UNION ALL
+SELECT 'MARK', 'Marketing'              UNION ALL
+SELECT 'LEGL', 'Legal & Compliance'     UNION ALL
+SELECT 'FINC', 'Finance'                UNION ALL
+SELECT 'HUMR', 'Human Resources'        UNION ALL
+SELECT 'INFO', 'Information Technology' UNION ALL
+SELECT 'CUST', 'Customer Service'       UNION ALL
+SELECT 'ADM',  'Administration'         UNION ALL
+SELECT 'BOD',   'Board of Directors';
+
+
+INSERT INTO hrm.departments(department_code, department_name)
+SELECT 'SAL', 'Sales & Billing'         UNION ALL
+SELECT 'MKT', 'Marketing & Promotion'   UNION ALL
+SELECT 'SUP', 'Support'                 UNION ALL
+SELECT 'CC', 'Customer Care';
+
+--The meaning of the following should not change
+INSERT INTO hrm.employment_status_codes
+SELECT -7, 'DEC', 'Deceased'                UNION ALL
+SELECT -6, 'DEF', 'Defaulter'               UNION ALL
+SELECT -5, 'TER', 'Terminated'              UNION ALL
+SELECT -4, 'RES', 'Resigned'                UNION ALL
+SELECT -3, 'EAR', 'Early Retirement'        UNION ALL
+SELECT -2, 'RET', 'Normal Retirement'       UNION ALL
+SELECT -1, 'CPO', 'Contract Period Over'    UNION ALL
+SELECT  0, 'NOR', 'Normal Employment'       UNION ALL
+SELECT  1, 'OCT', 'On Contract'             UNION ALL
+SELECT  2, 'PER', 'Permanent Job'           UNION ALL
+SELECT  3, 'RTG', 'Retiring';
+
+INSERT INTO hrm.employment_statuses(employment_status_code, employment_status_name, default_employment_status_code_id, is_contract)
+SELECT 'EMP', 'Employee',       0, false UNION ALL
+SELECT 'INT', 'Intern',         1, true UNION ALL
+SELECT 'CON', 'Contract Basis', 1, true UNION ALL
+SELECT 'PER', 'Permanent',      2, false;
+
+INSERT INTO hrm.job_titles(job_title_code, job_title_name)
+SELECT 'INT', 'Internship'                      UNION ALL
+SELECT 'DEF', 'Default'                         UNION ALL
+SELECT 'EXC', 'Executive'                       UNION ALL
+SELECT 'MAN', 'Manager'                         UNION ALL
+SELECT 'GEM', 'General Manager'                 UNION ALL
+SELECT 'BME', 'Board Member'                    UNION ALL
+SELECT 'CEO', 'Chief Executive Officer'         UNION ALL
+SELECT 'CTO', 'Chief Technology Officer';
+
+INSERT INTO hrm.pay_grades(pay_grade_code, pay_grade_name, minimum_salary, maximum_salary)
+SELECT 'L-1', 'Level 1', 0, 0;
+
+INSERT INTO hrm.shifts(shift_code, shift_name, begins_from, ends_on)
+SELECT 'MOR', 'Morning Shift',  '6:00'::time,   '14:00'::time   UNION ALL
+SELECT 'DAY', 'Day Shift',      '14:00',        '20:00'         UNION ALL
+SELECT 'NIT', 'Night Shift',    '20:00',        '6:00';
+
+INSERT INTO hrm.employee_types(employee_type_code, employee_type_name)
+SELECT 'DEF', 'Default'                 UNION ALL
+SELECT 'OUE', 'Outdoor Employees'       UNION ALL
+SELECT 'PRO', 'Project Employees'       UNION ALL
+SELECT 'SUP', 'Support Staffs'          UNION ALL
+SELECT 'ENG', 'Engineers';
+
+INSERT INTO hrm.leave_types(leave_type_code, leave_type_name)
+SELECT 'NOR', 'Normal' UNION ALL
+SELECT 'EME', 'Emergency' UNION ALL
+SELECT 'ILL', 'Illness';
+
+INSERT INTO hrm.exit_types(exit_type_code, exit_type_name)
+SELECT 'COE', 'Contract Period Over' UNION ALL
+SELECT 'RET', 'Retirement' UNION ALL
+SELECT 'RES', 'Resignation' UNION ALL
+SELECT 'TER', 'Termination' UNION ALL
+SELECT 'DEC', 'Deceased';
+
+
 INSERT INTO hrm.employees(employee_code, first_name, middle_name, last_name, employee_name, gender_code, marital_status_id, joined_on, office_id, user_id, employee_type_id, current_department_id, current_role_id, current_employment_status_id, current_job_title_id, current_pay_grade_id, current_shift_id, date_of_birth, photo, bank_account_number, bank_name, bank_branch_name)
 SELECT 'MI-0001', 'Micheal', '', 'Paul', 'Paul, Micheal', 'M', '1'::int, '2015-09-12'::date, '2'::int, '2'::int, '1'::int, '1'::int, '1'::int, '1'::int, '1'::int, '1'::int, '2'::int, '1997-07-01'::date, 'sample/man-838636_640.jpg', '1-2939-3944-03', 'Bank of America', 'Myrtle Ave' UNION ALL
 SELECT 'AR-0001', 'Arjun', '', 'Rivers', 'Rivers, Arjun', 'M', '2', '2015-09-05', '2', '2', '2', '2', '2', '2', '2', '1', '2', '2006-11-04', 'sample/beautiful-19075_640.jpg', '1-2939-3944-04', 'Bank of America', 'Myrtle Ave' UNION ALL
@@ -24,6 +106,8 @@ SELECT 'LE-0002', 'Lee', '', 'Mueller', 'Mueller, Lee', 'F', '1', '2015-10-01', 
 SELECT 'HA-0001', 'Hassan', '', 'Hendricks', 'Hendricks, Hassan', 'M', '2', '2015-09-21', '2', '2', '3', '3', '11', '3', '7', '1', '2', '1979-03-28', 'sample/james-stewart-392932_640.jpg', '1-2939-3944-25', 'Bank of America', 'Myrtle Ave' UNION ALL
 SELECT 'IS-0001', 'Isabella', '', 'Rankin', 'Rankin, Isabella', 'F', '3', '2015-09-22', '2', '2', '4', '4', '12', '4', '8', '1', '2', '2010-08-31', 'sample/male-777913_640.jpg', '1-2939-3944-26', 'Bank of America', 'Myrtle Ave' UNION ALL
 SELECT 'MA-0004', 'Matthias', '', 'Fitzpatrick', 'Fitzpatrick, Matthias', 'F', '4', '2015-10-06', '2', '2', '5', '1', '1', '1', '1', '1', '2', '1989-09-19', 'sample/man-140547_640.jpg', '1-2939-3944-27', 'Bank of America', 'Myrtle Ave';
+
+
 
 
 DO

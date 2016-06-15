@@ -50,7 +50,7 @@
         },
         {
             property: "RoleId",
-            url: '/api/forms/account/roles/display-fields',
+            url: '/api/forms/hrm/roles/display-fields',
             data: null,
             valueField: "Key",
             textField: "Value"
@@ -76,8 +76,8 @@
         $.get('/ScrudFactory/Form.html', function (form) {
             $("#ScrudFactoryView").html(view);
             $("#ScrudFactoryForm").html(form);
-            $.cachedScript("/bundles/scrudfactory-view.js");
-            $.cachedScript("/bundles/scrudfactory-form.js");
+            $.cachedScript("/assets/js/scrudfactory-view.js");
+            $.cachedScript("/assets/js/scrudfactory-form.js");
         });
     });
 </script>

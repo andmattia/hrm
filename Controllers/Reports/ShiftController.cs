@@ -12,7 +12,7 @@ namespace MixERP.HRM.Controllers.Reports
         [MenuPolicy]
         public ActionResult Index()
         {
-            return this.FrapidView(this.GetRazorView<AreaRegistration>("Reports/Attendances/Index.cshtml"));
+            return this.FrapidView(this.GetRazorView<AreaRegistration>("Reports/Attendances/Index.cshtml", this.Tenant));
         }
     }
 }

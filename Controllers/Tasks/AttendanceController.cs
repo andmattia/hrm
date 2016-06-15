@@ -12,7 +12,7 @@ namespace MixERP.HRM.Controllers.Tasks
         [MenuPolicy]
         public ActionResult Index()
         {
-            return this.FrapidView(this.GetRazorView<AreaRegistration>("Tasks/Attendance/Index.cshtml"));
+            return this.FrapidView(this.GetRazorView<AreaRegistration>("Tasks/Attendance/Index.cshtml", this.Tenant));
         }
     }
 }

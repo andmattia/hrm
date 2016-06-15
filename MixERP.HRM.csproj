@@ -43,6 +43,10 @@
     <WarningLevel>4</WarningLevel>
   </PropertyGroup>
   <ItemGroup>
+    <Reference Include="Frapid.ApplicationState, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>..\..\bin\Frapid.ApplicationState.dll</HintPath>
+    </Reference>
     <Reference Include="Frapid.Areas, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\Frapid.Areas.dll</HintPath>
@@ -79,9 +83,18 @@
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\Frapid.NPoco.dll</HintPath>
     </Reference>
+    <Reference Include="Frapid.TokenManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
     <Reference Include="Frapid.WebsiteBuilder, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\Frapid.WebsiteBuilder.dll</HintPath>
+    </Reference>
+    <Reference Include="Serilog, Version=1.5.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>packages\Serilog.1.5.14\lib\net45\Serilog.dll</HintPath>
+      <Private>True</Private>
+    </Reference>
+    <Reference Include="Serilog.FullNetFx, Version=1.5.0.0, Culture=neutral, PublicKeyToken=24c2f752a8e58a10, processorArchitecture=MSIL">
+      <HintPath>packages\Serilog.1.5.14\lib\net45\Serilog.FullNetFx.dll</HintPath>
+      <Private>True</Private>
     </Reference>
     <Reference Include="System" />
     <Reference Include="System.Core" />
@@ -102,6 +115,7 @@
   <ItemGroup>
     <Compile Include="AreaRegistration.cs" />
     <Compile Include="Controllers\Reports\ShiftController.cs" />
+    <Compile Include="Controllers\Services\AttachmentController.cs" />
     <Compile Include="Controllers\Setup\EducationLevelController.cs" />
     <Compile Include="Controllers\Setup\EmployeeTypeController.cs" />
     <Compile Include="Controllers\Setup\ExitTypeController.cs" />
@@ -124,9 +138,18 @@
     <Compile Include="Controllers\Tasks\LeaveApplicationController.cs" />
     <Compile Include="Controllers\Tasks\ResignationController.cs" />
     <Compile Include="Controllers\Tasks\TerminationController.cs" />
+    <Compile Include="DAL\EmployeeExperiences.cs" />
+    <Compile Include="DTO\EmployeeExperienceScrudView.cs" />
+    <Compile Include="DTO\EmployeeIdentificationDetailScrudView.cs" />
+    <Compile Include="DTO\EmployeeQualificationScrudView.cs" />
+    <Compile Include="DTO\EmployeeSocialNetworkDetailScrudView.cs" />
+    <Compile Include="DTO\EmployeeView.cs" />
+    <Compile Include="Models\EmployeeInfoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
+    <Compile Include="ViewModels\EmployeeInfo.cs" />
   </ItemGroup>
   <ItemGroup>
+    <Content Include="DevTrends.MvcDonutCaching.README.txt" />
     <Content Include="packages.config" />
   </ItemGroup>
   <ItemGroup>
@@ -157,6 +180,12 @@
     <Content Include="Views\Verification\Terminations\Index.cshtml" />
     <Content Include="Views\Verification\Exits\Index.cshtml" />
     <Content Include="Views\Reports\Attendances\Index.cshtml" />
+    <Content Include="Views\Tasks\Employees\Info.cshtml" />
+    <Content Include="Views\Tasks\Employees\IdentificationDetails.cshtml" />
+    <Content Include="Views\Tasks\Employees\SocialNetworks.cshtml" />
+    <Content Include="Views\Tasks\Employees\Experiences.cshtml" />
+    <Content Include="Views\Tasks\Employees\Qualifications.cshtml" />
+    <Content Include="Views\Tasks\Employees\LeaveApplication.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
@@ -164,12 +193,7 @@
       <DependentUpon>web.config</DependentUpon>
     </None>
   </ItemGroup>
-  <ItemGroup>
-    <Folder Include="DAL\" />
-    <Folder Include="DTO\" />
-    <Folder Include="Models\" />
-    <Folder Include="ViewModels\" />
-  </ItemGroup>
+  <ItemGroup />
   <PropertyGroup>
     <VisualStudioVersion Condition="'$(VisualStudioVersion)' == ''">10.0</VisualStudioVersion>
     <VSToolsPath Condition="'$(VSToolsPath)' == ''">$(MSBuildExtensionsPath32)\Microsoft\VisualStudio\v$(VisualStudioVersion)</VSToolsPath>
