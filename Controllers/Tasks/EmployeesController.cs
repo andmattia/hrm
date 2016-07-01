@@ -70,7 +70,7 @@ namespace MixERP.HRM.Controllers.Tasks
         [MenuPolicy(OverridePath = "/dashboard/hrm/tasks/employees")]
         public async Task<ActionResult> EmployeeInfoAsync(int employeeId)
         {
-            var model = await EmployeeInfoModel.GetAsync(this.Tenant, employeeId).ConfigureAwait(false);
+            var model = await EmployeeInfoModel.GetAsync(this.Tenant, employeeId).ConfigureAwait(true);
 
             if (model == null)
             {
