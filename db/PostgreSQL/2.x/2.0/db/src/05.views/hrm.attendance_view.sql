@@ -20,4 +20,5 @@ FROM hrm.attendances
 INNER JOIN core.offices
 ON core.offices.office_id = hrm.attendances.office_id
 INNER JOIN hrm.employees
-ON hrm.employees.employee_id = hrm.attendances.employee_id;
+ON hrm.employees.employee_id = hrm.attendances.employee_id
+AND NOT hrm.attendances.deleted;

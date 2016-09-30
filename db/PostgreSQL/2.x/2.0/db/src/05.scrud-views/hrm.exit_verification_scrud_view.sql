@@ -22,4 +22,5 @@ INNER JOIN hrm.exit_types
 ON hrm.exit_types.exit_type_id = hrm.exits.exit_type_id
 INNER JOIN hrm.employees AS forwarded_to
 ON forwarded_to.employee_id = hrm.exits.forward_to
-WHERE verification_status_id = 0;
+WHERE verification_status_id = 0
+AND NOT hrm.exits.deleted;

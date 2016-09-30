@@ -18,4 +18,5 @@ INNER JOIN hrm.employees
 ON hrm.employees.employee_id = hrm.resignations.employee_id
 INNER JOIN hrm.employees AS forward_to
 ON forward_to.employee_id = hrm.resignations.forward_to
-WHERE verification_status_id = 0;
+WHERE verification_status_id = 0
+AND NOT hrm.resignations.deleted;

@@ -18,4 +18,5 @@ ON hrm.employees.employee_id = hrm.terminations.employee_id
 INNER JOIN hrm.employment_statuses
 ON hrm.employment_statuses.employment_status_id = hrm.terminations.change_status_to
 INNER JOIN hrm.employees AS forwarded_to
-ON forwarded_to.employee_id = hrm.terminations.forward_to;
+ON forwarded_to.employee_id = hrm.terminations.forward_to
+WHERE NOT hrm.terminations.deleted;

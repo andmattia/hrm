@@ -17,9 +17,12 @@ CREATE SCHEMA hrm;
 
 CREATE TABLE hrm.week_days
 (
-	week_day_id                 integer NOT NULL CHECK(week_day_id>=1 AND week_day_id<=7) PRIMARY KEY,
-	week_day_code               national character varying(12) NOT NULL UNIQUE,
-	week_day_name               national character varying(50) NOT NULL UNIQUE
+	week_day_id                 			integer NOT NULL CHECK(week_day_id>=1 AND week_day_id<=7) PRIMARY KEY,
+	week_day_code               			national character varying(12) NOT NULL UNIQUE,
+	week_day_name               			national character varying(50) NOT NULL UNIQUE,
+    audit_user_id                           integer REFERENCES account.users,
+    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+	deleted									boolean DEFAULT(false)
 );
 
 CREATE TABLE hrm.identification_types
@@ -131,13 +134,13 @@ CREATE TABLE hrm.pay_grades
 
 CREATE TABLE hrm.shifts
 (
-    shift_id                            SERIAL NOT NULL PRIMARY KEY,
-    shift_code                          national character varying(12) NOT NULL UNIQUE,
-    shift_name                          national character varying(100) NOT NULL,
-    begins_from                         time NOT NULL,
-    ends_on                             time NOT NULL,
-    description                         text DEFAULT(''),
-    audit_user_id                       integer NULL REFERENCES account.users(user_id),
+    shift_id                            	SERIAL NOT NULL PRIMARY KEY,
+    shift_code                          	national character varying(12) NOT NULL UNIQUE,
+    shift_name                          	national character varying(100) NOT NULL,
+    begins_from                         	time NOT NULL,
+    ends_on                             	time NOT NULL,
+    description                         	text DEFAULT(''),
+    audit_user_id                       	integer NULL REFERENCES account.users(user_id),
     audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );

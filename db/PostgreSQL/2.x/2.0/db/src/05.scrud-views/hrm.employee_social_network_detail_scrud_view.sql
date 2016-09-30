@@ -15,5 +15,6 @@ FROM hrm.employee_social_network_details
 INNER JOIN hrm.employees
 ON hrm.employee_social_network_details.employee_id = hrm.employees.employee_id
 INNER JOIN hrm.social_networks
-ON hrm.social_networks.social_network_name = hrm.employee_social_network_details.social_network_name;
+ON hrm.social_networks.social_network_name = hrm.employee_social_network_details.social_network_name
+WHERE NOT hrm.employee_social_network_details.deleted;
 

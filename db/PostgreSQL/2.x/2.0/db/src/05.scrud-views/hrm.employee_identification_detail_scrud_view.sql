@@ -14,6 +14,7 @@ FROM hrm.employee_identification_details
 INNER JOIN hrm.employees
 ON hrm.employee_identification_details.employee_id = hrm.employees.employee_id
 INNER JOIN hrm.identification_types
-ON hrm.employee_identification_details.identification_type_code = hrm.identification_types.identification_type_code;
+ON hrm.employee_identification_details.identification_type_code = hrm.identification_types.identification_type_code
+WHERE NOT hrm.employee_identification_details.deleted;
 
 

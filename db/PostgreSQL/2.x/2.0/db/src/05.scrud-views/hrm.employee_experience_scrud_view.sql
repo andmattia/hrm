@@ -12,4 +12,5 @@ SELECT
     hrm.employee_experiences.ended_on
 FROM hrm.employee_experiences
 INNER JOIN hrm.employees
-ON hrm.employee_experiences.employee_id = hrm.employees.employee_id;
+ON hrm.employee_experiences.employee_id = hrm.employees.employee_id
+WHERE NOT hrm.employee_experiences.deleted;

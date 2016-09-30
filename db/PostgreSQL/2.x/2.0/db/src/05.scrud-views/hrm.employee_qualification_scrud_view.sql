@@ -17,5 +17,6 @@ FROM hrm.employee_qualifications
 INNER JOIN hrm.employees
 ON hrm.employee_qualifications.employee_id = hrm.employees.employee_id
 INNER JOIN hrm.education_levels
-ON hrm.employee_qualifications.education_level_id = hrm.education_levels.education_level_id;
+ON hrm.employee_qualifications.education_level_id = hrm.education_levels.education_level_id
+WHERE NOT hrm.employee_qualifications.deleted;
 

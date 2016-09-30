@@ -26,4 +26,5 @@ ON hrm.roles.role_id = hrm.contracts.role_id
 INNER JOIN hrm.employment_status_codes
 ON hrm.employment_status_codes.employment_status_code_id = hrm.contracts.employment_status_code_id
 LEFT JOIN hrm.leave_benefits
-ON hrm.leave_benefits.leave_benefit_id = hrm.contracts.leave_benefit_id;
+ON hrm.leave_benefits.leave_benefit_id = hrm.contracts.leave_benefit_id
+WHERE NOT hrm.contracts.deleted;

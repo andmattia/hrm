@@ -17,4 +17,5 @@ ON account.users.user_id = hrm.resignations.entered_by
 INNER JOIN hrm.employees
 ON hrm.employees.employee_id = hrm.resignations.employee_id
 INNER JOIN hrm.employees AS forward_to
-ON forward_to.employee_id = hrm.resignations.forward_to;
+ON forward_to.employee_id = hrm.resignations.forward_to
+WHERE NOT hrm.resignations.deleted;

@@ -18,4 +18,5 @@ ON hrm.employees.employee_id = hrm.leave_applications.employee_id
 INNER JOIN hrm.leave_types
 ON hrm.leave_types.leave_type_id = hrm.leave_applications.leave_type_id
 INNER JOIN account.users
-ON account.users.user_id = hrm.leave_applications.entered_by;
+ON account.users.user_id = hrm.leave_applications.entered_by
+WHERE NOT hrm.employees.deleted;

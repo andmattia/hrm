@@ -6,4 +6,5 @@ SELECT
     employee_type_id,
     employee_type_code,
     employee_type_name
-FROM hrm.employee_types;
+FROM hrm.employee_types
+WHERE NOT hrm.employee_types.deleted;

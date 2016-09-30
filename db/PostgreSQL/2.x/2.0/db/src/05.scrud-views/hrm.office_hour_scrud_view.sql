@@ -16,4 +16,5 @@ ON core.offices.office_id = hrm.office_hours.office_id
 INNER JOIN hrm.shifts
 ON hrm.shifts.shift_id = hrm.office_hours.shift_id
 INNER JOIN core.week_days
-ON core.week_days.week_day_id = hrm.office_hours.week_day_id;
+ON core.week_days.week_day_id = hrm.office_hours.week_day_id
+WHERE NOT hrm.office_hours.deleted;

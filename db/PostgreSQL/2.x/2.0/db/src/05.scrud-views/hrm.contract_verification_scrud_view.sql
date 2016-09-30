@@ -27,4 +27,5 @@ INNER JOIN hrm.employment_status_codes
 ON hrm.employment_status_codes.employment_status_code_id = hrm.contracts.employment_status_code_id
 LEFT JOIN hrm.leave_benefits
 ON hrm.leave_benefits.leave_benefit_id = hrm.contracts.leave_benefit_id
-WHERE verification_status_id = 0;
+WHERE verification_status_id = 0
+AND NOT hrm.contracts.deleted;
