@@ -1,4 +1,4 @@
-﻿-->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/99.sample/employees.sample.sql --<--<--
+﻿-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/99.sample/employees.sample.sql --<--<--
 INSERT INTO core.offices(office_code, office_name)
 SELECT 'BR', 'Branch Office';
 

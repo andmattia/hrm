@@ -1,4 +1,4 @@
-﻿-->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/01.types-domains-tables-and-constraints/tables-and-constraints.sql --<--<--
+﻿-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/01.types-domains-tables-and-constraints/tables-and-constraints.sql --<--<--
  /********************************************************************************
 Copyright (C) MixERP Inc. (http://mixof.org).
 This file is part of MixERP.
@@ -443,7 +443,7 @@ ON hrm.attendances(attendance_date, employee_id)
 WHERE NOT deleted;
 
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/02.functions-and-logic/functions/hrm.get_employee_by_employee_id.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/02.functions-and-logic/functions/hrm.get_employee_by_employee_id.sql --<--<--
 DROP FUNCTION IF EXISTS hrm.get_employee_by_employee_id(_employee_id integer);
 
 CREATE FUNCTION hrm.get_employee_by_employee_id(_employee_id integer)
@@ -460,7 +460,7 @@ END
 $$
 LANGUAGE plpgsql;
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/02.functions-and-logic/functions/hrm.get_employee_code_by_employee_id.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/02.functions-and-logic/functions/hrm.get_employee_code_by_employee_id.sql --<--<--
 DROP FUNCTION IF EXISTS hrm.get_employee_code_by_employee_id(_employee_id integer);
 
 CREATE FUNCTION hrm.get_employee_code_by_employee_id(_employee_id integer)
@@ -477,7 +477,7 @@ END
 $$
 LANGUAGE plpgsql;
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/02.functions-and-logic/functions/hrm.get_employee_name_by_employee_id.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/02.functions-and-logic/functions/hrm.get_employee_name_by_employee_id.sql --<--<--
 DROP FUNCTION IF EXISTS hrm.get_employee_name_by_employee_id(_employee_id integer);
 
 CREATE FUNCTION hrm.get_employee_name_by_employee_id(_employee_id integer)
@@ -494,7 +494,7 @@ END
 $$
 LANGUAGE plpgsql;
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/02.functions-and-logic/triggers/employee_dismissal.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/02.functions-and-logic/triggers/employee_dismissal.sql --<--<--
 DROP FUNCTION IF EXISTS hrm.dismiss_employee() CASCADE;
 
 CREATE FUNCTION hrm.dismiss_employee()
@@ -562,7 +562,7 @@ CREATE TRIGGER undismiss_employee_trigger BEFORE DELETE ON hrm.resignations FOR 
 CREATE TRIGGER undismiss_employee_trigger BEFORE DELETE ON hrm.terminations FOR EACH ROW EXECUTE PROCEDURE hrm.undismiss_employee();
 CREATE TRIGGER undismiss_employee_trigger BEFORE DELETE ON hrm.exits FOR EACH ROW EXECUTE PROCEDURE hrm.undismiss_employee();
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/03.menus/menus.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/03.menus/menus.sql --<--<--
 SELECT * FROM core.create_app('MixERP.HRM', 'HRM', '1.0', 'MixERP Inc.', 'December 1, 2015', 'user yellow', '/dashboard/hrm/tasks/employees', null);
 
 SELECT * FROM core.create_menu('MixERP.HRM', 'Tasks', '', 'tasks icon', '');
@@ -604,10 +604,10 @@ SELECT * FROM auth.create_app_menu_policy
 );
 
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/04.default-values/01.default-values.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/04.default-values/01.default-values.sql --<--<--
 
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.contract_scrud_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.contract_scrud_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.contract_scrud_view;
 
 CREATE VIEW hrm.contract_scrud_view
@@ -639,7 +639,7 @@ LEFT JOIN hrm.leave_benefits
 ON hrm.leave_benefits.leave_benefit_id = hrm.contracts.leave_benefit_id
 WHERE NOT hrm.contracts.deleted;
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.contract_verification_scrud_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.contract_verification_scrud_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.contract_verification_scrud_view;
 
 CREATE VIEW hrm.contract_verification_scrud_view
@@ -672,7 +672,7 @@ ON hrm.leave_benefits.leave_benefit_id = hrm.contracts.leave_benefit_id
 WHERE verification_status_id = 0
 AND NOT hrm.contracts.deleted;
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.employee_experience_scrud_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.employee_experience_scrud_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.employee_experience_scrud_view;
 
 CREATE VIEW hrm.employee_experience_scrud_view
@@ -690,7 +690,7 @@ INNER JOIN hrm.employees
 ON hrm.employee_experiences.employee_id = hrm.employees.employee_id
 WHERE NOT hrm.employee_experiences.deleted;
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.employee_identification_detail_scrud_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.employee_identification_detail_scrud_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.employee_identification_detail_scrud_view;
 
 CREATE VIEW hrm.employee_identification_detail_scrud_view
@@ -713,7 +713,7 @@ WHERE NOT hrm.employee_identification_details.deleted;
 
 
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.employee_qualification_scrud_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.employee_qualification_scrud_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.employee_qualification_scrud_view;
 
 CREATE VIEW hrm.employee_qualification_scrud_view
@@ -738,7 +738,7 @@ WHERE NOT hrm.employee_qualifications.deleted;
 
 
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.employee_social_network_detail_scrud_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.employee_social_network_detail_scrud_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.employee_social_network_detail_scrud_view;
 
 CREATE VIEW hrm.employee_social_network_detail_scrud_view
@@ -761,7 +761,7 @@ WHERE NOT hrm.employee_social_network_details.deleted;
 
 
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.employee_type_scrud_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.employee_type_scrud_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.employee_type_scrud_view;
 
 CREATE VIEW hrm.employee_type_scrud_view
@@ -773,7 +773,7 @@ SELECT
 FROM hrm.employee_types
 WHERE NOT hrm.employee_types.deleted;
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.employment_status_code_selector_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.employment_status_code_selector_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.employment_status_code_selector_view;
 
 CREATE VIEW hrm.employment_status_code_selector_view
@@ -785,7 +785,7 @@ FROM hrm.employment_status_codes
 WHERE NOT hrm.employment_status_codes.deleted;
 
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.exit_verification_scrud_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.exit_verification_scrud_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.exit_scrud_view;
 
 CREATE VIEW hrm.exit_scrud_view
@@ -814,7 +814,7 @@ WHERE verification_status_id = 0
 AND NOT hrm.exits.deleted;
 
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.leave_application_scrud_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.leave_application_scrud_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.leave_application_scrud_view;
 
 CREATE VIEW hrm.leave_application_scrud_view
@@ -838,7 +838,7 @@ INNER JOIN account.users
 ON account.users.user_id = hrm.leave_applications.entered_by
 WHERE NOT hrm.employees.deleted;
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.leave_application_verification_scrud_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.leave_application_verification_scrud_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.leave_application_verification_scrud_view;
 
 CREATE VIEW hrm.leave_application_verification_scrud_view
@@ -863,7 +863,7 @@ ON account.users.user_id = hrm.leave_applications.entered_by
 WHERE verification_status_id = 0
 AND NOT hrm.leave_applications.deleted;
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.office_hour_scrud_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.office_hour_scrud_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.office_hour_scrud_view;
 
 CREATE VIEW hrm.office_hour_scrud_view
@@ -885,7 +885,7 @@ INNER JOIN core.week_days
 ON core.week_days.week_day_id = hrm.office_hours.week_day_id
 WHERE NOT hrm.office_hours.deleted;
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.resignation_verification_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.resignation_verification_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.resignation_verification_scrud_view;
 
 CREATE VIEW hrm.resignation_verification_scrud_view
@@ -909,7 +909,7 @@ ON forward_to.employee_id = hrm.resignations.forward_to
 WHERE verification_status_id = 0
 AND NOT hrm.resignations.deleted;
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.resignation_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.resignation_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.resignation_scrud_view;
 
 CREATE VIEW hrm.resignation_scrud_view
@@ -932,7 +932,7 @@ INNER JOIN hrm.employees AS forward_to
 ON forward_to.employee_id = hrm.resignations.forward_to
 WHERE NOT hrm.resignations.deleted;
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.termination_scrud_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.termination_scrud_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.termination_scrud_view;
 
 CREATE VIEW hrm.termination_scrud_view
@@ -956,7 +956,7 @@ INNER JOIN hrm.employees AS forwarded_to
 ON forwarded_to.employee_id = hrm.terminations.forward_to
 WHERE NOT hrm.terminations.deleted;
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.termination_verification_scrud_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.termination_verification_scrud_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.termination_verification_scrud_view;
 
 CREATE VIEW hrm.termination_verification_scrud_view
@@ -981,7 +981,7 @@ ON forwarded_to.employee_id = hrm.terminations.forward_to
 WHERE verification_status_id = 0
 AND NOT hrm.terminations.deleted;
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.views/hrm.attendance_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.views/hrm.attendance_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.attendance_view;
 
 CREATE VIEW hrm.attendance_view
@@ -1007,7 +1007,7 @@ INNER JOIN hrm.employees
 ON hrm.employees.employee_id = hrm.attendances.employee_id
 AND NOT hrm.attendances.deleted;
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.views/hrm.employee_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.views/hrm.employee_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.employee_view;
 
 CREATE VIEW hrm.employee_view
@@ -1100,7 +1100,7 @@ ON hrm.employees.country_code = core.countries.country_code
 WHERE COALESCE(service_ended_on, 'infinity') >= NOW()
 AND NOT hrm.employees.deleted;
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/99.ownership.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/99.ownership.sql --<--<--
 DO
 $$
     DECLARE this record;
@@ -1291,7 +1291,7 @@ END
 $$
 LANGUAGE plpgsql;
 
--->-->-- C:/Users/nirvan/Desktop/mixerp/frapid/src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/99.sample/kanban.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/99.sample/kanban.sql --<--<--
 DO
 $$
     DECLARE objects text[];
