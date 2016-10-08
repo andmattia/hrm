@@ -80,6 +80,8 @@ SELECT 'RES', 'Resignation' UNION ALL
 SELECT 'TER', 'Termination' UNION ALL
 SELECT 'DEC', 'Deceased';
 
+INSERT INTO account.users(email, password, office_id, role_id, name, phone)
+SELECT 'user@mixerp.com', '', 1, 1000, 'user', '';
 
 INSERT INTO hrm.employees(employee_code, first_name, middle_name, last_name, employee_name, gender_code, marital_status_id, joined_on, office_id, user_id, employee_type_id, current_department_id, current_role_id, current_employment_status_id, current_job_title_id, current_pay_grade_id, current_shift_id, date_of_birth, photo, bank_account_number, bank_name, bank_branch_name)
 SELECT 'MI-0001', 'Micheal', '', 'Paul', 'Paul, Micheal', 'M', '1'::int, '2015-09-12'::date, '2'::int, '2'::int, '1'::int, '1'::int, '1'::int, '1'::int, '1'::int, '1'::int, '2'::int, '1997-07-01'::date, '/dashboard/hrm/services/attachments/sample/man-838636_640.jpg', '1-2939-3944-03', 'Bank of America', 'Myrtle Ave' UNION ALL
