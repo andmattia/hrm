@@ -5,7 +5,6 @@ AS
 SELECT
     hrm.leave_applications.leave_application_id,
     hrm.employees.employee_code || ' (' || hrm.employees.employee_name || ')' AS employee,
-    hrm.employees.photo,
     hrm.leave_types.leave_type_code || ' (' || hrm.leave_types.leave_type_name || ')' AS leave_type,
     account.users.name AS entered_by,
     hrm.leave_applications.applied_on,
@@ -19,4 +18,5 @@ INNER JOIN hrm.leave_types
 ON hrm.leave_types.leave_type_id = hrm.leave_applications.leave_type_id
 INNER JOIN account.users
 ON account.users.user_id = hrm.leave_applications.entered_by
-WHERE NOT hrm.employees.deleted;
+WHERE NOT hrm.leave_applications.deleted;
+
