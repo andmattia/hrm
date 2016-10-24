@@ -82,7 +82,7 @@
         };
 
         var filters = [];
-        filters.push(window.getAjaxColumnFilter("WHERE", "identification_type_code", window.FilterConditions.IsEqualTo, value));
+        filters.push(window.getAjaxColumnFilter("WHERE", "identification_type_code", "string", window.FilterConditions.IsEqualTo, value));
 
         var ajaxIdentificationTypeExpires = identificationTypeExpires(filters);
 

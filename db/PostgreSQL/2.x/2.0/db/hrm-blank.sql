@@ -22,7 +22,7 @@ CREATE TABLE hrm.week_days
 	week_day_code               			national character varying(12) NOT NULL UNIQUE,
 	week_day_name               			national character varying(50) NOT NULL UNIQUE,
     audit_user_id                           integer REFERENCES account.users,
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -32,7 +32,7 @@ CREATE TABLE hrm.identification_types
 	identification_type_name                national character varying(100) NOT NULL UNIQUE,
 	can_expire                              boolean NOT NULL DEFAULT(false),
 	audit_user_id                           integer NULL REFERENCES account.users(user_id),
-	audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+	audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)    
 );
 
@@ -43,7 +43,7 @@ CREATE TABLE hrm.social_networks
 	base_url                                national character varying(128) DEFAULT(''),
 	profile_url                             national character varying(128) DEFAULT(''),
 	audit_user_id                           integer NULL REFERENCES account.users(user_id),
-	audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+	audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)    
 );
 
@@ -53,7 +53,7 @@ CREATE TABLE hrm.departments
     department_code                         national character varying(12) NOT NULL,
     department_name                         national character varying(50) NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -63,7 +63,7 @@ CREATE TABLE hrm.roles
     role_code                         		national character varying(12) NOT NULL,
     role_name                         		national character varying(50) NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -72,7 +72,7 @@ CREATE TABLE hrm.nationalities
     nationality_code                        national character varying(12) PRIMARY KEY,
     nationality_name                        national character varying(50) NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -81,7 +81,7 @@ CREATE TABLE hrm.education_levels
     education_level_id                      SERIAL NOT NULL PRIMARY KEY,
     education_level_name                    national character varying(50) NOT NULL UNIQUE,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -91,7 +91,7 @@ CREATE TABLE hrm.employment_status_codes
     status_code                             national character varying(12) NOT NULL UNIQUE,
     status_code_name                        national character varying(100) NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -104,7 +104,7 @@ CREATE TABLE hrm.employment_statuses
     default_employment_status_code_id       integer NOT NULL REFERENCES hrm.employment_status_codes,
     description                             text DEFAULT(''),    
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -115,7 +115,7 @@ CREATE TABLE hrm.job_titles
     job_title_name                          national character varying(100) NOT NULL,
     description                             text DEFAULT(''),
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -129,7 +129,7 @@ CREATE TABLE hrm.pay_grades
                                             CHECK(maximum_salary >= minimum_salary),
     description                             text DEFAULT(''),
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -142,7 +142,7 @@ CREATE TABLE hrm.shifts
     ends_on                             	time NOT NULL,
     description                         	text DEFAULT(''),
     audit_user_id                       	integer NULL REFERENCES account.users(user_id),
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -153,7 +153,7 @@ CREATE TABLE hrm.leave_types
     leave_type_name                         national character varying(100) NOT NULL,
     description                             text DEFAULT(''),
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -166,7 +166,7 @@ CREATE TABLE hrm.office_hours
     begins_from                             time NOT NULL,
     ends_on                                 time NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)    
 );
 
@@ -177,7 +177,7 @@ CREATE TABLE hrm.leave_benefits
     leave_benefit_name                      national character varying(128) NOT NULL,
     total_days                              public.integer_strict NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -187,7 +187,7 @@ CREATE TABLE hrm.employee_types
     employee_type_code                      national character varying(12) NOT NULL UNIQUE,
     employee_type_name                      national character varying(128) NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -245,7 +245,7 @@ CREATE TABLE hrm.employees
     is_autistic                             boolean,
     service_ended_on                        date NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -258,7 +258,7 @@ CREATE TABLE hrm.employee_identification_details
     identification_number                   national character varying(128) NOT NULL,
     expires_on                              date,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)                                  
 );
 
@@ -276,7 +276,7 @@ CREATE TABLE hrm.employee_social_network_details
                                             REFERENCES hrm.social_networks(social_network_name),
     social_network_id                       national character varying(128) NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -297,7 +297,7 @@ CREATE TABLE hrm.contracts
     verification_reason                     national character varying(128) NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
     
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -311,7 +311,7 @@ CREATE TABLE hrm.employee_experiences
     ended_on                                date,
     details                                 text,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),    
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -328,7 +328,7 @@ CREATE TABLE hrm.employee_qualifications
     completed_on                            date,
     details                                 text,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),    
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -347,7 +347,7 @@ CREATE TABLE hrm.leave_applications
     verified_on                             date,
     verification_reason                     national character varying(128) NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),    
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -366,7 +366,7 @@ CREATE TABLE hrm.resignations
     verified_on                             date,
     verification_reason                     national character varying(128) NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),    
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -385,7 +385,7 @@ CREATE TABLE hrm.terminations
     verified_on                             date,
     verification_reason                     national character varying(128) NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),    
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
     
 );
@@ -396,7 +396,7 @@ CREATE TABLE hrm.exit_types
     exit_type_code                          national character varying(12) NOT NULL UNIQUE,
     exit_type_name                          national character varying(128) NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),    
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -416,7 +416,7 @@ CREATE TABLE hrm.exits
     verification_reason                     national character varying(128) NULL,
     service_end_date                        date NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),    
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -434,7 +434,7 @@ CREATE TABLE hrm.attendances
     was_absent                              boolean NOT NULL CHECK(was_absent != was_present),
     reason_for_absenteeism                  text,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                TIMESTAMP WITH TIME ZONE NULL DEFAULT(NOW()),
+    audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
 
@@ -455,7 +455,8 @@ BEGIN
     RETURN
         employee_code || ' (' || employee_name || ')'      
     FROM hrm.employees
-    WHERE employee_id = $1;    
+    WHERE hrm.employees.employee_id = $1
+    AND NOT hrm.employees.deleted;    
 END
 $$
 LANGUAGE plpgsql;
@@ -472,7 +473,8 @@ BEGIN
     RETURN
         employee_code
     FROM hrm.employees
-    WHERE employee_id = $1;    
+    WHERE hrm.employees.employee_id = $1
+    AND NOT hrm.employees.deleted;    
 END
 $$
 LANGUAGE plpgsql;
@@ -489,7 +491,8 @@ BEGIN
     RETURN
         employee_name
     FROM hrm.employees
-    WHERE employee_id = $1;    
+    WHERE hrm.employees.employee_id = $1
+    AND NOT hrm.employees.deleted;    
 END
 $$
 LANGUAGE plpgsql;
@@ -822,7 +825,6 @@ AS
 SELECT
     hrm.leave_applications.leave_application_id,
     hrm.employees.employee_code || ' (' || hrm.employees.employee_name || ')' AS employee,
-    hrm.employees.photo,
     hrm.leave_types.leave_type_code || ' (' || hrm.leave_types.leave_type_name || ')' AS leave_type,
     account.users.name AS entered_by,
     hrm.leave_applications.applied_on,
@@ -836,7 +838,9 @@ INNER JOIN hrm.leave_types
 ON hrm.leave_types.leave_type_id = hrm.leave_applications.leave_type_id
 INNER JOIN account.users
 ON account.users.user_id = hrm.leave_applications.entered_by
-WHERE NOT hrm.employees.deleted;
+WHERE NOT hrm.leave_applications.deleted;
+
+
 
 -->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.leave_application_verification_scrud_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.leave_application_verification_scrud_view;

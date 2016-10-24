@@ -18,7 +18,7 @@
     getEmployees.success(function (msg) {
         if (msg && msg[0]) {
             if (employeeId !== msg[0].EmployeeId) {
-                window.location = window.updateQueryString("EmployeeId", msg[0].EmployeeId, window.location.href);
+                window.location = window.updateQueryString("EmployeeId", "int", msg[0].EmployeeId, window.location.href);
             };
         };
     });
