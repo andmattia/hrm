@@ -1,11 +1,10 @@
 using System;
 using Frapid.DataAccess;
-using Frapid.NPoco;
+using Frapid.Mapper.Decorators;
 
 namespace MixERP.HRM.DTO
 {
     [TableName("hrm.employee_experience_scrud_view")]
-    [ExplicitColumns]
     public sealed class EmployeeExperienceScrudView : IPoco
     {
         public long? EmployeeExperienceId { get; set; }

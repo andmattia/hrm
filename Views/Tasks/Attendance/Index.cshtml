@@ -88,7 +88,7 @@
             var url = "/api/forms/hrm/attendances/get-where/-1/";
 
             var filters = [];
-            filters.push(window.getAjaxColumnFilter("WHERE", "attendance_date", "System.DateTime", window.FilterConditions.IsEqualTo, date));
+            filters.push(window.getAjaxColumnFilter("WHERE", "AttendanceDate", "System.DateTime", window.FilterConditions.IsEqualTo, date));
             var data = JSON.stringify(filters);
 
             return window.getAjaxRequest(url, "POST", data);
