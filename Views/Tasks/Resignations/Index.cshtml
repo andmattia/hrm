@@ -8,7 +8,7 @@
 <script>
     var employeeId = parseInt(window.getQueryStringByName("EmployeeId") || 0);
     var filters = [];
-    filters.push(window.getAjaxColumnFilter("WHERE", "user_id", window.FilterConditions.IsEqualTo, window.userId));
+    filters.push(window.getAjaxColumnFilter("WHERE", "UserId", window.FilterConditions.IsEqualTo, window.userId));
 
     var url = "/api/forms/hrm/employees/get-where/1";
     var data = JSON.stringify(filters);
