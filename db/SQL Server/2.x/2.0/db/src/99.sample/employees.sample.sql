@@ -1,4 +1,5 @@
-﻿INSERT INTO core.offices(office_code, office_name)
+﻿-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/SQL Server/2.x/2.0/db/src/99.sample/employees.sample.sql --<--<--
+INSERT INTO core.offices(office_code, office_name)
 SELECT 'BR', 'Branch Office';
 
 INSERT INTO hrm.roles(role_code,role_name)
@@ -23,7 +24,7 @@ SELECT 'SUP', 'Support'                 UNION ALL
 SELECT 'CC', 'Customer Care';
 
 --The meaning of the following should not change
-INSERT INTO hrm.employment_status_codes
+INSERT INTO hrm.employment_status_codes(employment_status_code_id, status_code, status_code_name)
 SELECT -7, 'DEC', 'Deceased'                UNION ALL
 SELECT -6, 'DEF', 'Defaulter'               UNION ALL
 SELECT -5, 'TER', 'Terminated'              UNION ALL
@@ -114,3 +115,4 @@ SELECT 'MA-0004', 'Matthias', '', 'Fitzpatrick', 'Fitzpatrick, Matthias', 'F', '
 
 
 GO
+

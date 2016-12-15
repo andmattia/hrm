@@ -123,7 +123,7 @@ $$
     DECLARE _reason text;
     DECLARE _check_in time;
     DECLARE _check_out time;
-    DECLARE _overtime_hours numeric;
+    DECLARE _overtime_hours numeric(30, 6);
 BEGIN
     SELECT 
         array_agg(employee_id) 

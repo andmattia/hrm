@@ -123,8 +123,8 @@ CREATE TABLE hrm.pay_grades
     pay_grade_id                            SERIAL NOT NULL PRIMARY KEY,
     pay_grade_code                          national character varying(12) NOT NULL UNIQUE,
     pay_grade_name                          national character varying(100) NOT NULL,
-    minimum_salary                          decimal(24, 4) NOT NULL,
-    maximum_salary                          decimal(24, 5) NOT NULL
+    minimum_salary                          numeric(30, 6) NOT NULL,
+    maximum_salary                          numeric(30, 6) NOT NULL
                                             CHECK(maximum_salary >= minimum_salary),
     description                             text DEFAULT(''),
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
@@ -322,7 +322,7 @@ CREATE TABLE hrm.employee_qualifications
     institution                             national character varying(128) NOT NULL,
     majors                                  national character varying(128) NOT NULL,
     total_years                             integer,
-    score                                   numeric,
+    score                                   numeric(30, 6),
     started_on                              date,
     completed_on                            date,
     details                                 text,
@@ -429,7 +429,7 @@ CREATE TABLE hrm.attendances
     was_present                             boolean NOT NULL,
     check_in_time                           time NULL,
     check_out_time                          time NULL,
-    overtime_hours                          numeric NOT NULL,
+    overtime_hours                          numeric(30, 6) NOT NULL,
     was_absent                              boolean NOT NULL CHECK(was_absent != was_present),
     reason_for_absenteeism                  text,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),

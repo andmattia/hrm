@@ -10,7 +10,7 @@ AS
 SELECT
     hrm.office_hours.office_hour_id,
     core.offices.office_code + ' (' + core.offices.office_name + ')' AS office,
-    core.offices.lo as photo,
+    core.offices.logo as photo,
     hrm.shifts.shift_code + ' (' + hrm.shifts.shift_name + ')' AS shift,
     core.week_days.week_day_code + ' (' + core.week_days.week_day_name + ')' AS week_day,
     hrm.office_hours.begins_from,
