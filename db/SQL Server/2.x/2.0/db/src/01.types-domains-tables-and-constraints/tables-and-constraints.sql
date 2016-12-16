@@ -177,7 +177,7 @@ CREATE TABLE hrm.leave_benefits
     leave_benefit_id                        integer IDENTITY NOT NULL PRIMARY KEY,
     leave_benefit_code                      national character varying(12) NOT NULL UNIQUE,
     leave_benefit_name                      national character varying(128) NOT NULL,
-    total_days                              dbo.integer_strict NOT NULL,
+    total_days                              integer NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
     audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
     deleted                                    bit DEFAULT(0)
