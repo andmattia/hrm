@@ -21,7 +21,16 @@
 
     scrudFactory.allowDelete = true;
     scrudFactory.allowEdit = true;
-    scrudFactory.viewUrl = "/dashboard/hrm/tasks/employee-info/{Key}";
+    scrudFactory.viewUrl = "/dashboard/hrm/tasks/employee-info/{Id}";
+
+    scrudFactory.customActions = [
+        {
+            title: "View Employee",
+            href: "/dashboard/hrm/tasks/employee-info/{Id}",
+            icon: "list icon",
+            position: "before"
+        }
+    ];
 
     scrudFactory.live = "EmployeeName";
     scrudFactory.layout = [
@@ -255,9 +264,9 @@
         var employeeName = $("#employee_name");
 
         function displayEmployeeName() {
-            var f = (firstName.val() || "");
-            var m = (middleName.val() || "");
-            var l = (lastName.val() || "");
+            const f = (firstName.val() || "");
+            const m = (middleName.val() || "");
+            const l = (lastName.val() || "");
 
             var name = f + " " + m;
             if (l) {
@@ -277,6 +286,10 @@
 
     };
 
+
+    $(document).on("formready", function() {
+        $("#service_ended_on").val("");
+    });
 
 </script>
 

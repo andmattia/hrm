@@ -33,7 +33,6 @@ namespace ASP
     using Frapid.Framework;
     using Frapid.i18n;
     using Frapid.Messaging;
-    using Frapid.Mapper.Decorators;
     using Frapid.WebsiteBuilder;
     using MixERP.HRM;
     
@@ -90,48 +89,49 @@ WriteLiteral(" class=\"vpad8\"");
 
 WriteLiteral(" style=\"display: none;\"");
 
-WriteLiteral("></div>\r\n\r\n<script>\r\n    function getAttendance() {\r\n        var url = \"/api/view" +
-"s/hrm/attendance-view/all\";\r\n\r\n        return window.getAjaxRequest(url);\r\n    }" +
-";\r\n\r\n    function show() {\r\n    };\r\n    var employeeId = $(\"#EmployeeSelect\").va" +
-"l();\r\n\r\n    var getAttendanceAjax = getAttendance(employeeId);\r\n\r\n    getAttenda" +
-"nceAjax.success(function (msg) {\r\n        if (msg.length) {\r\n            createT" +
-"imeLine(msg);\r\n        };\r\n    });\r\n\r\n</script>\r\n<script>\r\n    function createTi" +
-"meLine(data) {\r\n        var employeeGroup = window.Enumerable.From(data).GroupBy" +
-"(function (x) { return x.EmployeeId; }).ToArray();\r\n        var min = window.Enu" +
-"merable.From(data).MinBy(function (x) { return x.AttendanceDate; }).AttendanceDa" +
-"te;\r\n        var max = window.Enumerable.From(data).MaxBy(function (x) { return " +
-"x.AttendanceDate; }).AttendanceDate;\r\n\r\n\r\n        var groups = new window.vis.Da" +
-"taSet();\r\n\r\n        for (var g = 0; g < employeeGroup.length; g++) {\r\n          " +
-"  groups.add(\r\n                {\r\n                    id: employeeGroup[g].sourc" +
-"e[0].EmployeeId,\r\n                    content: employeeGroup[g].source[0].Employ" +
-"ee,\r\n                    title: employeeGroup[g].source[0].Photo\r\n              " +
-"  });\r\n        };\r\n\r\n        // create a dataset with items\r\n        var items =" +
-" new window.vis.DataSet();\r\n\r\n        for (var i = 0; i < data.length / employee" +
-"Group.length; i++) {\r\n            var content = data[i].WasPresent ? \"P\" : \"A\";\r" +
-"\n            var className = data[i].WasPresent ? \"\" : \"red\";\r\n\r\n            ite" +
-"ms.add({\r\n                id: i,\r\n                group: data[i].EmployeeId,\r\n  " +
-"              content: content,\r\n                start: data[i].AttendanceDate,\r" +
-"\n                type: \'box\',\r\n                className: className\r\n           " +
-" });\r\n        };\r\n\r\n        // create visualization\r\n        var container = doc" +
-"ument.getElementById(\'visualization\');\r\n        $(container).html(\"\");\r\n\r\n      " +
-"  var options = {\r\n            groupOrder: \'content\',  // groupOrder can be a pr" +
-"operty name or a sorting function\r\n            orientation: {\r\n                a" +
-"xis: \'both\',\r\n                item: \'top\'\r\n            },\r\n            min: min," +
-"\r\n            max: max,\r\n            zoomMin: 1000 * 60 * 60 * 24,             /" +
-"/ one day in milliseconds\r\n            zoomMax: 1000 * 60 * 60 * 24 * 31 * 3    " +
-" // about three months in milliseconds\r\n        };\r\n\r\n        var timeline = new" +
-" window.vis.Timeline(container);\r\n        timeline.setOptions(options);\r\n       " +
-" timeline.setGroups(groups);\r\n        timeline.setItems(items);\r\n\r\n        var l" +
-"abels = $(\".vis-label\");\r\n        labels.each(function () {\r\n            var el " +
-"= $(this);\r\n            var inner = el.find(\".vis-inner\");\r\n\r\n            var ph" +
-"oto = el.attr(\"title\");\r\n            el.removeAttr(\"title\");\r\n\r\n            var " +
-"header = $(\"<div class=\'ui big grey header\' />\");\r\n            header.html(inner" +
-".html());\r\n\r\n            var img = $(\"<img />\");\r\n\r\n            img.attr(\"class\"" +
-", \"ui small centered rounded circular bordered image\");\r\n            img.attr(\"t" +
-"itle\", inner.html());\r\n            img.attr(\"src\", \"/api/core/attachment/documen" +
-"t/400/400/\" + photo);\r\n\r\n            inner.addClass(\"ui attached secondary segme" +
-"nt\");\r\n            inner.prepend(img);\r\n        });\r\n\r\n        $(\".loader\").remo" +
-"veClass(\"active\");\r\n        $(container).fadeIn(1000);\r\n    };\r\n\r\n</script>\r\n");
+WriteLiteral("></div>\r\n\r\n<script>\r\n    function getAttendance() {\r\n        const url = \"/api/vi" +
+"ews/hrm/attendance-view/all\";\r\n\r\n        return window.getAjaxRequest(url);\r\n   " +
+" };\r\n\r\n    function show() {\r\n    };\r\n    var employeeId = $(\"#EmployeeSelect\")." +
+"val();\r\n\r\n    var getAttendanceAjax = getAttendance(employeeId);\r\n\r\n    getAtten" +
+"danceAjax.success(function (msg) {\r\n        if (msg.length) {\r\n            creat" +
+"eTimeLine(msg);\r\n        };\r\n    });\r\n\r\n</script>\r\n<script>\r\n    function create" +
+"TimeLine(data) {\r\n        const employeeGroup = window.Enumerable.From(data).Gro" +
+"upBy(function (x) { return x.EmployeeId; }).ToArray();\r\n        const min = wind" +
+"ow.Enumerable.From(data).MinBy(function (x) { return x.AttendanceDate; }).Attend" +
+"anceDate;\r\n        const max = window.Enumerable.From(data).MaxBy(function (x) {" +
+" return x.AttendanceDate; }).AttendanceDate;\r\n\r\n\r\n        const groups = new win" +
+"dow.vis.DataSet();\r\n\r\n        for (let g = 0; g < employeeGroup.length; g++) {\r\n" +
+"            groups.add(\r\n                {\r\n                    id: employeeGrou" +
+"p[g].source[0].EmployeeId,\r\n                    content: employeeGroup[g].source" +
+"[0].Employee,\r\n                    title: employeeGroup[g].source[0].Photo\r\n    " +
+"            });\r\n        };\r\n\r\n        // create a dataset with items\r\n        c" +
+"onst items = new window.vis.DataSet();\r\n\r\n        for (let i = 0; i < data.lengt" +
+"h / employeeGroup.length; i++) {\r\n            const content = data[i].WasPresent" +
+" ? \"P\" : \"A\";\r\n            const className = data[i].WasPresent ? \"\" : \"red\";\r\n\r" +
+"\n            items.add({\r\n                id: i,\r\n                group: data[i]" +
+".EmployeeId,\r\n                content: content,\r\n                start: data[i]." +
+"AttendanceDate,\r\n                type: \'box\',\r\n                className: classN" +
+"ame\r\n            });\r\n        };\r\n\r\n        // create visualization\r\n        con" +
+"st container = document.getElementById(\'visualization\');\r\n        $(container).h" +
+"tml(\"\");\r\n\r\n        const options = {\r\n            groupOrder: \'content\',  // gr" +
+"oupOrder can be a property name or a sorting function\r\n            orientation: " +
+"{\r\n                axis: \'both\',\r\n                item: \'top\'\r\n            },\r\n " +
+"           min: min,\r\n            max: max,\r\n            zoomMin: 1000 * 60 * 60" +
+" * 24,             // one day in milliseconds\r\n            zoomMax: 1000 * 60 * " +
+"60 * 24 * 31 * 3     // about three months in milliseconds\r\n        };\r\n\r\n      " +
+"  const timeline = new window.vis.Timeline(container);\r\n        timeline.setOpti" +
+"ons(options);\r\n        timeline.setGroups(groups);\r\n        timeline.setItems(it" +
+"ems);\r\n\r\n        const labels = $(\".vis-label\");\r\n        labels.each(function (" +
+") {\r\n            const el = $(this);\r\n            const inner = el.find(\".vis-in" +
+"ner\");\r\n\r\n            const photo = el.attr(\"title\");\r\n            el.removeAttr" +
+"(\"title\");\r\n\r\n            const header = $(\"<div class=\'ui big grey header\' />\")" +
+";\r\n            header.html(inner.html());\r\n\r\n            const img = $(\"<img />\"" +
+");\r\n\r\n            img.attr(\"class\", \"ui small centered rounded circular bordered" +
+" image\");\r\n            img.attr(\"title\", inner.html());\r\n            img.attr(\"s" +
+"rc\", \"/api/core/attachment/document/400/400/\" + photo);\r\n\r\n            inner.add" +
+"Class(\"ui attached secondary segment\");\r\n            inner.prepend(img);\r\n      " +
+"  });\r\n\r\n        $(\".loader\").removeClass(\"active\");\r\n        $(container).fadeI" +
+"n(1000);\r\n    };\r\n\r\n</script>\r\n");
 
         }
     }

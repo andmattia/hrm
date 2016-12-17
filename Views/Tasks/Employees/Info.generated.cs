@@ -26,7 +26,6 @@ namespace ASP
     using System.Web.Security;
     using System.Web.UI;
     using System.Web.WebPages;
-
     using Frapid.Configuration;
     using Frapid.Dashboard;
     using Frapid.DataAccess;
@@ -34,7 +33,6 @@ namespace ASP
     using Frapid.Framework;
     using Frapid.i18n;
     using Frapid.Messaging;
-    using Frapid.Mapper.Decorators;
     using Frapid.WebsiteBuilder;
     using MixERP.HRM;
     
@@ -56,333 +54,331 @@ namespace ASP
             
             #line default
             #line hidden
-WriteLiteral("\r\n\r\n    <div");
+WriteLiteral("\r\n\r\n<div");
 
 WriteLiteral(" class=\"ui container\"");
 
+WriteLiteral(">\r\n    <div");
+
+WriteLiteral(" class=\"ui attached padded segment\"");
+
 WriteLiteral(">\r\n        <div");
-
-WriteLiteral(" class=\"ui attached segment\"");
-
-WriteLiteral(">\r\n            <div");
 
 WriteLiteral(" class=\"ui purple header\"");
 
-WriteLiteral(">\r\n                <img");
+WriteLiteral(">\r\n            <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 291), Tuple.Create("\"", 374)
-, Tuple.Create(Tuple.Create("", 297), Tuple.Create("/dashboard/hrm/services/attachments/", 297), true)
+WriteAttribute("src", Tuple.Create(" src=\"", 282), Tuple.Create("\"", 365)
+, Tuple.Create(Tuple.Create("", 288), Tuple.Create("/dashboard/hrm/services/attachments/", 288), true)
             
             #line 11 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 333), Tuple.Create<System.Object, System.Int32>(Model.Details.Photo
+, Tuple.Create(Tuple.Create("", 324), Tuple.Create<System.Object, System.Int32>(Model.Details.Photo
             
             #line default
             #line hidden
-, 333), false)
-, Tuple.Create(Tuple.Create("", 353), Tuple.Create("?Width=200&Height=200", 353), true)
+, 324), false)
+, Tuple.Create(Tuple.Create("", 344), Tuple.Create("?Width=200&Height=200", 344), true)
 );
 
-WriteLiteral("\r\n                     class=\"ui circular image\"");
+WriteLiteral("\r\n                 class=\"ui circular image\"");
 
-WriteAttribute("alt", Tuple.Create(" alt=\"", 423), Tuple.Create("\"", 456)
+WriteAttribute("alt", Tuple.Create(" alt=\"", 410), Tuple.Create("\"", 443)
             
             #line 12 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 429), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeName
+, Tuple.Create(Tuple.Create("", 416), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeName
             
             #line default
             #line hidden
-, 429), false)
+, 416), false)
 );
 
-WriteLiteral(" />\r\n                <div");
+WriteLiteral(" />\r\n            <div");
 
 WriteLiteral(" class=\"content\"");
+
+WriteLiteral(">\r\n");
+
+WriteLiteral("                ");
+
+            
+            #line 14 "..\..\Views\Tasks\Employees\Info.cshtml"
+           Write(Model.Details.EmployeeName);
+
+            
+            #line default
+            #line hidden
+WriteLiteral("\r\n                <div");
+
+WriteLiteral(" class=\"sub header\"");
 
 WriteLiteral(">\r\n");
 
 WriteLiteral("                    ");
 
             
-            #line 14 "..\..\Views\Tasks\Employees\Info.cshtml"
-               Write(Model.Details.EmployeeName);
-
-            
-            #line default
-            #line hidden
-WriteLiteral("\r\n                    <div");
-
-WriteLiteral(" class=\"sub header\"");
-
-WriteLiteral(">\r\n");
-
-WriteLiteral("                        ");
-
-            
             #line 16 "..\..\Views\Tasks\Employees\Info.cshtml"
-                   Write(Model.Details.EmployeeType);
+               Write(Model.Details.EmployeeType);
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                    </div>\r\n                </div>\r\n            </div>\r\n\r\n\r\n   " +
-"         <div");
+WriteLiteral("\r\n                </div>\r\n            </div>\r\n        </div>\r\n\r\n\r\n        <div");
 
 WriteLiteral(" class=\"bpad8\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n            <div");
 
 WriteLiteral(" class=\"ui basic buttons\"");
 
-WriteLiteral(">\r\n                    <a");
+WriteLiteral(">\r\n                <a");
 
 WriteLiteral(" href=\"/dashboard/hrm/tasks/employees\"");
 
 WriteLiteral(" class=\"ui basic button\"");
 
-WriteLiteral(">Employees</a>\r\n                    <a");
+WriteLiteral(">Employees</a>\r\n                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 928), Tuple.Create("\"", 1025)
-, Tuple.Create(Tuple.Create("", 935), Tuple.Create("/dashboard/hrm/tasks/employees/identification-details?EmployeeId=", 935), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 871), Tuple.Create("\"", 968)
+, Tuple.Create(Tuple.Create("", 878), Tuple.Create("/dashboard/hrm/tasks/employees/identification-details?EmployeeId=", 878), true)
             
             #line 25 "..\..\Views\Tasks\Employees\Info.cshtml"
-              , Tuple.Create(Tuple.Create("", 1000), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeId
+           , Tuple.Create(Tuple.Create("", 943), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeId
             
             #line default
             #line hidden
-, 1000), false)
+, 943), false)
 );
 
 WriteLiteral(" class=\"ui basic button\"");
 
-WriteLiteral(">Identification Details</a>\r\n                    <a");
+WriteLiteral(">Identification Details</a>\r\n                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1101), Tuple.Create("\"", 1191)
-, Tuple.Create(Tuple.Create("", 1108), Tuple.Create("/dashboard/hrm/tasks/employees/social-networks?EmployeeId=", 1108), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1040), Tuple.Create("\"", 1130)
+, Tuple.Create(Tuple.Create("", 1047), Tuple.Create("/dashboard/hrm/tasks/employees/social-networks?EmployeeId=", 1047), true)
             
             #line 26 "..\..\Views\Tasks\Employees\Info.cshtml"
-       , Tuple.Create(Tuple.Create("", 1166), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeId
+   , Tuple.Create(Tuple.Create("", 1105), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeId
             
             #line default
             #line hidden
-, 1166), false)
+, 1105), false)
 );
 
 WriteLiteral(" class=\"ui basic button\"");
 
-WriteLiteral(">Social Networks</a>\r\n                    <a");
+WriteLiteral(">Social Networks</a>\r\n                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1260), Tuple.Create("\"", 1346)
-, Tuple.Create(Tuple.Create("", 1267), Tuple.Create("/dashboard/hrm/tasks/employees/experiences?EmployeeId=", 1267), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1195), Tuple.Create("\"", 1281)
+, Tuple.Create(Tuple.Create("", 1202), Tuple.Create("/dashboard/hrm/tasks/employees/experiences?EmployeeId=", 1202), true)
             
             #line 27 "..\..\Views\Tasks\Employees\Info.cshtml"
-   , Tuple.Create(Tuple.Create("", 1321), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeId
+, Tuple.Create(Tuple.Create("", 1256), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeId
             
             #line default
             #line hidden
-, 1321), false)
+, 1256), false)
 );
 
 WriteLiteral(" class=\"ui basic button\"");
 
-WriteLiteral(">Experiences</a>\r\n                    <a");
+WriteLiteral(">Experiences</a>\r\n                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1411), Tuple.Create("\"", 1500)
-, Tuple.Create(Tuple.Create("", 1418), Tuple.Create("/dashboard/hrm/tasks/employees/qualifications?EmployeeId=", 1418), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1342), Tuple.Create("\"", 1431)
+, Tuple.Create(Tuple.Create("", 1349), Tuple.Create("/dashboard/hrm/tasks/employees/qualifications?EmployeeId=", 1349), true)
             
             #line 28 "..\..\Views\Tasks\Employees\Info.cshtml"
-      , Tuple.Create(Tuple.Create("", 1475), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeId
+  , Tuple.Create(Tuple.Create("", 1406), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeId
             
             #line default
             #line hidden
-, 1475), false)
+, 1406), false)
 );
 
 WriteLiteral(" class=\"ui basic button\"");
 
-WriteLiteral(">Qualifications</a>\r\n                    <a");
+WriteLiteral(">Qualifications</a>\r\n                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 1568), Tuple.Create("\"", 1660)
-, Tuple.Create(Tuple.Create("", 1575), Tuple.Create("/dashboard/hrm/tasks/employees/leave-application?EmployeeId=", 1575), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 1495), Tuple.Create("\"", 1587)
+, Tuple.Create(Tuple.Create("", 1502), Tuple.Create("/dashboard/hrm/tasks/employees/leave-application?EmployeeId=", 1502), true)
             
             #line 29 "..\..\Views\Tasks\Employees\Info.cshtml"
-         , Tuple.Create(Tuple.Create("", 1635), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeId
+     , Tuple.Create(Tuple.Create("", 1562), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeId
             
             #line default
             #line hidden
-, 1635), false)
+, 1562), false)
 );
 
 WriteLiteral(" class=\"ui basic button\"");
 
-WriteLiteral(">Leave Application</a>\r\n                </div>\r\n            </div>\r\n\r\n           " +
-" <div");
+WriteLiteral(">Leave Application</a>\r\n            </div>\r\n        </div>\r\n\r\n        <div");
 
 WriteLiteral(" class=\"ui attached tabular menu\"");
 
-WriteLiteral(">\r\n                <a");
+WriteLiteral(">\r\n            <a");
 
 WriteLiteral(" class=\"active item\"");
 
 WriteLiteral(" data-tab=\"general-info-tab\"");
 
-WriteLiteral(">General Information</a>\r\n                <a");
+WriteLiteral(">General Information</a>\r\n            <a");
 
 WriteLiteral(" class=\"item\"");
 
 WriteLiteral(" data-tab=\"identification-tab\"");
 
-WriteLiteral(">Identification Details</a>\r\n                <a");
+WriteLiteral(">Identification Details</a>\r\n            <a");
 
 WriteLiteral(" class=\"item\"");
 
 WriteLiteral(" data-tab=\"social-networks-tab\"");
 
-WriteLiteral(">Social Networks</a>\r\n                <a");
+WriteLiteral(">Social Networks</a>\r\n            <a");
 
 WriteLiteral(" class=\"item\"");
 
 WriteLiteral(" data-tab=\"experiences-tab\"");
 
-WriteLiteral(">Experiences</a>\r\n                <a");
+WriteLiteral(">Experiences</a>\r\n            <a");
 
 WriteLiteral(" class=\"item\"");
 
 WriteLiteral(" data-tab=\"qualifications-tab\"");
 
-WriteLiteral(">Qualifications</a>\r\n            </div>\r\n            <div");
+WriteLiteral(">Qualifications</a>\r\n        </div>\r\n        <div");
 
 WriteLiteral(" class=\"ui active tab attached segment\"");
 
 WriteLiteral(" data-tab=\"general-info-tab\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n            <div");
 
 WriteLiteral(" class=\"ui stackable grid\"");
 
-WriteLiteral(">\r\n                    <div");
+WriteLiteral(">\r\n                <div");
 
 WriteLiteral(" class=\"five wide column\"");
 
-WriteLiteral(">\r\n                        <div");
+WriteLiteral(">\r\n                    <div");
 
 WriteLiteral(" class=\"ui segment\"");
 
-WriteLiteral(">\r\n                            <div");
+WriteLiteral(">\r\n                        <div");
 
 WriteLiteral(" class=\"ui large header\"");
 
 WriteLiteral(">\r\n");
 
-WriteLiteral("                                ");
+WriteLiteral("                            ");
 
             
             #line 45 "..\..\Views\Tasks\Employees\Info.cshtml"
-                           Write(Model.Details.EmployeeName);
+                       Write(Model.Details.EmployeeName);
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                            </div>\r\n                            <a");
+WriteLiteral("\r\n                        </div>\r\n                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 2674), Tuple.Create("\"", 2737)
-, Tuple.Create(Tuple.Create("", 2681), Tuple.Create("/dashboard/hrm/services/attachments/", 2681), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 2533), Tuple.Create("\"", 2596)
+, Tuple.Create(Tuple.Create("", 2540), Tuple.Create("/dashboard/hrm/services/attachments/", 2540), true)
             
             #line 47 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 2717), Tuple.Create<System.Object, System.Int32>(Model.Details.Photo
+, Tuple.Create(Tuple.Create("", 2576), Tuple.Create<System.Object, System.Int32>(Model.Details.Photo
             
             #line default
             #line hidden
-, 2717), false)
+, 2576), false)
 );
 
 WriteLiteral(" target=\"_blank\"");
 
-WriteLiteral(">\r\n                                <img");
+WriteLiteral(">\r\n                            <img");
 
-WriteAttribute("src", Tuple.Create(" src=\"", 2793), Tuple.Create("\"", 2876)
-, Tuple.Create(Tuple.Create("", 2799), Tuple.Create("/dashboard/hrm/services/attachments/", 2799), true)
+WriteAttribute("src", Tuple.Create(" src=\"", 2648), Tuple.Create("\"", 2731)
+, Tuple.Create(Tuple.Create("", 2654), Tuple.Create("/dashboard/hrm/services/attachments/", 2654), true)
             
             #line 48 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 2835), Tuple.Create<System.Object, System.Int32>(Model.Details.Photo
+, Tuple.Create(Tuple.Create("", 2690), Tuple.Create<System.Object, System.Int32>(Model.Details.Photo
             
             #line default
             #line hidden
-, 2835), false)
-, Tuple.Create(Tuple.Create("", 2855), Tuple.Create("?Height=300&Width=272", 2855), true)
+, 2690), false)
+, Tuple.Create(Tuple.Create("", 2710), Tuple.Create("?Height=300&Width=272", 2710), true)
 );
 
 WriteLiteral(" class=\"ui image\"");
 
-WriteAttribute("alt", Tuple.Create("\r\n                                     alt=\"", 2894), Tuple.Create("\"", 2965)
+WriteAttribute("alt", Tuple.Create("\r\n                                 alt=\"", 2749), Tuple.Create("\"", 2816)
             
             #line 49 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 2938), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeName
+, Tuple.Create(Tuple.Create("", 2789), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeName
             
             #line default
             #line hidden
-, 2938), false)
+, 2789), false)
 );
 
-WriteLiteral(" />\r\n                            </a>\r\n                            <br />\r\n      " +
-"                      <table");
+WriteLiteral(" />\r\n                        </a>\r\n                        <br />\r\n              " +
+"          <table");
 
 WriteLiteral(" class=\"ui striped definition table\"");
 
 WriteLiteral(@">
-                                <tbody>
-                                    <tr>
-                                        <td>
-                                            Email Address
-                                        </td>
-                                        <td>
-                                            <i");
+                            <tbody>
+                                <tr>
+                                    <td>
+                                        Email Address
+                                    </td>
+                                    <td>
+                                        <i");
 
 WriteLiteral(" class=\"mail icon\"");
 
-WriteLiteral("></i>\r\n                                            <a");
+WriteLiteral("></i>\r\n                                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 3512), Tuple.Create("\"", 3553)
-, Tuple.Create(Tuple.Create("", 3519), Tuple.Create("mailto:", 3519), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 3319), Tuple.Create("\"", 3360)
+, Tuple.Create(Tuple.Create("", 3326), Tuple.Create("mailto:", 3326), true)
             
             #line 60 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 3526), Tuple.Create<System.Object, System.Int32>(Model.Details.EmailAddress
+, Tuple.Create(Tuple.Create("", 3333), Tuple.Create<System.Object, System.Int32>(Model.Details.EmailAddress
             
             #line default
             #line hidden
-, 3526), false)
+, 3333), false)
 );
 
 WriteLiteral(">");
 
             
             #line 60 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                                                                    Write(Model.Details.EmailAddress);
+                                                                                Write(Model.Details.EmailAddress);
 
             
             #line default
             #line hidden
 WriteLiteral(@"</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Website
-                                        </td>
-                                        <td>
-                                            <i");
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Website
+                                    </td>
+                                    <td>
+                                        <i");
 
 WriteLiteral(" class=\"world icon\"");
 
-WriteLiteral("></i>\r\n                                            <a");
+WriteLiteral("></i>\r\n                                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4030), Tuple.Create("\"", 4059)
+WriteAttribute("href", Tuple.Create(" href=\"", 3801), Tuple.Create("\"", 3830)
             
             #line 69 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 4037), Tuple.Create<System.Object, System.Int32>(Model.Details.Website
+, Tuple.Create(Tuple.Create("", 3808), Tuple.Create<System.Object, System.Int32>(Model.Details.Website
             
             #line default
             #line hidden
-, 4037), false)
+, 3808), false)
 );
 
 WriteLiteral(" target=\"_blank\"");
@@ -391,33 +387,33 @@ WriteLiteral(">");
 
             
             #line 69 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                                                                        Write(Model.Details.Website);
+                                                                                    Write(Model.Details.Website);
 
             
             #line default
             #line hidden
 WriteLiteral(@"</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Blog
-                                        </td>
-                                        <td>
-                                            <i");
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Blog
+                                    </td>
+                                    <td>
+                                        <i");
 
 WriteLiteral(" class=\"world icon\"");
 
-WriteLiteral("></i>\r\n                                            <a");
+WriteLiteral("></i>\r\n                                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 4544), Tuple.Create("\"", 4570)
+WriteAttribute("href", Tuple.Create(" href=\"", 4279), Tuple.Create("\"", 4305)
             
             #line 78 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 4551), Tuple.Create<System.Object, System.Int32>(Model.Details.Blog
+, Tuple.Create(Tuple.Create("", 4286), Tuple.Create<System.Object, System.Int32>(Model.Details.Blog
             
             #line default
             #line hidden
-, 4551), false)
+, 4286), false)
 );
 
 WriteLiteral(" target=\"_blank\"");
@@ -426,605 +422,586 @@ WriteLiteral(">");
 
             
             #line 78 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                                                                     Write(Model.Details.Blog);
+                                                                                 Write(Model.Details.Blog);
 
             
             #line default
             #line hidden
 WriteLiteral(@"</a>
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Home Phone
-                                        </td>
-                                        <td>
-                                            <i");
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Home Phone
+                                    </td>
+                                    <td>
+                                        <i");
 
 WriteLiteral(" class=\"phone icon\"");
 
-WriteLiteral("></i>\r\n                                            <a");
+WriteLiteral("></i>\r\n                                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 5058), Tuple.Create("\"", 5093)
-, Tuple.Create(Tuple.Create("", 5065), Tuple.Create("tel:", 5065), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 4757), Tuple.Create("\"", 4792)
+, Tuple.Create(Tuple.Create("", 4764), Tuple.Create("tel:", 4764), true)
             
             #line 87 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 5069), Tuple.Create<System.Object, System.Int32>(Model.Details.PhoneHome
+, Tuple.Create(Tuple.Create("", 4768), Tuple.Create<System.Object, System.Int32>(Model.Details.PhoneHome
             
             #line default
             #line hidden
-, 5069), false)
+, 4768), false)
 );
 
 WriteLiteral(">");
 
             
             #line 87 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                                                              Write(Model.Details.PhoneHome);
+                                                                          Write(Model.Details.PhoneHome);
 
             
             #line default
             #line hidden
 WriteLiteral(@"</a>
 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Cell Phone
-                                        </td>
-                                        <td>
-                                            <i");
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Cell Phone
+                                    </td>
+                                    <td>
+                                        <i");
 
 WriteLiteral(" class=\"mobile icon\"");
 
-WriteLiteral("></i>\r\n                                            <a");
+WriteLiteral("></i>\r\n                                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 5573), Tuple.Create("\"", 5608)
-, Tuple.Create(Tuple.Create("", 5580), Tuple.Create("tel:", 5580), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 5236), Tuple.Create("\"", 5271)
+, Tuple.Create(Tuple.Create("", 5243), Tuple.Create("tel:", 5243), true)
             
             #line 97 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 5584), Tuple.Create<System.Object, System.Int32>(Model.Details.PhoneCell
+, Tuple.Create(Tuple.Create("", 5247), Tuple.Create<System.Object, System.Int32>(Model.Details.PhoneCell
             
             #line default
             #line hidden
-, 5584), false)
+, 5247), false)
 );
 
 WriteLiteral(">");
 
             
             #line 97 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                                                              Write(Model.Details.PhoneCell);
+                                                                          Write(Model.Details.PhoneCell);
 
             
             #line default
             #line hidden
 WriteLiteral(@"</a>
 
-                                        </td>
-                                    </tr>
-                                    <tr>
-                                        <td>
-                                            Phone (Office Extension)
-                                        </td>
-                                        <td>
-                                            <i");
+                                    </td>
+                                </tr>
+                                <tr>
+                                    <td>
+                                        Phone (Office Extension)
+                                    </td>
+                                    <td>
+                                        <i");
 
 WriteLiteral(" class=\"phone icon\"");
 
-WriteLiteral("></i>\r\n                                            <a");
+WriteLiteral("></i>\r\n                                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 6101), Tuple.Create("\"", 6147)
-, Tuple.Create(Tuple.Create("", 6108), Tuple.Create("tel:", 6108), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 5728), Tuple.Create("\"", 5774)
+, Tuple.Create(Tuple.Create("", 5735), Tuple.Create("tel:", 5735), true)
             
             #line 107 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 6112), Tuple.Create<System.Object, System.Int32>(Model.Details.PhoneOfficeExtension
+, Tuple.Create(Tuple.Create("", 5739), Tuple.Create<System.Object, System.Int32>(Model.Details.PhoneOfficeExtension
             
             #line default
             #line hidden
-, 6112), false)
+, 5739), false)
 );
 
 WriteLiteral(">");
 
             
             #line 107 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                                                                         Write(Model.Details.PhoneOfficeExtension);
+                                                                                     Write(Model.Details.PhoneOfficeExtension);
 
             
             #line default
             #line hidden
-WriteLiteral("</a>\r\n\r\n                                        </td>\r\n                          " +
-"          </tr>\r\n                                    <tr");
+WriteLiteral("</a>\r\n\r\n                                    </td>\r\n                              " +
+"  </tr>\r\n                                <tr");
 
 WriteLiteral(" class=\"negative\"");
 
-WriteLiteral(">\r\n                                        <td>\r\n                                " +
-"            Emergency Phone\r\n                                        </td>\r\n    " +
-"                                    <td>\r\n                                      " +
-"      <i");
+WriteLiteral(">\r\n                                    <td>\r\n                                    " +
+"    Emergency Phone\r\n                                    </td>\r\n                " +
+"                    <td>\r\n                                        <i");
 
 WriteLiteral(" class=\"red phone icon\"");
 
-WriteLiteral("></i>\r\n                                            <a");
+WriteLiteral("></i>\r\n                                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 6663), Tuple.Create("\"", 6703)
-, Tuple.Create(Tuple.Create("", 6670), Tuple.Create("tel:", 6670), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 6254), Tuple.Create("\"", 6294)
+, Tuple.Create(Tuple.Create("", 6261), Tuple.Create("tel:", 6261), true)
             
             #line 117 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 6674), Tuple.Create<System.Object, System.Int32>(Model.Details.PhoneEmergency
+, Tuple.Create(Tuple.Create("", 6265), Tuple.Create<System.Object, System.Int32>(Model.Details.PhoneEmergency
             
             #line default
             #line hidden
-, 6674), false)
+, 6265), false)
 );
 
 WriteLiteral(">");
 
             
             #line 117 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                                                                   Write(Model.Details.PhoneEmergency);
+                                                                               Write(Model.Details.PhoneEmergency);
 
             
             #line default
             #line hidden
-WriteLiteral("</a>\r\n                                        </td>\r\n                            " +
-"        </tr>\r\n                                    <tr");
+WriteLiteral("</a>\r\n                                    </td>\r\n                                " +
+"</tr>\r\n                                <tr");
 
 WriteLiteral(" class=\"negative\"");
 
-WriteLiteral(">\r\n                                        <td>\r\n                                " +
-"            Emergency Phone 2\r\n                                        </td>\r\n  " +
-"                                      <td>\r\n                                    " +
-"        <i");
+WriteLiteral(">\r\n                                    <td>\r\n                                    " +
+"    Emergency Phone 2\r\n                                    </td>\r\n              " +
+"                      <td>\r\n                                        <i");
 
 WriteLiteral(" class=\"red phone icon\"");
 
-WriteLiteral("></i>\r\n                                            <a");
+WriteLiteral("></i>\r\n                                        <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 7213), Tuple.Create("\"", 7254)
-, Tuple.Create(Tuple.Create("", 7220), Tuple.Create("tel:", 7220), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 6768), Tuple.Create("\"", 6809)
+, Tuple.Create(Tuple.Create("", 6775), Tuple.Create("tel:", 6775), true)
             
             #line 126 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 7224), Tuple.Create<System.Object, System.Int32>(Model.Details.PhoneEmergency2
+, Tuple.Create(Tuple.Create("", 6779), Tuple.Create<System.Object, System.Int32>(Model.Details.PhoneEmergency2
             
             #line default
             #line hidden
-, 7224), false)
+, 6779), false)
 );
 
 WriteLiteral(">");
 
             
             #line 126 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                                                                    Write(Model.Details.PhoneEmergency2);
+                                                                                Write(Model.Details.PhoneEmergency2);
 
             
             #line default
             #line hidden
-WriteLiteral("</a>\r\n                                        </td>\r\n                            " +
-"        </tr>\r\n                                    <tr>\r\n                       " +
-"                 <td");
+WriteLiteral("</a>\r\n                                    </td>\r\n                                " +
+"</tr>\r\n                                <tr>\r\n                                   " +
+" <td");
 
 WriteLiteral(" style=\"width: 200px;\"");
 
-WriteLiteral(">\r\n                                            User\r\n                            " +
-"            </td>\r\n                                        <td>\r\n               " +
-"                             <i");
+WriteLiteral(">\r\n                                        User\r\n                                " +
+"    </td>\r\n                                    <td>\r\n                           " +
+"             <i");
 
 WriteLiteral(" class=\"user icon\"");
 
 WriteLiteral("></i>\r\n");
 
-WriteLiteral("                                            ");
+WriteLiteral("                                        ");
 
             
             #line 135 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                       Write(Model.Details.UserName);
+                                   Write(Model.Details.UserName);
 
             
             #line default
             #line hidden
-WriteLiteral(@"
-                                        </td>
-                                    </tr>
-                                </tbody>
-                            </table>
-                        </div>
-
-                    </div>
-                    <div");
+WriteLiteral("\r\n                                    </td>\r\n                                </tr" +
+">\r\n                            </tbody>\r\n                        </table>\r\n     " +
+"               </div>\r\n\r\n                </div>\r\n                <div");
 
 WriteLiteral(" class=\"eleven wide column\"");
 
-WriteLiteral(">\r\n                        <table");
+WriteLiteral(">\r\n                    <table");
 
 WriteLiteral(" class=\"ui striped definition table\"");
 
-WriteLiteral(">\r\n                            <tbody>\r\n                                <tr>\r\n   " +
-"                                 <td");
+WriteLiteral(">\r\n                        <tbody>\r\n                            <tr>\r\n           " +
+"                     <td");
 
 WriteLiteral(" style=\"width: 200px;\"");
 
-WriteLiteral(">\r\n                                        Joined On\r\n                           " +
-"         </td>\r\n                                    <td");
+WriteLiteral(">\r\n                                    Joined On\r\n                               " +
+" </td>\r\n                                <td");
 
-WriteAttribute("title", Tuple.Create(" title=\"", 8402), Tuple.Create("\"", 8444)
+WriteAttribute("title", Tuple.Create(" title=\"", 7865), Tuple.Create("\"", 7907)
             
             #line 150 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 8410), Tuple.Create<System.Object, System.Int32>(Model.Details.JoinedOn.ToString()
+, Tuple.Create(Tuple.Create("", 7873), Tuple.Create<System.Object, System.Int32>(Model.Details.JoinedOn.ToString()
             
             #line default
             #line hidden
-, 8410), false)
+, 7873), false)
 );
 
 WriteLiteral(">\r\n");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 151 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.JoinedOn);
+                               Write(Model.Details.JoinedOn);
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                                    </td>\r\n                                </tr" +
-">\r\n                                <tr>\r\n                                    <td" +
-"");
+WriteLiteral("\r\n                                </td>\r\n                            </tr>\r\n     " +
+"                       <tr>\r\n                                <td");
 
 WriteLiteral(" style=\"width: 200px;\"");
 
-WriteLiteral(">\r\n                                        Office\r\n                              " +
-"      </td>\r\n                                    <td>\r\n");
+WriteLiteral(">\r\n                                    Office\r\n                                </" +
+"td>\r\n                                <td>\r\n");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 159 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.Office);
+                               Write(Model.Details.Office);
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                                    </td>\r\n                                </tr" +
-">\r\n                                <tr>\r\n                                    <td" +
-"");
+WriteLiteral("\r\n                                </td>\r\n                            </tr>\r\n     " +
+"                       <tr>\r\n                                <td");
 
 WriteLiteral(" style=\"width: 200px;\"");
 
-WriteLiteral(">\r\n                                        Gender\r\n                              " +
-"      </td>\r\n                                    <td>\r\n");
+WriteLiteral(">\r\n                                    Gender\r\n                                </" +
+"td>\r\n                                <td>\r\n");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 167 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.GenderName);
+                               Write(Model.Details.GenderName);
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                                    </td>\r\n                                </tr" +
-">\r\n                                <tr>\r\n                                    <td" +
-"");
+WriteLiteral("\r\n                                </td>\r\n                            </tr>\r\n     " +
+"                       <tr>\r\n                                <td");
 
 WriteLiteral(" style=\"width: 200px;\"");
 
-WriteLiteral(">\r\n                                        Marital Status\r\n                      " +
-"              </td>\r\n                                    <td>\r\n");
+WriteLiteral(">\r\n                                    Marital Status\r\n                          " +
+"      </td>\r\n                                <td>\r\n");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 175 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.MaritalStatus);
+                               Write(Model.Details.MaritalStatus);
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                                    </td>\r\n                                </tr" +
-">\r\n                                <tr>\r\n                                    <td" +
-"");
+WriteLiteral("\r\n                                </td>\r\n                            </tr>\r\n     " +
+"                       <tr>\r\n                                <td");
 
 WriteLiteral(" style=\"width: 200px;\"");
 
-WriteLiteral(">\r\n                                        Employee Type\r\n                       " +
-"             </td>\r\n                                    <td>\r\n");
+WriteLiteral(">\r\n                                    Employee Type\r\n                           " +
+"     </td>\r\n                                <td>\r\n");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 183 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.EmployeeType);
+                               Write(Model.Details.EmployeeType);
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                                    </td>\r\n                                </tr" +
-">\r\n                                <tr>\r\n                                    <td" +
-"");
+WriteLiteral("\r\n                                </td>\r\n                            </tr>\r\n     " +
+"                       <tr>\r\n                                <td");
 
 WriteLiteral(" style=\"width: 200px;\"");
 
-WriteLiteral(">\r\n                                        Department\r\n                          " +
-"          </td>\r\n                                    <td>\r\n");
+WriteLiteral(">\r\n                                    Department\r\n                              " +
+"  </td>\r\n                                <td>\r\n");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 191 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.CurrentDepartment);
+                               Write(Model.Details.CurrentDepartment);
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                                    </td>\r\n                                </tr" +
-">\r\n                                <tr>\r\n                                    <td" +
-"");
+WriteLiteral("\r\n                                </td>\r\n                            </tr>\r\n     " +
+"                       <tr>\r\n                                <td");
 
 WriteLiteral(" style=\"width: 200px;\"");
 
-WriteLiteral(">\r\n                                        Role\r\n                                " +
-"    </td>\r\n                                    <td>\r\n");
+WriteLiteral(">\r\n                                    Role\r\n                                </td" +
+">\r\n                                <td>\r\n");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 199 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.Role);
+                               Write(Model.Details.Role);
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                                    </td>\r\n                                </tr" +
-">\r\n                                <tr");
+WriteLiteral("\r\n                                </td>\r\n                            </tr>\r\n     " +
+"                       <tr");
 
 WriteLiteral(" class=\"negative\"");
 
-WriteLiteral(">\r\n                                    <td");
+WriteLiteral(">\r\n                                <td");
 
 WriteLiteral(" style=\"width: 200px;\"");
 
-WriteLiteral(">\r\n                                        Employment Status\r\n                   " +
-"                 </td>\r\n                                    <td>\r\n");
+WriteLiteral(">\r\n                                    Employment Status\r\n                       " +
+"         </td>\r\n                                <td>\r\n");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 207 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.EmploymentStatus);
+                               Write(Model.Details.EmploymentStatus);
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                                    </td>\r\n                                </tr" +
-">\r\n                                <tr>\r\n                                    <td" +
-"");
+WriteLiteral("\r\n                                </td>\r\n                            </tr>\r\n     " +
+"                       <tr>\r\n                                <td");
 
 WriteLiteral(" style=\"width: 200px;\"");
 
-WriteLiteral(">\r\n                                        Job Title\r\n                           " +
-"         </td>\r\n                                    <td>\r\n");
+WriteLiteral(">\r\n                                    Job Title\r\n                               " +
+" </td>\r\n                                <td>\r\n");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 215 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.JobTitle);
+                               Write(Model.Details.JobTitle);
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                                    </td>\r\n                                </tr" +
-">\r\n                                <tr>\r\n                                    <td" +
-"");
+WriteLiteral("\r\n                                </td>\r\n                            </tr>\r\n     " +
+"                       <tr>\r\n                                <td");
 
 WriteLiteral(" style=\"width: 200px;\"");
 
-WriteLiteral(">\r\n                                        Pay Grade\r\n                           " +
-"         </td>\r\n                                    <td>\r\n");
+WriteLiteral(">\r\n                                    Pay Grade\r\n                               " +
+" </td>\r\n                                <td>\r\n");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 223 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.PayGrade);
+                               Write(Model.Details.PayGrade);
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                                    </td>\r\n                                </tr" +
-">\r\n                                <tr>\r\n                                    <td" +
-"");
+WriteLiteral("\r\n                                </td>\r\n                            </tr>\r\n     " +
+"                       <tr>\r\n                                <td");
 
 WriteLiteral(" style=\"width: 200px;\"");
 
-WriteLiteral(">\r\n                                        Shift\r\n                               " +
-"     </td>\r\n                                    <td>\r\n");
+WriteLiteral(">\r\n                                    Shift\r\n                                </t" +
+"d>\r\n                                <td>\r\n");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 231 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.Shift);
+                               Write(Model.Details.Shift);
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                                    </td>\r\n                                </tr" +
-">\r\n                                <tr>\r\n                                    <td" +
-"");
+WriteLiteral("\r\n                                </td>\r\n                            </tr>\r\n     " +
+"                       <tr>\r\n                                <td");
 
 WriteLiteral(" style=\"width: 200px;\"");
 
-WriteLiteral(">\r\n                                        Nationality\r\n                         " +
-"           </td>\r\n                                    <td>\r\n");
+WriteLiteral(">\r\n                                    Nationality\r\n                             " +
+"   </td>\r\n                                <td>\r\n");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 239 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.Nationality);
+                               Write(Model.Details.Nationality);
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                                    </td>\r\n                                </tr" +
-">\r\n                                <tr>\r\n                                    <td" +
-"");
+WriteLiteral("\r\n                                </td>\r\n                            </tr>\r\n     " +
+"                       <tr>\r\n                                <td");
 
 WriteLiteral(" style=\"width: 200px;\"");
 
-WriteLiteral(">\r\n                                        Date Of Birth\r\n                       " +
-"             </td>\r\n                                    <td");
+WriteLiteral(">\r\n                                    Date Of Birth\r\n                           " +
+"     </td>\r\n                                <td");
 
-WriteAttribute("title", Tuple.Create(" title=\"", 13113), Tuple.Create("\"", 13158)
+WriteAttribute("title", Tuple.Create(" title=\"", 12192), Tuple.Create("\"", 12237)
             
             #line 246 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 13121), Tuple.Create<System.Object, System.Int32>(Model.Details.DateOfBirth.ToString()
+, Tuple.Create(Tuple.Create("", 12200), Tuple.Create<System.Object, System.Int32>(Model.Details.DateOfBirth.ToString()
             
             #line default
             #line hidden
-, 13121), false)
+, 12200), false)
 );
 
 WriteLiteral(">\r\n");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 247 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.DateOfBirth);
+                               Write(Model.Details.DateOfBirth);
 
             
             #line default
             #line hidden
 WriteLiteral(@"
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Address Line 1
-                                    </td>
-                                    <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Address Line 1
+                                </td>
+                                <td>
 ");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 255 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.AddressLine1);
+                               Write(Model.Details.AddressLine1);
 
             
             #line default
             #line hidden
 WriteLiteral(@"
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Address Line 2
-                                    </td>
-                                    <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Address Line 2
+                                </td>
+                                <td>
 ");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 263 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.AddressLine2);
+                               Write(Model.Details.AddressLine2);
 
             
             #line default
             #line hidden
 WriteLiteral(@"
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Zip Code
-                                    </td>
-                                    <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Zip Code
+                                </td>
+                                <td>
 ");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 271 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.ZipCode);
+                               Write(Model.Details.ZipCode);
 
             
             #line default
             #line hidden
 WriteLiteral(@"
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Street
-                                    </td>
-                                    <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Street
+                                </td>
+                                <td>
 ");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 279 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.Street);
+                               Write(Model.Details.Street);
 
             
             #line default
             #line hidden
 WriteLiteral(@"
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        City
-                                    </td>
-                                    <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    City
+                                </td>
+                                <td>
 ");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 287 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.City);
+                               Write(Model.Details.City);
 
             
             #line default
             #line hidden
 WriteLiteral(@"
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        State
-                                    </td>
-                                    <td>
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    State
+                                </td>
+                                <td>
 ");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 295 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(Model.Details.State);
+                               Write(Model.Details.State);
 
             
             #line default
             #line hidden
 WriteLiteral(@"
-                                    </td>
-                                </tr>
-                                <tr>
-                                    <td>
-                                        Country
-                                    </td>
-                                    <td>
-                                        <i");
+                                </td>
+                            </tr>
+                            <tr>
+                                <td>
+                                    Country
+                                </td>
+                                <td>
+                                    <i");
 
 WriteLiteral(" class=\"{{getCountryCode(employee.Country)}} flag\"");
 
@@ -1032,532 +1009,519 @@ WriteLiteral("></i>");
 
             
             #line 303 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                                                                            Write(Model.Details.Country);
+                                                                                        Write(Model.Details.Country);
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                                    </td>\r\n                                </tr" +
-">\r\n                            </tbody>\r\n                        </table>\r\n     " +
-"               </div>\r\n                </div>\r\n            </div>\r\n            <" +
-"div");
+WriteLiteral("\r\n                                </td>\r\n                            </tr>\r\n     " +
+"                   </tbody>\r\n                    </table>\r\n                </div" +
+">\r\n            </div>\r\n        </div>\r\n        <div");
 
 WriteLiteral(" class=\"ui tab attached segment\"");
 
 WriteLiteral(" data-tab=\"identification-tab\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n            <div");
 
 WriteLiteral(" class=\"ui grey header\"");
 
-WriteLiteral(">\r\n                    Identification Details\r\n                </div>\r\n\r\n        " +
-"        <table");
+WriteLiteral(">\r\n                Identification Details\r\n            </div>\r\n\r\n            <tab" +
+"le");
 
 WriteLiteral(" class=\"ui striped table\"");
 
 WriteLiteral(@">
-                    <thead>
-                        <tr>
-                            <th>Identification Type Code</th>
-                            <th>Identification Type Name</th>
-                            <th>Identification #</th>
-                            <th>Expires On</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <thead>
+                    <tr>
+                        <th>Identification Type Code</th>
+                        <th>Identification Type Name</th>
+                        <th>Identification #</th>
+                        <th>Expires On</th>
+                    </tr>
+                </thead>
+                <tbody>
 ");
 
             
             #line 326 "..\..\Views\Tasks\Employees\Info.cshtml"
-                        
+                    
             
             #line default
             #line hidden
             
             #line 326 "..\..\Views\Tasks\Employees\Info.cshtml"
-                         foreach (var item in Model.IdentificationDetails)
-                        {
+                     foreach (var item in Model.IdentificationDetails)
+                    {
 
             
             #line default
             #line hidden
-WriteLiteral("                            <tr>\r\n                                <td>");
+WriteLiteral("                        <tr>\r\n                            <td>");
 
             
             #line 329 "..\..\Views\Tasks\Employees\Info.cshtml"
-                               Write(item.IdentificationTypeCode);
+                           Write(item.IdentificationTypeCode);
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                <td>");
+WriteLiteral("</td>\r\n                            <td>");
 
             
             #line 330 "..\..\Views\Tasks\Employees\Info.cshtml"
-                               Write(item.IdentificationTypeName);
+                           Write(item.IdentificationTypeName);
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                <td>");
+WriteLiteral("</td>\r\n                            <td>");
 
             
             #line 331 "..\..\Views\Tasks\Employees\Info.cshtml"
-                               Write(item.IdentificationNumber);
+                           Write(item.IdentificationNumber);
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                <td>");
+WriteLiteral("</td>\r\n                            <td>");
 
             
             #line 332 "..\..\Views\Tasks\Employees\Info.cshtml"
-                               Write(item.ExpiresOn);
+                           Write(item.ExpiresOn);
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                            </tr>\r\n");
+WriteLiteral("</td>\r\n                        </tr>\r\n");
 
             
             #line 334 "..\..\Views\Tasks\Employees\Info.cshtml"
-                        }
+                    }
 
             
             #line default
             #line hidden
-WriteLiteral("                    </tbody>\r\n                </table>\r\n                <a");
+WriteLiteral("                </tbody>\r\n            </table>\r\n            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 17214), Tuple.Create("\"", 17376)
-, Tuple.Create(Tuple.Create("", 17221), Tuple.Create("/dashboard/hrm/tasks/employees/identification-details?View=FormView&EmployeeId=", 17221), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 15933), Tuple.Create("\"", 16095)
+, Tuple.Create(Tuple.Create("", 15940), Tuple.Create("/dashboard/hrm/tasks/employees/identification-details?View=FormView&EmployeeId=", 15940), true)
             
             #line 337 "..\..\Views\Tasks\Employees\Info.cshtml"
-                       , Tuple.Create(Tuple.Create("", 17300), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeId
+                   , Tuple.Create(Tuple.Create("", 16019), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeId
             
             #line default
             #line hidden
-, 17300), false)
-, Tuple.Create(Tuple.Create("", 17325), Tuple.Create("&ReturnUrl={{thispage}}&data-tab=identification-tab", 17325), true)
+, 16019), false)
+, Tuple.Create(Tuple.Create("", 16044), Tuple.Create("&ReturnUrl={{thispage}}&data-tab=identification-tab", 16044), true)
 );
 
 WriteLiteral(" class=\"ui green button\"");
 
-WriteLiteral(">\r\n                    Add New\r\n                </a>\r\n            </div>\r\n       " +
-"     <div");
+WriteLiteral(">\r\n                Add New\r\n            </a>\r\n        </div>\r\n        <div");
 
 WriteLiteral(" class=\"ui tab attached segment\"");
 
 WriteLiteral(" data-tab=\"social-networks-tab\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n            <div");
 
 WriteLiteral(" class=\"ui grey header\"");
 
-WriteLiteral(">\r\n                    Social Networks\r\n                </div>\r\n\r\n               " +
-" <table");
+WriteLiteral(">\r\n                Social Networks\r\n            </div>\r\n\r\n            <table");
 
 WriteLiteral(" class=\"ui striped table\"");
 
-WriteLiteral(@">
-                    <thead>
-                        <tr>
-                            <th>Social Network Name</th>
-                            <th>Social Network Id</th>
-                        </tr>
-                    </thead>
-                    <tbody>
-");
+WriteLiteral(">\r\n                <thead>\r\n                    <tr>\r\n                        <th" +
+">Social Network Name</th>\r\n                        <th>Social Network Id</th>\r\n " +
+"                   </tr>\r\n                </thead>\r\n                <tbody>\r\n");
 
             
             #line 354 "..\..\Views\Tasks\Employees\Info.cshtml"
-                        
+                    
             
             #line default
             #line hidden
             
             #line 354 "..\..\Views\Tasks\Employees\Info.cshtml"
-                         foreach (var item in Model.SocialNetworks)
-                        {
+                     foreach (var item in Model.SocialNetworks)
+                    {
 
             
             #line default
             #line hidden
-WriteLiteral("                            <tr>\r\n                                <td>\r\n         " +
-"                           <i");
+WriteLiteral("                        <tr>\r\n                            <td>\r\n                 " +
+"               <i");
 
-WriteAttribute("class", Tuple.Create(" class=\"", 18185), Tuple.Create("\"", 18220)
+WriteAttribute("class", Tuple.Create(" class=\"", 16824), Tuple.Create("\"", 16859)
             
             #line 358 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 18193), Tuple.Create<System.Object, System.Int32>(item.SemanticCssClass
+, Tuple.Create(Tuple.Create("", 16832), Tuple.Create<System.Object, System.Int32>(item.SemanticCssClass
             
             #line default
             #line hidden
-, 18193), false)
-, Tuple.Create(Tuple.Create(" ", 18215), Tuple.Create("icon", 18216), true)
+, 16832), false)
+, Tuple.Create(Tuple.Create(" ", 16854), Tuple.Create("icon", 16855), true)
 );
 
-WriteLiteral("></i>\r\n                                    <a");
+WriteLiteral("></i>\r\n                                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 18266), Tuple.Create("\"", 18286)
+WriteAttribute("href", Tuple.Create(" href=\"", 16901), Tuple.Create("\"", 16921)
             
             #line 359 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 18273), Tuple.Create<System.Object, System.Int32>(item.BaseUrl
+, Tuple.Create(Tuple.Create("", 16908), Tuple.Create<System.Object, System.Int32>(item.BaseUrl
             
             #line default
             #line hidden
-, 18273), false)
+, 16908), false)
 );
 
 WriteLiteral(" target=\"_blank\"");
 
 WriteLiteral(">\r\n");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 360 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(item.SocialNetworkName);
+                               Write(item.SocialNetworkName);
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                                    </a>\r\n                                </td>" +
-"\r\n                                <td>\r\n                                    <a");
+WriteLiteral("\r\n                                </a>\r\n                            </td>\r\n      " +
+"                      <td>\r\n                                <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 18528), Tuple.Create("\"", 18551)
+WriteAttribute("href", Tuple.Create(" href=\"", 17143), Tuple.Create("\"", 17166)
             
             #line 364 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 18535), Tuple.Create<System.Object, System.Int32>(item.ProfileUrl
+, Tuple.Create(Tuple.Create("", 17150), Tuple.Create<System.Object, System.Int32>(item.ProfileUrl
             
             #line default
             #line hidden
-, 18535), false)
+, 17150), false)
 );
 
 WriteLiteral(" target=\"_blank\"");
 
 WriteLiteral(">\r\n");
 
-WriteLiteral("                                        ");
+WriteLiteral("                                    ");
 
             
             #line 365 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                   Write(item.SocialNetworkId);
+                               Write(item.SocialNetworkId);
 
             
             #line default
             #line hidden
-WriteLiteral("\r\n                                    </a>\r\n\r\n                                </t" +
-"d>\r\n                            </tr>\r\n");
+WriteLiteral("\r\n                                </a>\r\n\r\n                            </td>\r\n    " +
+"                    </tr>\r\n");
 
             
             #line 370 "..\..\Views\Tasks\Employees\Info.cshtml"
-                        }
+                    }
 
             
             #line default
             #line hidden
-WriteLiteral("                    </tbody>\r\n                </table>\r\n                <a");
+WriteLiteral("                </tbody>\r\n            </table>\r\n            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 18853), Tuple.Create("\"", 19009)
-, Tuple.Create(Tuple.Create("", 18860), Tuple.Create("/dashboard/hrm/tasks/employees/social-networks?View=FormView&EmployeeId=", 18860), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 17436), Tuple.Create("\"", 17592)
+, Tuple.Create(Tuple.Create("", 17443), Tuple.Create("/dashboard/hrm/tasks/employees/social-networks?View=FormView&EmployeeId=", 17443), true)
             
             #line 373 "..\..\Views\Tasks\Employees\Info.cshtml"
-                , Tuple.Create(Tuple.Create("", 18932), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeId
+            , Tuple.Create(Tuple.Create("", 17515), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeId
             
             #line default
             #line hidden
-, 18932), false)
-, Tuple.Create(Tuple.Create("", 18957), Tuple.Create("&ReturnUrl={{thispage}}&data-tab=social-networks-tab", 18957), true)
+, 17515), false)
+, Tuple.Create(Tuple.Create("", 17540), Tuple.Create("&ReturnUrl={{thispage}}&data-tab=social-networks-tab", 17540), true)
 );
 
 WriteLiteral(" class=\"ui green button\"");
 
-WriteLiteral(">\r\n                    Add New\r\n                </a>\r\n            </div>\r\n       " +
-"     <div");
+WriteLiteral(">\r\n                Add New\r\n            </a>\r\n        </div>\r\n        <div");
 
 WriteLiteral(" class=\"ui tab attached segment\"");
 
 WriteLiteral(" data-tab=\"experiences-tab\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n            <div");
 
 WriteLiteral(" class=\"ui grey header\"");
 
-WriteLiteral(">\r\n                    Experiences\r\n                </div>\r\n\r\n                <ta" +
-"ble");
+WriteLiteral(">\r\n                Experiences\r\n            </div>\r\n\r\n            <table");
 
 WriteLiteral(" class=\"ui striped table\"");
 
 WriteLiteral(@">
-                    <thead>
-                        <tr>
-                            <th>Organization Name</th>
-                            <th>Title</th>
-                            <th>Started On</th>
-                            <th>Ended On</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <thead>
+                    <tr>
+                        <th>Organization Name</th>
+                        <th>Title</th>
+                        <th>Started On</th>
+                        <th>Ended On</th>
+                    </tr>
+                </thead>
+                <tbody>
 ");
 
             
             #line 392 "..\..\Views\Tasks\Employees\Info.cshtml"
-                        
+                    
             
             #line default
             #line hidden
             
             #line 392 "..\..\Views\Tasks\Employees\Info.cshtml"
-                         foreach (var item in Model.Experiences)
-                        {
+                     foreach (var item in Model.Experiences)
+                    {
 
             
             #line default
             #line hidden
-WriteLiteral("                            <tr>\r\n                                <td>");
+WriteLiteral("                        <tr>\r\n                            <td>");
 
             
             #line 395 "..\..\Views\Tasks\Employees\Info.cshtml"
-                               Write(item.OrganizationName);
+                           Write(item.OrganizationName);
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                <td>");
+WriteLiteral("</td>\r\n                            <td>");
 
             
             #line 396 "..\..\Views\Tasks\Employees\Info.cshtml"
-                               Write(item.Title);
+                           Write(item.Title);
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                <td");
+WriteLiteral("</td>\r\n                            <td");
 
-WriteAttribute("title", Tuple.Create(" title=\"", 19967), Tuple.Create("\"", 19996)
+WriteAttribute("title", Tuple.Create(" title=\"", 18458), Tuple.Create("\"", 18487)
             
             #line 397 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 19975), Tuple.Create<System.Object, System.Int32>(item.StartedOn.Value
+, Tuple.Create(Tuple.Create("", 18466), Tuple.Create<System.Object, System.Int32>(item.StartedOn.Value
             
             #line default
             #line hidden
-, 19975), false)
+, 18466), false)
 );
 
 WriteLiteral(">");
 
             
             #line 397 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                                             Write(item.StartedOn.Value.ToLocalTime());
+                                                         Write(item.StartedOn.Value.ToLocalTime());
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                <td");
+WriteLiteral("</td>\r\n                            <td");
 
-WriteAttribute("title", Tuple.Create(" title=\"", 20075), Tuple.Create("\"", 20102)
+WriteAttribute("title", Tuple.Create(" title=\"", 18562), Tuple.Create("\"", 18589)
             
             #line 398 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 20083), Tuple.Create<System.Object, System.Int32>(item.EndedOn.Value
+, Tuple.Create(Tuple.Create("", 18570), Tuple.Create<System.Object, System.Int32>(item.EndedOn.Value
             
             #line default
             #line hidden
-, 20083), false)
+, 18570), false)
 );
 
 WriteLiteral(">");
 
             
             #line 398 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                                           Write(item.EndedOn.Value.ToLocalTime());
+                                                       Write(item.EndedOn.Value.ToLocalTime());
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                            </tr>\r\n");
+WriteLiteral("</td>\r\n                        </tr>\r\n");
 
             
             #line 400 "..\..\Views\Tasks\Employees\Info.cshtml"
-                        }
+                    }
 
             
             #line default
             #line hidden
-WriteLiteral("                    </tbody>\r\n                </table>\r\n\r\n                <a");
+WriteLiteral("                </tbody>\r\n            </table>\r\n\r\n            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 20282), Tuple.Create("\"", 20430)
-, Tuple.Create(Tuple.Create("", 20289), Tuple.Create("/dashboard/hrm/tasks/employees/experiences?View=FormView&EmployeeId=", 20289), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 18749), Tuple.Create("\"", 18897)
+, Tuple.Create(Tuple.Create("", 18756), Tuple.Create("/dashboard/hrm/tasks/employees/experiences?View=FormView&EmployeeId=", 18756), true)
             
             #line 404 "..\..\Views\Tasks\Employees\Info.cshtml"
-            , Tuple.Create(Tuple.Create("", 20357), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeId
+        , Tuple.Create(Tuple.Create("", 18824), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeId
             
             #line default
             #line hidden
-, 20357), false)
-, Tuple.Create(Tuple.Create("", 20382), Tuple.Create("&ReturnUrl={{thispage}}&data-tab=experiences-tab", 20382), true)
+, 18824), false)
+, Tuple.Create(Tuple.Create("", 18849), Tuple.Create("&ReturnUrl={{thispage}}&data-tab=experiences-tab", 18849), true)
 );
 
 WriteLiteral(" class=\"ui green button\"");
 
-WriteLiteral(">\r\n                    Add New\r\n                </a>\r\n            </div>\r\n       " +
-"     <div");
+WriteLiteral(">\r\n                Add New\r\n            </a>\r\n        </div>\r\n        <div");
 
 WriteLiteral(" class=\"ui tab attached segment\"");
 
 WriteLiteral(" data-tab=\"qualifications-tab\"");
 
-WriteLiteral(">\r\n                <div");
+WriteLiteral(">\r\n            <div");
 
 WriteLiteral(" class=\"ui grey header\"");
 
-WriteLiteral(">\r\n                    Qualifications\r\n                </div>\r\n\r\n                " +
-"<table");
+WriteLiteral(">\r\n                Qualifications\r\n            </div>\r\n\r\n            <table");
 
 WriteLiteral(" class=\"ui striped table\"");
 
 WriteLiteral(@">
-                    <thead>
-                        <tr>
-                            <th>Education Level Name</th>
-                            <th>Institution</th>
-                            <th>Majors</th>
-                            <th>Total Years</th>
-                            <th>Started On</th>
-                            <th>Completed On</th>
-                        </tr>
-                    </thead>
-                    <tbody>
+                <thead>
+                    <tr>
+                        <th>Education Level Name</th>
+                        <th>Institution</th>
+                        <th>Majors</th>
+                        <th>Total Years</th>
+                        <th>Started On</th>
+                        <th>Completed On</th>
+                    </tr>
+                </thead>
+                <tbody>
 ");
 
             
             #line 425 "..\..\Views\Tasks\Employees\Info.cshtml"
-                        
+                    
             
             #line default
             #line hidden
             
             #line 425 "..\..\Views\Tasks\Employees\Info.cshtml"
-                         foreach (var item in Model.Qualifications)
-                        {
+                     foreach (var item in Model.Qualifications)
+                    {
 
             
             #line default
             #line hidden
-WriteLiteral("                            <tr>\r\n                                <td>");
+WriteLiteral("                        <tr>\r\n                            <td>");
 
             
             #line 428 "..\..\Views\Tasks\Employees\Info.cshtml"
-                               Write(item.EducationLevelName);
+                           Write(item.EducationLevelName);
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                <td>");
+WriteLiteral("</td>\r\n                            <td>");
 
             
             #line 429 "..\..\Views\Tasks\Employees\Info.cshtml"
-                               Write(item.Institution);
+                           Write(item.Institution);
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                <td>");
+WriteLiteral("</td>\r\n                            <td>");
 
             
             #line 430 "..\..\Views\Tasks\Employees\Info.cshtml"
-                               Write(item.Majors);
+                           Write(item.Majors);
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                <td>");
+WriteLiteral("</td>\r\n                            <td>");
 
             
             #line 431 "..\..\Views\Tasks\Employees\Info.cshtml"
-                               Write(item.TotalYears);
+                           Write(item.TotalYears);
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                <td");
+WriteLiteral("</td>\r\n                            <td");
 
-WriteAttribute("title", Tuple.Create(" title=\"", 21627), Tuple.Create("\"", 21656)
+WriteAttribute("title", Tuple.Create(" title=\"", 19986), Tuple.Create("\"", 20015)
             
             #line 432 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 21635), Tuple.Create<System.Object, System.Int32>(item.StartedOn.Value
+, Tuple.Create(Tuple.Create("", 19994), Tuple.Create<System.Object, System.Int32>(item.StartedOn.Value
             
             #line default
             #line hidden
-, 21635), false)
+, 19994), false)
 );
 
 WriteLiteral(">");
 
             
             #line 432 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                                             Write(item.StartedOn.Value.ToLocalTime());
+                                                         Write(item.StartedOn.Value.ToLocalTime());
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                                <td");
+WriteLiteral("</td>\r\n                            <td");
 
-WriteAttribute("title", Tuple.Create(" title=\"", 21735), Tuple.Create("\"", 21766)
+WriteAttribute("title", Tuple.Create(" title=\"", 20090), Tuple.Create("\"", 20121)
             
             #line 433 "..\..\Views\Tasks\Employees\Info.cshtml"
-, Tuple.Create(Tuple.Create("", 21743), Tuple.Create<System.Object, System.Int32>(item.CompletedOn.Value
+, Tuple.Create(Tuple.Create("", 20098), Tuple.Create<System.Object, System.Int32>(item.CompletedOn.Value
             
             #line default
             #line hidden
-, 21743), false)
+, 20098), false)
 );
 
 WriteLiteral(">");
 
             
             #line 433 "..\..\Views\Tasks\Employees\Info.cshtml"
-                                                               Write(item.CompletedOn.Value.ToLocalTime());
+                                                           Write(item.CompletedOn.Value.ToLocalTime());
 
             
             #line default
             #line hidden
-WriteLiteral("</td>\r\n                            </tr>\r\n");
+WriteLiteral("</td>\r\n                        </tr>\r\n");
 
             
             #line 435 "..\..\Views\Tasks\Employees\Info.cshtml"
-                        }
+                    }
 
             
             #line default
             #line hidden
-WriteLiteral("                    </tbody>\r\n                </table>\r\n\r\n                <a");
+WriteLiteral("                </tbody>\r\n            </table>\r\n\r\n            <a");
 
-WriteAttribute("href", Tuple.Create(" href=\"", 21950), Tuple.Create("\"", 22104)
-, Tuple.Create(Tuple.Create("", 21957), Tuple.Create("/dashboard/hrm/tasks/employees/qualifications?View=FormView&EmployeeId=", 21957), true)
+WriteAttribute("href", Tuple.Create(" href=\"", 20285), Tuple.Create("\"", 20439)
+, Tuple.Create(Tuple.Create("", 20292), Tuple.Create("/dashboard/hrm/tasks/employees/qualifications?View=FormView&EmployeeId=", 20292), true)
             
             #line 439 "..\..\Views\Tasks\Employees\Info.cshtml"
-               , Tuple.Create(Tuple.Create("", 22028), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeId
+           , Tuple.Create(Tuple.Create("", 20363), Tuple.Create<System.Object, System.Int32>(Model.Details.EmployeeId
             
             #line default
             #line hidden
-, 22028), false)
-, Tuple.Create(Tuple.Create("", 22053), Tuple.Create("&ReturnUrl={{thispage}}&data-tab=qualifications-tab", 22053), true)
+, 20363), false)
+, Tuple.Create(Tuple.Create("", 20388), Tuple.Create("&ReturnUrl={{thispage}}&data-tab=qualifications-tab", 20388), true)
 );
 
 WriteLiteral(" class=\"ui green button\"");
 
 WriteLiteral(@">
-                    Add New
-                </a>
-            </div>
+                Add New
+            </a>
         </div>
+    </div>
 </div>
 <script>
     $(document).ready(function () {
         $("".tabular.menu .item"").tab();
 
-        var tab = window.getQueryStringByName(""data-tab"");
+        const tab = window.getQueryStringByName(""data-tab"");
 
         if (tab) {
             $("".tabular.menu .item"").tab('change tab', tab);

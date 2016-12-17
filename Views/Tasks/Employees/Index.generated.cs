@@ -33,7 +33,6 @@ namespace ASP
     using Frapid.Framework;
     using Frapid.i18n;
     using Frapid.Messaging;
-    using Frapid.Mapper.Decorators;
     using Frapid.WebsiteBuilder;
     using MixERP.HRM;
     
@@ -63,87 +62,89 @@ WriteLiteral("\r\n<script>\r\n    var scrudFactory = new Object();\r\n\r\n    sc
 "eadonlyColumns = [\"EmployeeName\"];\r\n    scrudFactory.hiddenColumns = [\"Status\", " +
 "\"ServiceEndedOn\"];\r\n\r\n    scrudFactory.allowDelete = true;\r\n    scrudFactory.all" +
 "owEdit = true;\r\n    scrudFactory.viewUrl = \"/dashboard/hrm/tasks/employee-info/{" +
-"Key}\";\r\n\r\n    scrudFactory.live = \"EmployeeName\";\r\n    scrudFactory.layout = [\r\n" +
-"        {\r\n            tab: \"personal\",\r\n            fields: [\r\n                " +
-"[\"Photo\"],\r\n                [\"EmployeeId\"],\r\n                [\"EmployeeName\", \"E" +
-"mployeeCode\"],\r\n                [\"FirstName\", \"MiddleName\", \"LastName\", \"GenderC" +
-"ode\"],\r\n                [\"MaritalStatusId\", \"NationalityCode\"],\r\n               " +
-" [\"DateOfBirth\", \"\"]\r\n            ]\r\n        },\r\n        {\r\n            tab: \"em" +
-"ployment\",\r\n            fields: [\r\n                [\"UserId\", \"OfficeId\"],\r\n    " +
-"            [\"JoinedOn\", \"EmployeeTypeId\"],\r\n                [\"CurrentDepartment" +
-"Id\", \"CurrentRoleId\"],\r\n                [\"CurrentEmploymentStatusId\", \"CurrentJo" +
-"bTitleId\"],\r\n                [\"CurrentPayGradeId\", \"CurrentShiftId\"]\r\n          " +
-"  ]\r\n        },\r\n        {\r\n            tab: \"bank\",\r\n            fields: [\r\n   " +
-"             [\"BankAccountNumber\", \"BankName\"],\r\n                [\"BankBranchNam" +
-"e\", \"BankReferenceNumber\"]\r\n            ]\r\n        },\r\n        {\r\n            ta" +
-"b: \"address\",\r\n            fields: [\r\n                [\"ZipCode\", \"\", \"\", \"\"],\r\n" +
-"                [\"AddressLine1\"],\r\n                [\"AddressLine2\"],\r\n          " +
-"      [\"Street\", \"City\"],\r\n                [\"CountryCode\", \"State\"],\r\n          " +
-"      [\"Phone\", \"Fax\"],\r\n                [\"Cell\", \"Email\"],\r\n                [\"U" +
-"rl\", \"\"]\r\n            ]\r\n        },\r\n        {\r\n            tab: \"contact\",\r\n   " +
-"         fields: [\r\n                [\"PhoneHome\", \"PhoneCell\"],\r\n               " +
-" [\"PhoneOfficeExtension\", \"\"],\r\n                [\"PhoneEmergency\", \"PhoneEmergen" +
-"cy2\"],\r\n                [\"EmailAddress\", \"Website\"],\r\n                [\"Blog\", \"" +
-"\"]\r\n            ]\r\n        },\r\n        {\r\n            tab: \"other\",\r\n           " +
-" fields: [\r\n                [\"IsSmoker\", \"IsAlcoholic\"],\r\n                [\"With" +
-"Disabilities\", \"LowVision\"],\r\n                [\"UsesWheelchair\", \"HardOfHearing\"" +
-"],\r\n                [\"IsAphonic\", \"IsCognitivelyDisabled\"],\r\n                [\"I" +
-"sAutistic\", \"\"]\r\n            ]\r\n        }\r\n    ];\r\n\r\n    scrudFactory.tabs = [\r\n" +
-"        {\r\n            sort: 0,\r\n            id: \"personal\",\r\n            name: " +
-"\"Peronsal Information\",\r\n            active: true\r\n        },\r\n        {\r\n      " +
-"      sort: 1,\r\n            id: \"employment\",\r\n            name: \"Employment Inf" +
-"ormation\"\r\n        },\r\n        {\r\n            sort: 2,\r\n            id: \"bank\",\r" +
-"\n            name: \"Bank Details\"\r\n        },\r\n        {\r\n            sort: 3,\r\n" +
-"            id: \"address\",\r\n            name: \"Address Information\"\r\n        },\r" +
-"\n        {\r\n            sort: 4,\r\n            id: \"contact\",\r\n            name: " +
-"\"Contact Information\"\r\n        },\r\n        {\r\n            sort: 5,\r\n            " +
-"id: \"other\",\r\n            name: \"Other Details\"\r\n        }\r\n    ];\r\n\r\n    scrudF" +
-"actory.returnUrl = \"../Employees.mix\";\r\n    scrudFactory.queryStringKey = \"Emplo" +
-"yeeId\";\r\n    scrudFactory.uploadHanlder = \"/dashboard/hrm/services/attachments\";" +
-"\r\n\r\n    scrudFactory.keys = [\r\n        {\r\n            property: \"GenderCode\",\r\n " +
-"           url: \'/api/forms/core/genders/lookup-fields\',\r\n            data: null" +
-",\r\n            valueField: \"Key\",\r\n            textField: \"Value\"\r\n        },\r\n " +
-"       {\r\n            property: \"MaritalStatusId\",\r\n            url: \'/api/forms" +
-"/core/marital-statuses/display-fields\',\r\n            data: null,\r\n            va" +
-"lueField: \"Key\",\r\n            textField: \"Value\"\r\n        },\r\n        {\r\n       " +
-"     property: \"OfficeId\",\r\n            url: \'/api/forms/core/offices/display-fi" +
-"elds\',\r\n            data: null,\r\n            valueField: \"Key\",\r\n            tex" +
-"tField: \"Value\"\r\n        },\r\n        {\r\n            property: \"UserId\",\r\n       " +
-"     url: \'/api/views/account/user-selector-view/display-fields\',\r\n            d" +
-"ata: null,\r\n            valueField: \"Key\",\r\n            textField: \"Value\"\r\n    " +
-"    },\r\n        {\r\n            property: \"EmployeeTypeId\",\r\n            url: \'/a" +
-"pi/forms/hrm/employee-types/display-fields\',\r\n            data: null,\r\n         " +
-"   valueField: \"Key\",\r\n            textField: \"Value\"\r\n        },\r\n        {\r\n  " +
-"          property: \"CurrentDepartmentId\",\r\n            url: \'/api/forms/hrm/dep" +
-"artments/display-fields\',\r\n            data: null,\r\n            valueField: \"Key" +
-"\",\r\n            textField: \"Value\"\r\n        },\r\n        {\r\n            property:" +
-" \"CurrentRoleId\",\r\n            url: \'/api/forms/hrm/roles/display-fields\',\r\n    " +
-"        data: null,\r\n            valueField: \"Key\",\r\n            textField: \"Val" +
-"ue\"\r\n        },\r\n        {\r\n            property: \"CurrentEmploymentStatusId\",\r\n" +
-"            url: \'/api/forms/hrm/employment-statuses/display-fields\',\r\n         " +
-"   data: null,\r\n            valueField: \"Key\",\r\n            textField: \"Value\"\r\n" +
-"        },\r\n        {\r\n            property: \"CurrentJobTitleId\",\r\n            u" +
-"rl: \'/api/forms/hrm/job-titles/display-fields\',\r\n            data: null,\r\n      " +
+"Key}\";\r\n\r\n    scrudFactory.customActions = [\r\n        {\r\n            title: \"Vie" +
+"w Employee\",\r\n            href: \"/dashboard/hrm/tasks/employee-info/{id}\",\r\n    " +
+"        icon: \"list icon\",\r\n            position: \"before\"\r\n        }\r\n    ];\r\n\r" +
+"\n    scrudFactory.live = \"EmployeeName\";\r\n    scrudFactory.layout = [\r\n        {" +
+"\r\n            tab: \"personal\",\r\n            fields: [\r\n                [\"Photo\"]" +
+",\r\n                [\"EmployeeId\"],\r\n                [\"EmployeeName\", \"EmployeeCo" +
+"de\"],\r\n                [\"FirstName\", \"MiddleName\", \"LastName\", \"GenderCode\"],\r\n " +
+"               [\"MaritalStatusId\", \"NationalityCode\"],\r\n                [\"DateOf" +
+"Birth\", \"\"]\r\n            ]\r\n        },\r\n        {\r\n            tab: \"employment\"" +
+",\r\n            fields: [\r\n                [\"UserId\", \"OfficeId\"],\r\n             " +
+"   [\"JoinedOn\", \"EmployeeTypeId\"],\r\n                [\"CurrentDepartmentId\", \"Cur" +
+"rentRoleId\"],\r\n                [\"CurrentEmploymentStatusId\", \"CurrentJobTitleId\"" +
+"],\r\n                [\"CurrentPayGradeId\", \"CurrentShiftId\"]\r\n            ]\r\n    " +
+"    },\r\n        {\r\n            tab: \"bank\",\r\n            fields: [\r\n            " +
+"    [\"BankAccountNumber\", \"BankName\"],\r\n                [\"BankBranchName\", \"Bank" +
+"ReferenceNumber\"]\r\n            ]\r\n        },\r\n        {\r\n            tab: \"addre" +
+"ss\",\r\n            fields: [\r\n                [\"ZipCode\", \"\", \"\", \"\"],\r\n         " +
+"       [\"AddressLine1\"],\r\n                [\"AddressLine2\"],\r\n                [\"S" +
+"treet\", \"City\"],\r\n                [\"CountryCode\", \"State\"],\r\n                [\"P" +
+"hone\", \"Fax\"],\r\n                [\"Cell\", \"Email\"],\r\n                [\"Url\", \"\"]\r" +
+"\n            ]\r\n        },\r\n        {\r\n            tab: \"contact\",\r\n            " +
+"fields: [\r\n                [\"PhoneHome\", \"PhoneCell\"],\r\n                [\"PhoneO" +
+"fficeExtension\", \"\"],\r\n                [\"PhoneEmergency\", \"PhoneEmergency2\"],\r\n " +
+"               [\"EmailAddress\", \"Website\"],\r\n                [\"Blog\", \"\"]\r\n     " +
+"       ]\r\n        },\r\n        {\r\n            tab: \"other\",\r\n            fields: " +
+"[\r\n                [\"IsSmoker\", \"IsAlcoholic\"],\r\n                [\"WithDisabilit" +
+"ies\", \"LowVision\"],\r\n                [\"UsesWheelchair\", \"HardOfHearing\"],\r\n     " +
+"           [\"IsAphonic\", \"IsCognitivelyDisabled\"],\r\n                [\"IsAutistic" +
+"\", \"\"]\r\n            ]\r\n        }\r\n    ];\r\n\r\n    scrudFactory.tabs = [\r\n        {" +
+"\r\n            sort: 0,\r\n            id: \"personal\",\r\n            name: \"Peronsal" +
+" Information\",\r\n            active: true\r\n        },\r\n        {\r\n            sor" +
+"t: 1,\r\n            id: \"employment\",\r\n            name: \"Employment Information\"" +
+"\r\n        },\r\n        {\r\n            sort: 2,\r\n            id: \"bank\",\r\n        " +
+"    name: \"Bank Details\"\r\n        },\r\n        {\r\n            sort: 3,\r\n         " +
+"   id: \"address\",\r\n            name: \"Address Information\"\r\n        },\r\n        " +
+"{\r\n            sort: 4,\r\n            id: \"contact\",\r\n            name: \"Contact " +
+"Information\"\r\n        },\r\n        {\r\n            sort: 5,\r\n            id: \"othe" +
+"r\",\r\n            name: \"Other Details\"\r\n        }\r\n    ];\r\n\r\n    scrudFactory.re" +
+"turnUrl = \"../Employees.mix\";\r\n    scrudFactory.queryStringKey = \"EmployeeId\";\r\n" +
+"    scrudFactory.uploadHanlder = \"/dashboard/hrm/services/attachments\";\r\n\r\n    s" +
+"crudFactory.keys = [\r\n        {\r\n            property: \"GenderCode\",\r\n          " +
+"  url: \'/api/forms/core/genders/lookup-fields\',\r\n            data: null,\r\n      " +
 "      valueField: \"Key\",\r\n            textField: \"Value\"\r\n        },\r\n        {\r" +
-"\n            property: \"CurrentPayGradeId\",\r\n            url: \'/api/forms/hrm/pa" +
-"y-grades/display-fields\',\r\n            data: null,\r\n            valueField: \"Key" +
-"\",\r\n            textField: \"Value\"\r\n        },\r\n        {\r\n            property:" +
-" \"CurrentShiftId\",\r\n            url: \'/api/forms/hrm/shifts/display-fields\',\r\n  " +
-"          data: null,\r\n            valueField: \"Key\",\r\n            textField: \"V" +
-"alue\"\r\n        },\r\n        {\r\n            property: \"NationalityCode\",\r\n        " +
-"    url: \'/api/forms/hrm/nationalities/lookup-fields\',\r\n            data: null,\r" +
-"\n            valueField: \"Key\",\r\n            textField: \"Value\"\r\n        },\r\n   " +
-"     {\r\n            property: \"CountryCode\",\r\n            url: \'/api/forms/core/" +
-"countries/lookup-fields\',\r\n            data: null,\r\n            valueField: \"Key" +
-"\",\r\n            textField: \"Value\"\r\n        },\r\n        {\r\n            property:" +
-" \"StateId\",\r\n            url: \'/api/forms/core/states/display-fields\',\r\n        " +
-"    data: null,\r\n            valueField: \"Key\",\r\n            textField: \"Value\"\r" +
-"\n        }\r\n    ];\r\n\r\n\r\n    $.get(\'/ScrudFactory/View.html\', function (view) {\r\n" +
-"        $.get(\'/ScrudFactory/Form.html\', function (form) {\r\n            $(\"#Scru" +
-"dFactoryView\").html(view);\r\n            $(\"#ScrudFactoryForm\").html(form);\r\n    " +
-"        $.cachedScript(\"/assets/js/scrudfactory-view.js\");\r\n            $.cached" +
-"Script(\"/assets/js/scrudfactory-form.js\");\r\n        });\r\n    });\r\n</script>\r\n\r\n<" +
-"div");
+"\n            property: \"MaritalStatusId\",\r\n            url: \'/api/forms/core/mar" +
+"ital-statuses/display-fields\',\r\n            data: null,\r\n            valueField:" +
+" \"Key\",\r\n            textField: \"Value\"\r\n        },\r\n        {\r\n            prop" +
+"erty: \"OfficeId\",\r\n            url: \'/api/forms/core/offices/display-fields\',\r\n " +
+"           data: null,\r\n            valueField: \"Key\",\r\n            textField: \"" +
+"Value\"\r\n        },\r\n        {\r\n            property: \"UserId\",\r\n            url:" +
+" \'/api/views/account/user-selector-view/display-fields\',\r\n            data: null" +
+",\r\n            valueField: \"Key\",\r\n            textField: \"Value\"\r\n        },\r\n " +
+"       {\r\n            property: \"EmployeeTypeId\",\r\n            url: \'/api/forms/" +
+"hrm/employee-types/display-fields\',\r\n            data: null,\r\n            valueF" +
+"ield: \"Key\",\r\n            textField: \"Value\"\r\n        },\r\n        {\r\n           " +
+" property: \"CurrentDepartmentId\",\r\n            url: \'/api/forms/hrm/departments/" +
+"display-fields\',\r\n            data: null,\r\n            valueField: \"Key\",\r\n     " +
+"       textField: \"Value\"\r\n        },\r\n        {\r\n            property: \"Current" +
+"RoleId\",\r\n            url: \'/api/forms/hrm/roles/display-fields\',\r\n            d" +
+"ata: null,\r\n            valueField: \"Key\",\r\n            textField: \"Value\"\r\n    " +
+"    },\r\n        {\r\n            property: \"CurrentEmploymentStatusId\",\r\n         " +
+"   url: \'/api/forms/hrm/employment-statuses/display-fields\',\r\n            data: " +
+"null,\r\n            valueField: \"Key\",\r\n            textField: \"Value\"\r\n        }" +
+",\r\n        {\r\n            property: \"CurrentJobTitleId\",\r\n            url: \'/api" +
+"/forms/hrm/job-titles/display-fields\',\r\n            data: null,\r\n            val" +
+"ueField: \"Key\",\r\n            textField: \"Value\"\r\n        },\r\n        {\r\n        " +
+"    property: \"CurrentPayGradeId\",\r\n            url: \'/api/forms/hrm/pay-grades/" +
+"display-fields\',\r\n            data: null,\r\n            valueField: \"Key\",\r\n     " +
+"       textField: \"Value\"\r\n        },\r\n        {\r\n            property: \"Current" +
+"ShiftId\",\r\n            url: \'/api/forms/hrm/shifts/display-fields\',\r\n           " +
+" data: null,\r\n            valueField: \"Key\",\r\n            textField: \"Value\"\r\n  " +
+"      },\r\n        {\r\n            property: \"NationalityCode\",\r\n            url: " +
+"\'/api/forms/hrm/nationalities/lookup-fields\',\r\n            data: null,\r\n        " +
+"    valueField: \"Key\",\r\n            textField: \"Value\"\r\n        },\r\n        {\r\n " +
+"           property: \"CountryCode\",\r\n            url: \'/api/forms/core/countries" +
+"/lookup-fields\',\r\n            data: null,\r\n            valueField: \"Key\",\r\n     " +
+"       textField: \"Value\"\r\n        },\r\n        {\r\n            property: \"StateId" +
+"\",\r\n            url: \'/api/forms/core/states/display-fields\',\r\n            data:" +
+" null,\r\n            valueField: \"Key\",\r\n            textField: \"Value\"\r\n        " +
+"}\r\n    ];\r\n\r\n\r\n    $.get(\'/ScrudFactory/View.html\', function (view) {\r\n        $" +
+".get(\'/ScrudFactory/Form.html\', function (form) {\r\n            $(\"#ScrudFactoryV" +
+"iew\").html(view);\r\n            $(\"#ScrudFactoryForm\").html(form);\r\n            $" +
+".cachedScript(\"/assets/js/scrudfactory-view.js\");\r\n            $.cachedScript(\"/" +
+"assets/js/scrudfactory-form.js\");\r\n        });\r\n    });\r\n</script>\r\n\r\n<div");
 
 WriteLiteral(" id=\"ScrudFactoryForm\"");
 
@@ -167,9 +168,9 @@ WriteLiteral(@"></div>
         var employeeName = $(""#employee_name"");
 
         function displayEmployeeName() {
-            var f = (firstName.val() || """");
-            var m = (middleName.val() || """");
-            var l = (lastName.val() || """");
+            const f = (firstName.val() || """");
+            const m = (middleName.val() || """");
+            const l = (lastName.val() || """");
 
             var name = f + "" "" + m;
             if (l) {
@@ -189,6 +190,10 @@ WriteLiteral(@"></div>
 
     };
 
+
+    $(document).on(""formready"", function() {
+        $(""#service_ended_on"").val("""");
+    });
 
 </script>
 

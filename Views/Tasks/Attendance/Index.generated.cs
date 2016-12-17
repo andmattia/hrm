@@ -33,7 +33,6 @@ namespace ASP
     using Frapid.Framework;
     using Frapid.i18n;
     using Frapid.Messaging;
-    using Frapid.Mapper.Decorators;
     using Frapid.WebsiteBuilder;
     using MixERP.HRM;
     
@@ -266,67 +265,68 @@ WriteLiteral(" class=\"ui teal button\"");
 WriteLiteral(">Update All</a>\r\n    </div>\r\n    {{success()}}\r\n</div>\r\n<script>\r\n    $(\"#DateInp" +
 "utDate\").val(window.today);\r\n\r\n    frapidApp.controller(\"AttendanceController\", " +
 "function ($timeout, $scope, $sce, $window) {\r\n        function requestEmployees(" +
-") {\r\n            var url = \"/api/views/hrm/employee-view/all\";\r\n            retu" +
-"rn window.getAjaxRequest(url);\r\n        };\r\n\r\n        function requestAttendance" +
-"(date) {\r\n            var url = \"/api/forms/hrm/attendances/get-where/-1/\";\r\n\r\n " +
-"           var filters = [];\r\n            filters.push(window.getAjaxColumnFilte" +
-"r(\"WHERE\", \"attendance_date\", \"System.DateTime\", window.FilterConditions.IsEqual" +
-"To, date));\r\n            var data = JSON.stringify(filters);\r\n\r\n            retu" +
-"rn window.getAjaxRequest(url, \"POST\", data);\r\n        };\r\n\r\n        $scope.show " +
-"= function() {\r\n            var requestEmployeesAjax = requestEmployees();\r\n\r\n  " +
-"          requestEmployeesAjax.success(function (employees) {\r\n                v" +
-"ar date = window.parseLocalizedDate($(\"#DateInputDate\").val());\r\n\r\n             " +
-"   var requestAttendanceAjax = requestAttendance(date);\r\n\r\n                reque" +
-"stAttendanceAjax.success(function (attendance) {\r\n                    $.each(emp" +
-"loyees, function (i, v) {\r\n                        var employee = v;\r\n\r\n        " +
-"                var a = $window.Enumerable.From(attendance)\r\n                   " +
-"         .Where(function (x) { return x.EmployeeId === employee.EmployeeId }).Fi" +
-"rstOrDefault() || new Object();\r\n\r\n                        a.CheckInTime = (a.Ch" +
-"eckInTime || \"\").toString().toTime();\r\n                        a.CheckOutTime = " +
-"(a.CheckOutTime || \"\").toString().toTime();\r\n                        employees[i" +
-"].Attendance = a;\r\n                    });\r\n\r\n                    $scope.$apply(" +
-"function () {\r\n                        $scope.employees = employees;\r\n          " +
-"          });\r\n                });\r\n            });\r\n        };\r\n\r\n        $scop" +
-"e.show();\r\n\r\n        $scope.success = function() {\r\n            $timeout(functio" +
-"n() {\r\n                var checkboxes = $(\":checkbox\");\r\n                checkbo" +
-"xes.each(function() {\r\n                    toggleAttendance(this);\r\n            " +
-"    });\r\n\r\n                $window.loadDatepicker();\r\n                $window.se" +
-"tRegionalFormat();\r\n                $(\"#Attendance\").fadeIn(500);\r\n            }" +
-", 500);\r\n        };\r\n    });\r\n\r\n    function toggleAttendance(sender) {\r\n       " +
-" sender = $(sender);\r\n        var isPresent = sender.is(\":checked\");\r\n        va" +
-"r employeeId = sender.attr(\"data-employee-id\");\r\n        var el = $(\'.card[data-" +
-"employee-id=\"\' + employeeId + \'\"]\');\r\n\r\n        if (isPresent) {\r\n            el" +
-".find(\".absent\").hide();\r\n            el.find(\".present\").fadeIn(200);\r\n        " +
-"} else {\r\n            el.find(\".present\").hide();\r\n            el.find(\".absent\"" +
-").fadeIn(200);\r\n        };\r\n    };\r\n\r\n    function getTime(el) {\r\n        var ti" +
-"me = el.val();\r\n        var regex = /^\\s*([01]?\\d|2[0-3]):?([0-5]\\d)\\s*$/;\r\n\r\n  " +
-"      if (regex.test(time)) {\r\n            return time;\r\n        };\r\n\r\n        r" +
-"eturn null;\r\n    };\r\n\r\n    function getAttendance(card) {\r\n        var attendanc" +
-"eId = (card.attr(\"data-attendance-id\") || null);\r\n        var employeeId = card." +
-"attr(\"data-employee-id\");\r\n        var isPresent = card.find(\"input:checkbox\").i" +
-"s(\":checked\");\r\n        var checkInTime = window.getTime(card.find(\"input.check-" +
-"in\"));\r\n        var checkOutTime = window.getTime(card.find(\"input.check-out\"));" +
-"\r\n        var overTimeHours = card.find(\"input.overtime-hours\").val();\r\n        " +
-"var reason = card.find(\"textarea\").val();\r\n\r\n        var attendance = new Object" +
-"();\r\n        attendance.attendance_id = attendanceId;\r\n        attendance.office" +
-"_id = window.metaView.OfficeId;\r\n        attendance.employee_id = employeeId;\r\n " +
-"       attendance.attendance_date = window.parseLocalizedDate($(\"#DateInputDate\"" +
-").val());\r\n        attendance.was_present = isPresent;\r\n        attendance.check" +
-"_in_time = isPresent ? checkInTime : null;\r\n        attendance.check_out_time = " +
-"isPresent ? checkOutTime : null;\r\n        attendance.overtime_hours = overTimeHo" +
-"urs;\r\n        attendance.was_absent = !attendance.was_present;\r\n        attendan" +
-"ce.reason_for_absenteeism = attendance.was_absent ? reason : null;\r\n        atte" +
-"ndance.audit_user_id = window.userId;\r\n        attendance.audit_ts = new Date();" +
-"\r\n\r\n        return attendance;\r\n    };\r\n\r\n    function request(attendnaces) {\r\n " +
-"       var url = \"/api/forms/hrm/attendance/bulk-import\";\r\n        var data = JS" +
-"ON.stringify(attendnaces);\r\n\r\n        return window.getAjaxRequest(url, \"POST\", " +
-"data);\r\n    };\r\n\r\n    function sendRequest(attendances) {\r\n        var ajax = re" +
-"quest(attendances);\r\n\r\n        ajax.success(function () {\r\n            window.lo" +
-"cation = window.location.pathname;\r\n        });\r\n\r\n    };\r\n\r\n    function update" +
-"All() {\r\n        var cards = $(\".attendance.card\");\r\n        var attendances = [" +
-"];\r\n\r\n        cards.each(function () {\r\n            var el = $(this);\r\n         " +
-"   attendances.push(getAttendance(el));\r\n        });\r\n\r\n        sendRequest(atte" +
-"ndances);\r\n    };\r\n</script>\r\n");
+") {\r\n            const url = \"/api/views/hrm/employee-view/all\";\r\n            re" +
+"turn window.getAjaxRequest(url);\r\n        };\r\n\r\n        function requestAttendan" +
+"ce(date) {\r\n            const url = \"/api/forms/hrm/attendances/get-where/-1/\";\r" +
+"\n\r\n            const filters = [];\r\n            filters.push(window.getAjaxColum" +
+"nFilter(\"WHERE\", \"AttendanceDate\", \"System.DateTime\", window.FilterConditions.Is" +
+"EqualTo, date));\r\n            const data = JSON.stringify(filters);\r\n\r\n         " +
+"   return window.getAjaxRequest(url, \"POST\", data);\r\n        };\r\n\r\n        $scop" +
+"e.show = function() {\r\n            const requestEmployeesAjax = requestEmployees" +
+"();\r\n\r\n            requestEmployeesAjax.success(function (employees) {\r\n        " +
+"        const date = window.parseLocalizedDate($(\"#DateInputDate\").val());\r\n\r\n  " +
+"              const requestAttendanceAjax = requestAttendance(date);\r\n\r\n        " +
+"        requestAttendanceAjax.success(function (attendance) {\r\n                 " +
+"   $.each(employees, function (i, v) {\r\n                        var employee = v" +
+";\r\n\r\n                        const a = $window.Enumerable.From(attendance)\r\n    " +
+"                        .Where(function (x) { return x.EmployeeId === employee.E" +
+"mployeeId }).FirstOrDefault() || new Object();\r\n\r\n                        a.Chec" +
+"kInTime = (a.CheckInTime || \"\").toString().toTime();\r\n                        a." +
+"CheckOutTime = (a.CheckOutTime || \"\").toString().toTime();\r\n                    " +
+"    employees[i].Attendance = a;\r\n                    });\r\n\r\n                   " +
+" $scope.$apply(function () {\r\n                        $scope.employees = employe" +
+"es;\r\n                    });\r\n                });\r\n            });\r\n        };\r\n" +
+"\r\n        $scope.show();\r\n\r\n        $scope.success = function() {\r\n            $" +
+"timeout(function() {\r\n                const checkboxes = $(\":checkbox\");\r\n      " +
+"          checkboxes.each(function() {\r\n                    toggleAttendance(thi" +
+"s);\r\n                });\r\n\r\n                $window.loadDatepicker();\r\n         " +
+"       $window.setRegionalFormat();\r\n                $(\"#Attendance\").fadeIn(500" +
+");\r\n            }, 500);\r\n        };\r\n    });\r\n\r\n    function toggleAttendance(s" +
+"ender) {\r\n        sender = $(sender);\r\n        const isPresent = sender.is(\":che" +
+"cked\");\r\n        const employeeId = sender.attr(\"data-employee-id\");\r\n        co" +
+"nst el = $(\'.card[data-employee-id=\"\' + employeeId + \'\"]\');\r\n\r\n        if (isPre" +
+"sent) {\r\n            el.find(\".absent\").hide();\r\n            el.find(\".present\")" +
+".fadeIn(200);\r\n        } else {\r\n            el.find(\".present\").hide();\r\n      " +
+"      el.find(\".absent\").fadeIn(200);\r\n        };\r\n    };\r\n\r\n    function getTim" +
+"e(el) {\r\n        const time = el.val();\r\n        const regex = /^\\s*([01]?\\d|2[0" +
+"-3]):?([0-5]\\d)\\s*$/;\r\n\r\n        if (regex.test(time)) {\r\n            return tim" +
+"e;\r\n        };\r\n\r\n        return null;\r\n    };\r\n\r\n    function getAttendance(car" +
+"d) {\r\n        const attendanceId = (card.attr(\"data-attendance-id\") || null);\r\n " +
+"       const employeeId = card.attr(\"data-employee-id\");\r\n        const isPresen" +
+"t = card.find(\"input:checkbox\").is(\":checked\");\r\n        const checkInTime = win" +
+"dow.getTime(card.find(\"input.check-in\"));\r\n        const checkOutTime = window.g" +
+"etTime(card.find(\"input.check-out\"));\r\n        const overTimeHours = card.find(\"" +
+"input.overtime-hours\").val();\r\n        const reason = card.find(\"textarea\").val(" +
+");\r\n\r\n        const attendance = new Object();\r\n        attendance.attendance_id" +
+" = attendanceId;\r\n        attendance.office_id = window.metaView.OfficeId;\r\n    " +
+"    attendance.employee_id = employeeId;\r\n        attendance.attendance_date = w" +
+"indow.parseLocalizedDate($(\"#DateInputDate\").val());\r\n        attendance.was_pre" +
+"sent = isPresent;\r\n        attendance.check_in_time = isPresent ? checkInTime : " +
+"null;\r\n        attendance.check_out_time = isPresent ? checkOutTime : null;\r\n   " +
+"     attendance.overtime_hours = overTimeHours;\r\n        attendance.was_absent =" +
+" !attendance.was_present;\r\n        attendance.reason_for_absenteeism = attendanc" +
+"e.was_absent ? reason : null;\r\n        attendance.audit_user_id = window.userId;" +
+"\r\n        attendance.audit_ts = new Date();\r\n\r\n        return attendance;\r\n    }" +
+";\r\n\r\n    function request(attendnaces) {\r\n        const url = \"/api/forms/hrm/at" +
+"tendance/bulk-import\";\r\n        const data = JSON.stringify(attendnaces);\r\n\r\n   " +
+"     return window.getAjaxRequest(url, \"POST\", data);\r\n    };\r\n\r\n    function se" +
+"ndRequest(attendances) {\r\n        const ajax = request(attendances);\r\n\r\n        " +
+"ajax.success(function () {\r\n            window.location = window.location.pathna" +
+"me;\r\n        });\r\n\r\n    };\r\n\r\n    function updateAll() {\r\n        const cards = " +
+"$(\".attendance.card\");\r\n        var attendances = [];\r\n\r\n        cards.each(func" +
+"tion () {\r\n            const el = $(this);\r\n            attendances.push(getAtte" +
+"ndance(el));\r\n        });\r\n\r\n        sendRequest(attendances);\r\n    };\r\n</script" +
+">\r\n");
 
         }
     }

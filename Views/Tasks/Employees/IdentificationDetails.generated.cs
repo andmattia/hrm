@@ -26,7 +26,6 @@ namespace ASP
     using System.Web.Security;
     using System.Web.UI;
     using System.Web.WebPages;
-
     using Frapid.Configuration;
     using Frapid.Dashboard;
     using Frapid.DataAccess;
@@ -34,7 +33,6 @@ namespace ASP
     using Frapid.Framework;
     using Frapid.i18n;
     using Frapid.Messaging;
-    using Frapid.Mapper.Decorators;
     using Frapid.WebsiteBuilder;
     using MixERP.HRM;
     
@@ -89,25 +87,25 @@ WriteLiteral(@"></div>
 
 <script>
     function identificationTypeExpires(filters) {
-        var url = ""/api/forms/hrm/identification-types/get-where/1"";
-        var data = JSON.stringify(filters);
+        const url = ""/api/forms/hrm/identification-types/get-where/1"";
+        const data = JSON.stringify(filters);
         return window.getAjaxRequest(url, ""POST"", data, false);
     };
 
     function checkIfExpires() {
-        var value = $(""#identification_type_code"").getSelectedValue();
+        const value = $(""#identification_type_code"").getSelectedValue();
 
         if (!value) {
             return;
         };
 
-        var filters = [];
-        filters.push(window.getAjaxColumnFilter(""WHERE"", ""identification_type_code"", ""string"", window.FilterConditions.IsEqualTo, value));
+        const filters = [];
+        filters.push(window.getAjaxColumnFilter(""WHERE"", ""IdentificationTypeCode"", ""string"", window.FilterConditions.IsEqualTo, value));
 
-        var ajaxIdentificationTypeExpires = identificationTypeExpires(filters);
+        const ajaxIdentificationTypeExpires = identificationTypeExpires(filters);
 
         ajaxIdentificationTypeExpires.success(function (msg) {
-            var canExpire = msg[0].CanExpire;
+            const canExpire = msg[0].CanExpire;
 
 
             if (!canExpire) {

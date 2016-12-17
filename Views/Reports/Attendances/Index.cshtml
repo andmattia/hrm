@@ -25,7 +25,7 @@
 
 <script>
     function getAttendance() {
-        var url = "/api/views/hrm/attendance-view/all";
+        const url = "/api/views/hrm/attendance-view/all";
 
         return window.getAjaxRequest(url);
     };
@@ -45,14 +45,14 @@
 </script>
 <script>
     function createTimeLine(data) {
-        var employeeGroup = window.Enumerable.From(data).GroupBy(function (x) { return x.EmployeeId; }).ToArray();
-        var min = window.Enumerable.From(data).MinBy(function (x) { return x.AttendanceDate; }).AttendanceDate;
-        var max = window.Enumerable.From(data).MaxBy(function (x) { return x.AttendanceDate; }).AttendanceDate;
+        const employeeGroup = window.Enumerable.From(data).GroupBy(function (x) { return x.EmployeeId; }).ToArray();
+        const min = window.Enumerable.From(data).MinBy(function (x) { return x.AttendanceDate; }).AttendanceDate;
+        const max = window.Enumerable.From(data).MaxBy(function (x) { return x.AttendanceDate; }).AttendanceDate;
 
 
-        var groups = new window.vis.DataSet();
+        const groups = new window.vis.DataSet();
 
-        for (var g = 0; g < employeeGroup.length; g++) {
+        for (let g = 0; g < employeeGroup.length; g++) {
             groups.add(
                 {
                     id: employeeGroup[g].source[0].EmployeeId,
@@ -62,11 +62,11 @@
         };
 
         // create a dataset with items
-        var items = new window.vis.DataSet();
+        const items = new window.vis.DataSet();
 
-        for (var i = 0; i < data.length / employeeGroup.length; i++) {
-            var content = data[i].WasPresent ? "P" : "A";
-            var className = data[i].WasPresent ? "" : "red";
+        for (let i = 0; i < data.length / employeeGroup.length; i++) {
+            const content = data[i].WasPresent ? "P" : "A";
+            const className = data[i].WasPresent ? "" : "red";
 
             items.add({
                 id: i,
@@ -79,10 +79,10 @@
         };
 
         // create visualization
-        var container = document.getElementById('visualization');
+        const container = document.getElementById('visualization');
         $(container).html("");
 
-        var options = {
+        const options = {
             groupOrder: 'content',  // groupOrder can be a property name or a sorting function
             orientation: {
                 axis: 'both',
@@ -94,23 +94,23 @@
             zoomMax: 1000 * 60 * 60 * 24 * 31 * 3     // about three months in milliseconds
         };
 
-        var timeline = new window.vis.Timeline(container);
+        const timeline = new window.vis.Timeline(container);
         timeline.setOptions(options);
         timeline.setGroups(groups);
         timeline.setItems(items);
 
-        var labels = $(".vis-label");
+        const labels = $(".vis-label");
         labels.each(function () {
-            var el = $(this);
-            var inner = el.find(".vis-inner");
+            const el = $(this);
+            const inner = el.find(".vis-inner");
 
-            var photo = el.attr("title");
+            const photo = el.attr("title");
             el.removeAttr("title");
 
-            var header = $("<div class='ui big grey header' />");
+            const header = $("<div class='ui big grey header' />");
             header.html(inner.html());
 
-            var img = $("<img />");
+            const img = $("<img />");
 
             img.attr("class", "ui small centered rounded circular bordered image");
             img.attr("title", inner.html());

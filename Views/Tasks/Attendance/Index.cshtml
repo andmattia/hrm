@@ -80,33 +80,33 @@
 
     frapidApp.controller("AttendanceController", function ($timeout, $scope, $sce, $window) {
         function requestEmployees() {
-            var url = "/api/views/hrm/employee-view/all";
+            const url = "/api/views/hrm/employee-view/all";
             return window.getAjaxRequest(url);
         };
 
         function requestAttendance(date) {
-            var url = "/api/forms/hrm/attendances/get-where/-1/";
+            const url = "/api/forms/hrm/attendances/get-where/-1/";
 
-            var filters = [];
+            const filters = [];
             filters.push(window.getAjaxColumnFilter("WHERE", "AttendanceDate", "System.DateTime", window.FilterConditions.IsEqualTo, date));
-            var data = JSON.stringify(filters);
+            const data = JSON.stringify(filters);
 
             return window.getAjaxRequest(url, "POST", data);
         };
 
         $scope.show = function() {
-            var requestEmployeesAjax = requestEmployees();
+            const requestEmployeesAjax = requestEmployees();
 
             requestEmployeesAjax.success(function (employees) {
-                var date = window.parseLocalizedDate($("#DateInputDate").val());
+                const date = window.parseLocalizedDate($("#DateInputDate").val());
 
-                var requestAttendanceAjax = requestAttendance(date);
+                const requestAttendanceAjax = requestAttendance(date);
 
                 requestAttendanceAjax.success(function (attendance) {
                     $.each(employees, function (i, v) {
                         var employee = v;
 
-                        var a = $window.Enumerable.From(attendance)
+                        const a = $window.Enumerable.From(attendance)
                             .Where(function (x) { return x.EmployeeId === employee.EmployeeId }).FirstOrDefault() || new Object();
 
                         a.CheckInTime = (a.CheckInTime || "").toString().toTime();
@@ -125,7 +125,7 @@
 
         $scope.success = function() {
             $timeout(function() {
-                var checkboxes = $(":checkbox");
+                const checkboxes = $(":checkbox");
                 checkboxes.each(function() {
                     toggleAttendance(this);
                 });
@@ -139,9 +139,9 @@
 
     function toggleAttendance(sender) {
         sender = $(sender);
-        var isPresent = sender.is(":checked");
-        var employeeId = sender.attr("data-employee-id");
-        var el = $('.card[data-employee-id="' + employeeId + '"]');
+        const isPresent = sender.is(":checked");
+        const employeeId = sender.attr("data-employee-id");
+        const el = $('.card[data-employee-id="' + employeeId + '"]');
 
         if (isPresent) {
             el.find(".absent").hide();
@@ -153,8 +153,8 @@
     };
 
     function getTime(el) {
-        var time = el.val();
-        var regex = /^\s*([01]?\d|2[0-3]):?([0-5]\d)\s*$/;
+        const time = el.val();
+        const regex = /^\s*([01]?\d|2[0-3]):?([0-5]\d)\s*$/;
 
         if (regex.test(time)) {
             return time;
@@ -164,15 +164,15 @@
     };
 
     function getAttendance(card) {
-        var attendanceId = (card.attr("data-attendance-id") || null);
-        var employeeId = card.attr("data-employee-id");
-        var isPresent = card.find("input:checkbox").is(":checked");
-        var checkInTime = window.getTime(card.find("input.check-in"));
-        var checkOutTime = window.getTime(card.find("input.check-out"));
-        var overTimeHours = card.find("input.overtime-hours").val();
-        var reason = card.find("textarea").val();
+        const attendanceId = (card.attr("data-attendance-id") || null);
+        const employeeId = card.attr("data-employee-id");
+        const isPresent = card.find("input:checkbox").is(":checked");
+        const checkInTime = window.getTime(card.find("input.check-in"));
+        const checkOutTime = window.getTime(card.find("input.check-out"));
+        const overTimeHours = card.find("input.overtime-hours").val();
+        const reason = card.find("textarea").val();
 
-        var attendance = new Object();
+        const attendance = new Object();
         attendance.attendance_id = attendanceId;
         attendance.office_id = window.metaView.OfficeId;
         attendance.employee_id = employeeId;
@@ -190,14 +190,14 @@
     };
 
     function request(attendnaces) {
-        var url = "/api/forms/hrm/attendance/bulk-import";
-        var data = JSON.stringify(attendnaces);
+        const url = "/api/forms/hrm/attendance/bulk-import";
+        const data = JSON.stringify(attendnaces);
 
         return window.getAjaxRequest(url, "POST", data);
     };
 
     function sendRequest(attendances) {
-        var ajax = request(attendances);
+        const ajax = request(attendances);
 
         ajax.success(function () {
             window.location = window.location.pathname;
@@ -206,11 +206,11 @@
     };
 
     function updateAll() {
-        var cards = $(".attendance.card");
+        const cards = $(".attendance.card");
         var attendances = [];
 
         cards.each(function () {
-            var el = $(this);
+            const el = $(this);
             attendances.push(getAttendance(el));
         });
 

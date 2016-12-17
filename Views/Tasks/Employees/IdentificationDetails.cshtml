@@ -69,25 +69,25 @@
 
 <script>
     function identificationTypeExpires(filters) {
-        var url = "/api/forms/hrm/identification-types/get-where/1";
-        var data = JSON.stringify(filters);
+        const url = "/api/forms/hrm/identification-types/get-where/1";
+        const data = JSON.stringify(filters);
         return window.getAjaxRequest(url, "POST", data, false);
     };
 
     function checkIfExpires() {
-        var value = $("#identification_type_code").getSelectedValue();
+        const value = $("#identification_type_code").getSelectedValue();
 
         if (!value) {
             return;
         };
 
-        var filters = [];
+        const filters = [];
         filters.push(window.getAjaxColumnFilter("WHERE", "IdentificationTypeCode", "string", window.FilterConditions.IsEqualTo, value));
 
-        var ajaxIdentificationTypeExpires = identificationTypeExpires(filters);
+        const ajaxIdentificationTypeExpires = identificationTypeExpires(filters);
 
         ajaxIdentificationTypeExpires.success(function (msg) {
-            var canExpire = msg[0].CanExpire;
+            const canExpire = msg[0].CanExpire;
 
 
             if (!canExpire) {
