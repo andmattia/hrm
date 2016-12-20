@@ -985,6 +985,19 @@ ON forwarded_to.employee_id = hrm.terminations.forward_to
 WHERE verification_status_id = 0
 AND NOT hrm.terminations.deleted;
 
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.selector-views/hrm.status_code_view.sql --<--<--
+DROP VIEW IF EXISTS hrm.status_code_view;
+
+CREATE VIEW hrm.status_code_view
+AS
+SELECT
+	hrm.employment_status_codes.employment_status_code_id AS status_code_id,
+	hrm.employment_status_codes.status_code,
+	hrm.employment_status_codes.status_code_name
+FROM hrm.employment_status_codes
+WHERE NOT hrm.employment_status_codes.deleted;
+
+
 -->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.views/hrm.attendance_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.attendance_view;
 
@@ -1101,7 +1114,7 @@ LEFT JOIN hrm.nationalities
 ON hrm.employees.nationality_code = hrm.nationalities.nationality_code
 LEFT JOIN core.countries
 ON hrm.employees.country_code = core.countries.country_code
-WHERE COALESCE(service_ended_on, 'infinity') >= NOW()
+WHERE (service_ended_on IS NULL OR COALESCE(service_ended_on, 'infinity') >= NOW())
 AND NOT hrm.employees.deleted;
 
 -->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/99.ownership.sql --<--<--

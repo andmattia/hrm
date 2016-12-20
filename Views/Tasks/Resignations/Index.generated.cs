@@ -33,7 +33,6 @@ namespace ASP
     using Frapid.Framework;
     using Frapid.i18n;
     using Frapid.Messaging;
-    using Frapid.Mapper.Decorators;
     using Frapid.WebsiteBuilder;
     using MixERP.HRM;
     
@@ -57,39 +56,38 @@ namespace ASP
             #line hidden
 WriteLiteral("\r\n\r\n<script>\r\n    var employeeId = parseInt(window.getQueryStringByName(\"Employee" +
 "Id\") || 0);\r\n    var filters = [];\r\n    filters.push(window.getAjaxColumnFilter(" +
-"\"WHERE\", \"user_id\", window.FilterConditions.IsEqualTo, window.userId));\r\n\r\n    v" +
-"ar url = \"/api/forms/hrm/employees/get-where/1\";\r\n    var data = JSON.stringify(" +
-"filters);\r\n\r\n    var getEmployees = window.getAjaxRequest(url, \"POST\", data);\r\n\r" +
-"\n    getEmployees.success(function (msg) {\r\n        if (msg && msg[0]) {\r\n      " +
-"      if (employeeId !== msg[0].EmployeeId) {\r\n                window.location =" +
-" window.updateQueryString(\"EmployeeId\", \"int\", msg[0].EmployeeId, window.locatio" +
-"n.href);\r\n            };\r\n        };\r\n    });\r\n</script>\r\n\r\n<script>\r\n    var sc" +
-"rudFactory = new Object();\r\n\r\n    scrudFactory.title = \"My Resignation\";\r\n\r\n    " +
-"scrudFactory.viewAPI = \"/api/views/hrm/resignation-scrud-view\";\r\n    scrudFactor" +
-"y.viewTableName = \"hrm.resignation_scrud_view\";\r\n\r\n    scrudFactory.formAPI = \"/" +
-"api/forms/hrm/resignations\";\r\n    scrudFactory.formTableName = \"hrm.resignations" +
-"\";\r\n\r\n    scrudFactory.excludedColumns = [\"AuditUserId\", \"AuditTs\"];\r\n\r\n    scru" +
-"dFactory.allowDelete = true;\r\n    scrudFactory.allowEdit = true;\r\n\r\n    scrudFac" +
-"tory.live = \"EmployeeId\";\r\n\r\n    scrudFactory.readonlyColumns = [\"EndedOn\"];\r\n  " +
-"  scrudFactory.hiddenColumns = [\"EmployeeId\", \"EnteredBy\", \"VerificationStatusId" +
-"\", \"VerifiedByUserId\", \"VerifiedOn\", \"VerificationReason\"];\r\n    scrudFactory.ex" +
-"cludedColumns = [\"Photo\"];\r\n\r\n    scrudFactory.keys = [\r\n        {\r\n            " +
-"property: \"EmployeeId\",\r\n            url: \'/api/views/hrm/employee-view/display-" +
-"fields\',\r\n            data: null,\r\n            valueField: \"Key\",\r\n            t" +
-"extField: \"Value\"\r\n        },\r\n        {\r\n            property: \"ForwardTo\",\r\n  " +
-"          url: \'/api/views/hrm/employee-view/display-fields\',\r\n            data:" +
-" null,\r\n            valueField: \"Key\",\r\n            textField: \"Value\"\r\n        " +
-"}\r\n    ];\r\n\r\n    scrudFactory.layout = [\r\n        {\r\n            tab: \"\",\r\n     " +
-"       fields: [\r\n                [\"ResignationId\"],\r\n                [\"NoticeDa" +
-"te\", \"DesiredResignDate\"],\r\n                [\"ForwardTo\"],\r\n                [\"Ch" +
-"angeStatusTo\"],\r\n                [\"Reason\"],\r\n                [\"Details\"]\r\n     " +
-"       ]\r\n        }\r\n    ];\r\n\r\n    $(document).on(\"formready\", function () {\r\n  " +
-"      $(\"#verification_status_id\").val(\"0\");\r\n    });\r\n    $.get(\'/ScrudFactory/" +
-"View.html\', function (view) {\r\n        $.get(\'/ScrudFactory/Form.html\', function" +
-" (form) {\r\n            $(\"#ScrudFactoryView\").html(view);\r\n            $(\"#Scrud" +
-"FactoryForm\").html(form);\r\n            $.cachedScript(\"/assets/js/scrudfactory-v" +
-"iew.js\");\r\n            $.cachedScript(\"/assets/js/scrudfactory-form.js\");\r\n     " +
-"   });\r\n    });\r\n</script>\r\n\r\n<div");
+"\"WHERE\", \"UserId\", \"int\", window.FilterConditions.IsEqualTo, window.userId));\r\n\r" +
+"\n    var url = \"/api/forms/hrm/employees/get-where/1\";\r\n    var data = JSON.stri" +
+"ngify(filters);\r\n\r\n    var getEmployees = window.getAjaxRequest(url, \"POST\", dat" +
+"a);\r\n\r\n    getEmployees.success(function (msg) {\r\n        if (msg && msg[0]) {\r\n" +
+"            if (employeeId !== msg[0].EmployeeId) {\r\n                window.loca" +
+"tion = window.updateQueryString(\"EmployeeId\", \"int\", msg[0].EmployeeId, window.l" +
+"ocation.href);\r\n            };\r\n        };\r\n    });\r\n</script>\r\n\r\n<script>\r\n    " +
+"var scrudFactory = new Object();\r\n\r\n    scrudFactory.title = \"Resignations\";\r\n\r\n" +
+"    scrudFactory.viewAPI = \"/api/views/hrm/resignation-scrud-view\";\r\n    scrudFa" +
+"ctory.viewTableName = \"hrm.resignation_scrud_view\";\r\n\r\n    scrudFactory.formAPI " +
+"= \"/api/forms/hrm/resignations\";\r\n    scrudFactory.formTableName = \"hrm.resignat" +
+"ions\";\r\n\r\n    scrudFactory.excludedColumns = [\"AuditUserId\", \"AuditTs\"];\r\n\r\n    " +
+"scrudFactory.allowDelete = true;\r\n    scrudFactory.allowEdit = true;\r\n\r\n    scru" +
+"dFactory.live = \"EmployeeId\";\r\n\r\n    scrudFactory.readonlyColumns = [\"EndedOn\"];" +
+"\r\n    scrudFactory.hiddenColumns = [\"EnteredBy\", \"VerificationStatusId\", \"Verifi" +
+"edByUserId\", \"VerifiedOn\", \"VerificationReason\"];\r\n    scrudFactory.excludedColu" +
+"mns = [\"Photo\"];\r\n\r\n    scrudFactory.keys = [\r\n        {\r\n            property: " +
+"\"EmployeeId\",\r\n            url: \'/api/views/hrm/employee-view/display-fields\',\r\n" +
+"            data: null,\r\n            valueField: \"Key\",\r\n            textField: " +
+"\"Value\"\r\n        },\r\n        {\r\n            property: \"ForwardTo\",\r\n            " +
+"url: \'/api/views/hrm/employee-view/display-fields\',\r\n            data: null,\r\n  " +
+"          valueField: \"Key\",\r\n            textField: \"Value\"\r\n        }\r\n    ];\r" +
+"\n\r\n    scrudFactory.layout = [\r\n        {\r\n            tab: \"\",\r\n            fie" +
+"lds: [\r\n                [\"ResignationId\"],\r\n                [\"NoticeDate\", \"Desi" +
+"redResignDate\"],\r\n                [\"ForwardTo\"],\r\n                [\"ChangeStatus" +
+"To\"],\r\n                [\"Reason\"],\r\n                [\"Details\"]\r\n            ]\r\n" +
+"        }\r\n    ];\r\n\r\n    $.get(\'/ScrudFactory/View.html\', function (view) {\r\n   " +
+"     $.get(\'/ScrudFactory/Form.html\', function (form) {\r\n            $(\"#ScrudFa" +
+"ctoryView\").html(view);\r\n            $(\"#ScrudFactoryForm\").html(form);\r\n       " +
+"     $.cachedScript(\"/assets/js/scrudfactory-view.js\");\r\n            $.cachedScr" +
+"ipt(\"/assets/js/scrudfactory-form.js\");\r\n        });\r\n    });\r\n</script>\r\n\r\n<div" +
+"");
 
 WriteLiteral(" id=\"ScrudFactoryForm\"");
 

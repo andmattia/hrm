@@ -64,7 +64,7 @@
         },
         {
             property: "EmploymentStatusCodeId",
-            url: '/api/forms/hrm/employment-status-codes/display-fields',
+            url: '/api/views/hrm/status-code-view/display-fields',
             data: null,
             valueField: "Key",
             textField: "Value"
@@ -88,6 +88,7 @@
 <script>
     $(document).on("formready", function () {
         $("#verification_status_id").val("0");
+        $("#employment_status_code_id").dropdown("set selected", "0");
     });
 </script>
 

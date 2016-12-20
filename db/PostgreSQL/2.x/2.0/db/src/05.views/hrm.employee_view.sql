@@ -87,5 +87,5 @@ LEFT JOIN hrm.nationalities
 ON hrm.employees.nationality_code = hrm.nationalities.nationality_code
 LEFT JOIN core.countries
 ON hrm.employees.country_code = core.countries.country_code
-WHERE COALESCE(service_ended_on, 'infinity') >= NOW()
+WHERE (service_ended_on IS NULL OR COALESCE(service_ended_on, 'infinity') >= NOW())
 AND NOT hrm.employees.deleted;

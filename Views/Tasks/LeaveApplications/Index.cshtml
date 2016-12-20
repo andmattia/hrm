@@ -27,7 +27,7 @@
 <script>
     var scrudFactory = new Object();
 
-    scrudFactory.title = "My Leave Applications";
+    scrudFactory.title = "Leave Applications";
 
     scrudFactory.viewAPI = "/api/views/hrm/leave-application-scrud-view";
     scrudFactory.viewTableName = "hrm.leave_application_scrud_view";
@@ -36,7 +36,7 @@
     scrudFactory.formTableName = "hrm.leave_applications";
 
     scrudFactory.excludedColumns = ["Photo"];
-    scrudFactory.hiddenColumns = ["EnteredBy", "AppliedOn", "EmployeeId", "VerificationStatusId", "VerifiedByUserId", "VerifiedOn", "VerificationReason"];
+    scrudFactory.hiddenColumns = ["EnteredBy", "AppliedOn", "VerificationStatusId", "VerifiedByUserId", "VerifiedOn", "VerificationReason"];
 
     scrudFactory.live = "EmployeeId";
 

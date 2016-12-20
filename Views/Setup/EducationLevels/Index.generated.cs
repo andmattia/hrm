@@ -33,7 +33,6 @@ namespace ASP
     using Frapid.Framework;
     using Frapid.i18n;
     using Frapid.Messaging;
-    using Frapid.Mapper.Decorators;
     using Frapid.WebsiteBuilder;
     using MixERP.HRM;
     
@@ -60,7 +59,7 @@ WriteLiteral(@"
 <script>
 	var scrudFactory = new Object();
 
-    scrudFactory.title = window.Resources.Titles.EducationLevels();
+    scrudFactory.title = ""Education Levels"";
 
     scrudFactory.viewAPI = ""/api/forms/hrm/education-levels"";
     scrudFactory.viewTableName = ""hrm.education_levels"";

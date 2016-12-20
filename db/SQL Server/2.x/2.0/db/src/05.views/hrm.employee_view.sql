@@ -3,8 +3,6 @@ DROP VIEW hrm.employee_view;
 
 GO
 
-
-
 CREATE VIEW hrm.employee_view
 AS
 SELECT
@@ -66,23 +64,23 @@ SELECT
     hrm.employees.is_cognitively_disabled,
     hrm.employees.is_autistic
 FROM hrm.employees
-INNER JOIN core.genders
+LEFT JOIN core.genders
 ON hrm.employees.gender_code = core.genders.gender_code
-INNER JOIN core.marital_statuses
+LEFT JOIN core.marital_statuses
 ON hrm.employees.marital_status_id = core.marital_statuses.marital_status_id
-INNER JOIN core.offices
+LEFT JOIN core.offices
 ON hrm.employees.office_id = core.offices.office_id
-INNER JOIN hrm.departments
+LEFT JOIN hrm.departments
 ON hrm.employees.current_department_id = hrm.departments.department_id
-INNER JOIN hrm.employee_types
+LEFT JOIN hrm.employee_types
 ON hrm.employee_types.employee_type_id = hrm.employees.employee_type_id
-INNER JOIN hrm.employment_statuses
+LEFT JOIN hrm.employment_statuses
 ON hrm.employees.current_employment_status_id = hrm.employment_statuses.employment_status_id
-INNER JOIN hrm.job_titles
+LEFT JOIN hrm.job_titles
 ON hrm.employees.current_job_title_id = hrm.job_titles.job_title_id
-INNER JOIN hrm.pay_grades
+LEFT JOIN hrm.pay_grades
 ON hrm.employees.current_pay_grade_id = hrm.pay_grades.pay_grade_id
-INNER JOIN hrm.shifts
+LEFT JOIN hrm.shifts
 ON hrm.employees.current_shift_id = hrm.shifts.shift_id
 LEFT JOIN account.users
 ON hrm.employees.user_id = account.users.user_id
@@ -92,7 +90,7 @@ LEFT JOIN hrm.nationalities
 ON hrm.employees.nationality_code = hrm.nationalities.nationality_code
 LEFT JOIN core.countries
 ON hrm.employees.country_code = core.countries.country_code
-WHERE COALESCE(service_ended_on, CAST(CAST(-53690 AS datetime) AS date)) >= GETDATE()
+WHERE (service_ended_on IS NULL OR COALESCE(service_ended_on, CAST(CAST(-53690 AS datetime) AS date)) >= GETDATE())
 AND hrm.employees.deleted = 0;
 
 GO

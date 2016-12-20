@@ -33,7 +33,6 @@ namespace ASP
     using Frapid.Framework;
     using Frapid.i18n;
     using Frapid.Messaging;
-    using Frapid.Mapper.Decorators;
     using Frapid.WebsiteBuilder;
     using MixERP.HRM;
     
@@ -77,14 +76,14 @@ WriteLiteral("\r\n<script>\r\n    var scrudFactory = new Object();\r\n\r\n    sc
 "e\"\r\n        },\r\n        {\r\n            property: \"LeaveBenefitId\",\r\n            " +
 "url: \'/api/forms/hrm/leave-benefits/display-fields\',\r\n            data: null,\r\n " +
 "           valueField: \"Key\",\r\n            textField: \"Value\"\r\n        },\r\n     " +
-"   {\r\n            property: \"EmploymentStatusCodeId\",\r\n            url: \'/api/fo" +
-"rms/hrm/employment-status-codes/display-fields\',\r\n            data: null,\r\n     " +
-"       valueField: \"Key\",\r\n            textField: \"Value\"\r\n        }\r\n    ];\r\n\r\n" +
-"\r\n    $.get(\'/ScrudFactory/View.html\', function (view) {\r\n        $.get(\'/ScrudF" +
-"actory/Form.html\', function (form) {\r\n            $(\"#ScrudFactoryView\").html(vi" +
-"ew);\r\n            $(\"#ScrudFactoryForm\").html(form);\r\n            $.cachedScript" +
-"(\"/assets/js/scrudfactory-view.js\");\r\n            $.cachedScript(\"/assets/js/scr" +
-"udfactory-form.js\");\r\n        });\r\n    });\r\n</script>\r\n\r\n<div");
+"   {\r\n            property: \"EmploymentStatusCodeId\",\r\n            url: \'/api/vi" +
+"ews/hrm/status-code-view/display-fields\',\r\n            data: null,\r\n            " +
+"valueField: \"Key\",\r\n            textField: \"Value\"\r\n        }\r\n    ];\r\n\r\n\r\n    $" +
+".get(\'/ScrudFactory/View.html\', function (view) {\r\n        $.get(\'/ScrudFactory/" +
+"Form.html\', function (form) {\r\n            $(\"#ScrudFactoryView\").html(view);\r\n " +
+"           $(\"#ScrudFactoryForm\").html(form);\r\n            $.cachedScript(\"/asse" +
+"ts/js/scrudfactory-view.js\");\r\n            $.cachedScript(\"/assets/js/scrudfacto" +
+"ry-form.js\");\r\n        });\r\n    });\r\n</script>\r\n\r\n<div");
 
 WriteLiteral(" id=\"ScrudFactoryForm\"");
 
@@ -93,7 +92,8 @@ WriteLiteral("></div>\r\n<div");
 WriteLiteral(" id=\"ScrudFactoryView\"");
 
 WriteLiteral("></div>\r\n\r\n<script>\r\n    $(document).on(\"formready\", function () {\r\n        $(\"#v" +
-"erification_status_id\").val(\"0\");\r\n    });\r\n</script>\r\n\r\n");
+"erification_status_id\").val(\"0\");\r\n        $(\"#employment_status_code_id\").dropd" +
+"own(\"set selected\", \"0\");\r\n    });\r\n</script>\r\n\r\n");
 
         }
     }

@@ -27,7 +27,7 @@
 <script>
     var scrudFactory = new Object();
 
-    scrudFactory.title = "My Resignation";
+    scrudFactory.title = "Resignations";
 
     scrudFactory.viewAPI = "/api/views/hrm/resignation-scrud-view";
     scrudFactory.viewTableName = "hrm.resignation_scrud_view";
@@ -43,7 +43,7 @@
     scrudFactory.live = "EmployeeId";
 
     scrudFactory.readonlyColumns = ["EndedOn"];
-    scrudFactory.hiddenColumns = ["EmployeeId", "EnteredBy", "VerificationStatusId", "VerifiedByUserId", "VerifiedOn", "VerificationReason"];
+    scrudFactory.hiddenColumns = ["EnteredBy", "VerificationStatusId", "VerifiedByUserId", "VerifiedOn", "VerificationReason"];
     scrudFactory.excludedColumns = ["Photo"];
 
     scrudFactory.keys = [
@@ -77,9 +77,6 @@
         }
     ];
 
-    $(document).on("formready", function () {
-        $("#verification_status_id").val("0");
-    });
     $.get('/ScrudFactory/View.html', function (view) {
         $.get('/ScrudFactory/Form.html', function (form) {
             $("#ScrudFactoryView").html(view);
