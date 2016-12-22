@@ -35,7 +35,7 @@
     scrudFactory.formAPI = "/api/forms/hrm/leave-applications";
     scrudFactory.formTableName = "hrm.leave_applications";
 
-    scrudFactory.excludedColumns = ["Photo"];
+    scrudFactory.excludedColumns = ["AuditUserId", "AuditTs", "Photo"];
     scrudFactory.hiddenColumns = ["EnteredBy", "AppliedOn", "VerificationStatusId", "VerifiedByUserId", "VerifiedOn", "VerificationReason"];
 
     scrudFactory.live = "EmployeeId";

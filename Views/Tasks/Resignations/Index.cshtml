@@ -35,8 +35,6 @@
     scrudFactory.formAPI = "/api/forms/hrm/resignations";
     scrudFactory.formTableName = "hrm.resignations";
 
-    scrudFactory.excludedColumns = ["AuditUserId", "AuditTs"];
-
     scrudFactory.allowDelete = true;
     scrudFactory.allowEdit = true;
 
@@ -44,7 +42,7 @@
 
     scrudFactory.readonlyColumns = ["EndedOn"];
     scrudFactory.hiddenColumns = ["EnteredBy", "VerificationStatusId", "VerifiedByUserId", "VerifiedOn", "VerificationReason"];
-    scrudFactory.excludedColumns = ["Photo"];
+    scrudFactory.excludedColumns = ["AuditUserId", "AuditTs", "Photo"];
 
     scrudFactory.keys = [
         {

@@ -16,9 +16,8 @@
     scrudFactory.formAPI = "/api/forms/hrm/exits";
     scrudFactory.formTableName = "hrm.exits";
 
-    scrudFactory.excludedColumns = ["AuditUserId", "AuditTs"];
     scrudFactory.hiddenColumns = ["VerificationStatusId", "VerifiedByUserId", "VerifiedOn", "VerificationReason"];
-    scrudFactory.excludedColumns = ["Photo"];
+    scrudFactory.excludedColumns = ["AuditUserId", "AuditTs", "Photo"];
 
     scrudFactory.allowDelete = true;
     scrudFactory.allowEdit = true;

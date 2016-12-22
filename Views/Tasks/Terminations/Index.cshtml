@@ -15,8 +15,6 @@
     scrudFactory.formAPI = "/api/forms/hrm/terminations";
     scrudFactory.formTableName = "hrm.terminations";
 
-    scrudFactory.excludedColumns = ["AuditUserId", "AuditTs"];
-
     scrudFactory.allowDelete = true;
     scrudFactory.allowEdit = true;
 
@@ -24,7 +22,7 @@
 
     scrudFactory.readonlyColumns = ["EndedOn"];
     scrudFactory.hiddenColumns = ["VerificationStatusId", "VerifiedByUserId", "VerifiedOn", "VerificationReason"];
-    scrudFactory.excludedColumns = ["Photo"];
+    scrudFactory.excludedColumns = ["AuditUserId", "AuditTs", "Photo"];
 
     scrudFactory.keys = [
         {

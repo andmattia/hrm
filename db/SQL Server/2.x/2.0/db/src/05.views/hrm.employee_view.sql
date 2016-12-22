@@ -90,7 +90,7 @@ LEFT JOIN hrm.nationalities
 ON hrm.employees.nationality_code = hrm.nationalities.nationality_code
 LEFT JOIN core.countries
 ON hrm.employees.country_code = core.countries.country_code
-WHERE (service_ended_on IS NULL OR COALESCE(service_ended_on, CAST(CAST(-53690 AS datetime) AS date)) >= GETDATE())
+WHERE (service_ended_on IS NULL OR COALESCE(service_ended_on, CAST(CAST(-53690 AS datetime) AS date)) >= GETUTCDATE())
 AND hrm.employees.deleted = 0;
 
 GO

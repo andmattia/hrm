@@ -16,7 +16,7 @@
     scrudFactory.formAPI = "/api/forms/hrm/leave-applications";
     scrudFactory.formTableName = "hrm.leave_applications";
 
-    scrudFactory.excludedColumns = ["Photo"];
+    scrudFactory.excludedColumns = ["AuditUserId", "AuditTs", "Photo"];
 
     scrudFactory.hasVerfication = true;
     $.get('/ScrudFactory/View.html', function (view) {

@@ -24,7 +24,7 @@ CREATE TABLE hrm.week_days
     week_day_code                           national character varying(12) NOT NULL UNIQUE,
     week_day_name                           national character varying(50) NOT NULL UNIQUE,
     audit_user_id                           integer REFERENCES account.users,
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -34,7 +34,7 @@ CREATE TABLE hrm.identification_types
     identification_type_name                national character varying(100) NOT NULL UNIQUE,
     can_expire                              bit NOT NULL DEFAULT(0),
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)    
 );
 
@@ -45,7 +45,7 @@ CREATE TABLE hrm.social_networks
     base_url                                national character varying(128) DEFAULT(''),
     profile_url                             national character varying(128) DEFAULT(''),
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)    
 );
 
@@ -55,7 +55,7 @@ CREATE TABLE hrm.departments
     department_code                         national character varying(12) NOT NULL,
     department_name                         national character varying(50) NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -65,7 +65,7 @@ CREATE TABLE hrm.roles
     role_code                                 national character varying(12) NOT NULL,
     role_name                                 national character varying(50) NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -74,7 +74,7 @@ CREATE TABLE hrm.nationalities
     nationality_code                        national character varying(12) PRIMARY KEY,
     nationality_name                        national character varying(50) NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -83,7 +83,7 @@ CREATE TABLE hrm.education_levels
     education_level_id                      integer IDENTITY NOT NULL PRIMARY KEY,
     education_level_name                    national character varying(50) NOT NULL UNIQUE,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -93,7 +93,7 @@ CREATE TABLE hrm.employment_status_codes
     status_code                             national character varying(12) NOT NULL UNIQUE,
     status_code_name                        national character varying(100) NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -106,7 +106,7 @@ CREATE TABLE hrm.employment_statuses
     default_employment_status_code_id       integer NOT NULL REFERENCES hrm.employment_status_codes,
     description                             national character varying(1000) DEFAULT(''),    
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -117,7 +117,7 @@ CREATE TABLE hrm.job_titles
     job_title_name                          national character varying(100) NOT NULL,
     description                             national character varying(1000) DEFAULT(''),
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -131,7 +131,7 @@ CREATE TABLE hrm.pay_grades
                                             CHECK(maximum_salary >= minimum_salary),
     description                             national character varying(1000) DEFAULT(''),
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -144,7 +144,7 @@ CREATE TABLE hrm.shifts
     ends_on                                 time NOT NULL,
     description                             national character varying(1000) DEFAULT(''),
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -155,7 +155,7 @@ CREATE TABLE hrm.leave_types
     leave_type_name                         national character varying(100) NOT NULL,
     description                             national character varying(1000) DEFAULT(''),
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -168,7 +168,7 @@ CREATE TABLE hrm.office_hours
     begins_from                             time NOT NULL,
     ends_on                                 time NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)    
 );
 
@@ -179,7 +179,7 @@ CREATE TABLE hrm.leave_benefits
     leave_benefit_name                      national character varying(128) NOT NULL,
     total_days                              integer NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -189,7 +189,7 @@ CREATE TABLE hrm.employee_types
     employee_type_code                      national character varying(12) NOT NULL UNIQUE,
     employee_type_name                      national character varying(128) NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -247,7 +247,7 @@ CREATE TABLE hrm.employees
     is_autistic                             bit,
     service_ended_on                        date NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -260,7 +260,7 @@ CREATE TABLE hrm.employee_identification_details
     identification_number                   national character varying(128) NOT NULL,
     expires_on                              date,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)                                  
 );
 
@@ -278,7 +278,7 @@ CREATE TABLE hrm.employee_social_network_details
                                             REFERENCES hrm.social_networks(social_network_name),
     social_network_id                       national character varying(128) NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -299,7 +299,7 @@ CREATE TABLE hrm.contracts
     verification_reason                     national character varying(128) NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
     
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -313,7 +313,7 @@ CREATE TABLE hrm.employee_experiences
     ended_on                                date,
     details                                 national character varying(1000),
     audit_user_id                           integer NULL REFERENCES account.users(user_id),    
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -330,7 +330,7 @@ CREATE TABLE hrm.employee_qualifications
     completed_on                            date,
     details                                 national character varying(1000),
     audit_user_id                           integer NULL REFERENCES account.users(user_id),    
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -340,7 +340,7 @@ CREATE TABLE hrm.leave_applications
     employee_id                             integer NOT NULL REFERENCES hrm.employees(employee_id),
     leave_type_id                           integer NOT NULL REFERENCES hrm.leave_types(leave_type_id),
     entered_by                              integer NOT NULL REFERENCES account.users(user_id),
-    applied_on                              date DEFAULT(GETDATE()),
+    applied_on                              date DEFAULT(GETUTCDATE()),
     reason                                  national character varying(1000),
     start_date                              date,
     end_date                                date,
@@ -349,7 +349,7 @@ CREATE TABLE hrm.leave_applications
     verified_on                             date,
     verification_reason                     national character varying(128) NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),    
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -368,7 +368,7 @@ CREATE TABLE hrm.resignations
     verified_on                             date,
     verification_reason                     national character varying(128) NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),    
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -387,7 +387,7 @@ CREATE TABLE hrm.terminations
     verified_on                             date,
     verification_reason                     national character varying(128) NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),    
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
     
 );
@@ -398,7 +398,7 @@ CREATE TABLE hrm.exit_types
     exit_type_code                          national character varying(12) NOT NULL UNIQUE,
     exit_type_name                          national character varying(128) NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),    
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -418,7 +418,7 @@ CREATE TABLE hrm.exits
     verification_reason                     national character varying(128) NULL,
     service_end_date                        date NOT NULL,
     audit_user_id                           integer NULL REFERENCES account.users(user_id),    
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
@@ -437,7 +437,7 @@ CREATE TABLE hrm.attendances
                                             CHECK(was_absent != was_present),
     reason_for_absenteeism                  national character varying(1000),
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
-    audit_ts                                DATETIMEOFFSET DEFAULT(GETDATE()),
+    audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
 
