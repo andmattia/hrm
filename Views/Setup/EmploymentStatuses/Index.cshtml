@@ -15,7 +15,8 @@
     scrudFactory.formAPI = "/api/forms/hrm/employment-statuses";
     scrudFactory.formTableName = "hrm.employment_statuseses";
 
-    scrudFactory.excludedColumns = ["AuditUserId", "AuditTs"];
+    scrudFactory.excludedColumns = ["AuditUserId", "AuditTs", "Deleted"];
+
 
     scrudFactory.allowDelete = true;
     scrudFactory.allowEdit = true;

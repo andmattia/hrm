@@ -15,7 +15,8 @@
     scrudFactory.formAPI = "/api/forms/hrm/exit-types";
     scrudFactory.formTableName = "hrm.exit_types";
 
-    scrudFactory.excludedColumns = ["AuditUserId", "AuditTs"];
+    scrudFactory.excludedColumns = ["AuditUserId", "AuditTs", "Deleted"];
+
 
     scrudFactory.allowDelete = true;
     scrudFactory.allowEdit = true;

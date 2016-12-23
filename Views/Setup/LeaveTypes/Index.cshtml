@@ -16,7 +16,8 @@
     scrudFactory.formAPI = "/api/forms/hrm/leave-types";
     scrudFactory.formTableName = "hrm.leave_types";
 
-    scrudFactory.excludedColumns = ["AuditUserId", "AuditTs"];
+    scrudFactory.excludedColumns = ["AuditUserId", "AuditTs", "Deleted"];
+
 
     scrudFactory.allowDelete = true;
     scrudFactory.allowEdit = true;
