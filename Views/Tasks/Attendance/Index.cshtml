@@ -1,90 +1,108 @@
-﻿@model dynamic
+﻿@model IEnumerable<MixERP.HRM.DTO.EmployeeView>
 
 @{
     ViewBag.Title = "Attendance";
     Layout = ViewBag.Layout;
 }
-<div id="Attendance" data-ng-controller="AttendanceController" data-ng-cloak style="display: none;">
-    <div class="ui huge header">Attenance</div>
+
+<style>
+    th.mini {
+        width: 150px;
+    }
+</style>
+<div class="ui attached padded attendance segment" style="display: none;">
+    <div class="ui huge header" data-localize="UpdateAttendanceRecord"></div>
     <div class="ui divider"></div>
+
     <div class="ui form bpad16" style="width: 440px;">
         <div class="two fields">
             <div class="ui field">
                 <label>For Date</label>
-                <input type="text" id="DateInputDate" class="date" />
+                <input type="text" id="DateInputText" class="date" />
             </div>
             <div class="ui field">
                 <label>&nbsp;</label>
-                <a href="javascript:void(0);" data-ng-click="show();" class="ui green button">Show</a>
+                <button id="ShowButton" class="ui green button">Show</button>
             </div>
         </div>
     </div>
 
-    <div class="ui link cards">
-        <div class="attendance card" data-ng-repeat="employee in employees" data-attendance-id="{{employee.Attendance.AttendanceId}}" data-employee-id="{{employee.EmployeeId}}">
-            <div class="image">
-                <img data-ng-src="/api/core/attachment/document/400/200/{{employee.Photo}}">
-            </div>
-            <div class="content">
-                <div class="header">{{employee.EmployeeCode}} ({{employee.EmployeeName}})</div>
-                <div class="meta">
-                    <a>{{employee.CurrentDepartment}}</a>
-                </div>
-                <div class="vpad8">
-                    <div class="ui form">
-                        <div class="ui toggle vpad8 checkbox">
-                            <input id="PresentCheckBox{{employee.EmployeeId}}" type="checkbox" checked="checked"
-                                   data-employee-id="{{employee.EmployeeId}}"
-                                   data-ng-model="employee.Attendance.WasPresent"
-                                   onclick="toggleAttendance(this);">
-                            <label for="PresentCheckBox{{employee.EmployeeId}}" class="pointer">Is Present</label>
-                        </div>
-                        <div class="three fields present" style="display: none;">
-                            <div class="ui field">
-                                <label>Check In Time</label>
-                                <input type="text" class="check-in time" data-ng-model="employee.Attendance.CheckInTime" />
-                            </div>
-                            <div class="ui field">
-                                <label>Check Out Time</label>
-                                <input type="text" class="check-out time" data-ng-model="employee.Attendance.CheckOutTime" />
-                            </div>
-                            <div class="ui field">
-                                <label>Overtime Hours</label>
-                                <input type="text" class="overtime-hours decimal" data-ng-model="employee.Attendance.OvertimeHours" />
-                            </div>
-                        </div>
-                        <div class="vpad8 absent" style="display: none;">
-                            <div class="ui field">
-                                <label>Reason</label>
-                                <textarea rows="1" data-ng-model="employee.Attendance.ReasonForAbsenteeism"></textarea>
-                            </div>
-                        </div>
+    <table class="ui attached form attendance table">
+        <thead>
+            <tr>
+                <th class="mini" data-localize="EmployeeId"></th>
+                <th data-localize="EmployeeName"></th>
+                <th class="mini">
+                    <div data-localize="WasPresent"></div>
+                    <div class="ui was present checkbox" style="padding: 0.5em;">
+                        <input type="checkbox">
+                        <label data-localize="Yes"></label>
                     </div>
-                </div>
-            </div>
-            <div class="extra content">
-                <span>
-                    <i class="user icon"></i>
-                    {{employee.Office}}
-                </span>
-            </div>
-        </div>
-    </div>
+                </th>
+                <th class="mini">
+                    <label data-localize="CheckInTime"></label>
+                    <div class="ui action fluid input">
+                        <input type="time" class="check-in time" />
+                        <button class="ui icon button" data-localized-title="UpdateEmptyCheckIns" onclick="updateCheckIns()">
+                            <i class="chevron right icon"></i>
+                        </button>
+                    </div>
+                </th>
+                <th class="mini">
+                    <label data-localize="CheckOutTime"></label>
+                    <div class="ui action fluid input">
+                        <input type="time" class="check-out time" />
+                        <button class="ui icon button" data-localized-title="UpdateEmptyCheckOuts" onclick="updateCheckOuts()">
+                            <i class="chevron right icon"></i>
+                        </button>
+                    </div>
+                </th>
+                <th class="mini" data-localize="OvertimeHours"></th>
+                <th data-localize="AbsenteismReason"></th>
+                <th class="mini" data-localize="Update"></th>
+            </tr>
+        </thead>
+        <tbody>
+            @foreach (var employee in Model)
+            {
+                <tr data-employee-id="@employee.EmployeeId" data-attendance-id="">
+                    <td>@employee.EmployeeId</td>
+                    <td>@employee.FirstName @employee.MiddleName @employee.LastName</td>
+                    <td>
+                        <div class="ui was present checkbox">
+                            <input type="checkbox">
+                            <label>Yes</label>
+                        </div>
+                    </td>
+                    <td>
+                        <input type="time" class="check-in time" />
+                    </td>
+                    <td>
+                        <input type="time" class="check-out time" />
+                    </td>
+                    <td>
+                        <input type="text" class="decimal overtime-hours" />
+                    </td>
+                    <td><input type="text" class="reason" /></td>
+                    <td><button class="ui button">Update</button></td>
+                </tr>
+            }
+        </tbody>
+    </table>
+
     <div class="vpad8">
-        <a href="javascript:void(0);" onclick="updateAll()" class="ui teal button">Update All</a>
+        <button onclick="updateAll()" class="ui teal button">Update All</button>
     </div>
-    {{success()}}
+
 </div>
+
 <script>
-    $("#DateInputDate").val(window.today);
+    loadUI();
+    $(".attendance.segment").fadeIn(1000);
+    $(".ui.checkbox").checkbox();
 
-    frapidApp.controller("AttendanceController", function ($timeout, $scope, $sce, $window) {
-        function requestEmployees() {
-            const url = "/api/views/hrm/employee-view/all";
-            return window.getAjaxRequest(url);
-        };
-
-        function requestAttendance(date) {
+    $("#ShowButton").off("click").on("click", function () {
+        function request(date) {
             const url = "/api/forms/hrm/attendances/get-where/-1/";
 
             const filters = [];
@@ -94,126 +112,123 @@
             return window.getAjaxRequest(url, "POST", data);
         };
 
-        $scope.show = function() {
-            const requestEmployeesAjax = requestEmployees();
+        const date = window.parseLocalizedDate($("#DateInputText").val());
 
-            requestEmployeesAjax.success(function (employees) {
-                const date = window.parseLocalizedDate($("#DateInputDate").val());
+        const ajax = request(date);
 
-                const requestAttendanceAjax = requestAttendance(date);
+        ajax.success(function (attendance) {
+            alert(JSON.stringify(attendance));
+            //const a = window.Enumerable.From(attendance)
+            //    .Where(function (x) { return x.EmployeeId === employee.EmployeeId }).FirstOrDefault() || new Object();
 
-                requestAttendanceAjax.success(function (attendance) {
-                    $.each(employees, function (i, v) {
-                        var employee = v;
-
-                        const a = $window.Enumerable.From(attendance)
-                            .Where(function (x) { return x.EmployeeId === employee.EmployeeId }).FirstOrDefault() || new Object();
-
-                        a.CheckInTime = (a.CheckInTime || "").toString().toTime();
-                        a.CheckOutTime = (a.CheckOutTime || "").toString().toTime();
-                        employees[i].Attendance = a;
-                    });
-
-                    $scope.$apply(function () {
-                        $scope.employees = employees;
-                    });
-                });
-            });
-        };
-
-        $scope.show();
-
-        $scope.success = function() {
-            $timeout(function() {
-                const checkboxes = $(":checkbox");
-                checkboxes.each(function() {
-                    toggleAttendance(this);
-                });
-
-                $window.loadDatepicker();
-                $window.setRegionalFormat();
-                $("#Attendance").fadeIn(500);
-            }, 500);
-        };
+            //a.CheckInTime = (a.CheckInTime || "").toString().toTime();
+            //a.CheckOutTime = (a.CheckOutTime || "").toString().toTime();
+            //employees[i].Attendance = a;
+        });
     });
 
-    function toggleAttendance(sender) {
-        sender = $(sender);
-        const isPresent = sender.is(":checked");
-        const employeeId = sender.attr("data-employee-id");
-        const el = $('.card[data-employee-id="' + employeeId + '"]');
+    function updateAll() {
+        function request(attendnaces) {
+            const url = "/api/forms/hrm/attendance/bulk-import";
+            const data = JSON.stringify(attendnaces);
 
-        if (isPresent) {
-            el.find(".absent").hide();
-            el.find(".present").fadeIn(200);
-        } else {
-            el.find(".present").hide();
-            el.find(".absent").fadeIn(200);
-        };
-    };
-
-    function getTime(el) {
-        const time = el.val();
-        const regex = /^\s*([01]?\d|2[0-3]):?([0-5]\d)\s*$/;
-
-        if (regex.test(time)) {
-            return time;
+            return window.getAjaxRequest(url, "POST", data);
         };
 
-        return null;
-    };
+        function getModel() {
+            function getTime(el) {
+                const time = el.val();
+                const regex = /^\s*([01]?\d|2[0-3]):?([0-5]\d)\s*$/;
 
-    function getAttendance(card) {
-        const attendanceId = (card.attr("data-attendance-id") || null);
-        const employeeId = card.attr("data-employee-id");
-        const isPresent = card.find("input:checkbox").is(":checked");
-        const checkInTime = window.getTime(card.find("input.check-in"));
-        const checkOutTime = window.getTime(card.find("input.check-out"));
-        const overTimeHours = card.find("input.overtime-hours").val();
-        const reason = card.find("textarea").val();
+                if (regex.test(time)) {
+                    return time;
+                };
 
-        const attendance = new Object();
-        attendance.attendance_id = attendanceId;
-        attendance.office_id = window.metaView.OfficeId;
-        attendance.employee_id = employeeId;
-        attendance.attendance_date = window.parseLocalizedDate($("#DateInputDate").val());
-        attendance.was_present = isPresent;
-        attendance.check_in_time = isPresent ? checkInTime : null;
-        attendance.check_out_time = isPresent ? checkOutTime : null;
-        attendance.overtime_hours = overTimeHours;
-        attendance.was_absent = !attendance.was_present;
-        attendance.reason_for_absenteeism = attendance.was_absent ? reason : null;
-        attendance.audit_user_id = window.userId;
-        attendance.audit_ts = new Date();
+                return null;
+            };
 
-        return attendance;
-    };
+            function getAttendance(row) {
+                const attendanceDate = window.parseLocalizedDate($("#DateInputText").val());
+                const attendanceId = (row.attr("data-attendance-id") || null);
+                const employeeId = row.attr("data-employee-id");
+                const isPresent = row.find("input:checkbox").is(":checked");
+                const checkInTime = getTime(row.find("input.check-in"));
+                const checkOutTime = getTime(row.find("input.check-out"));
+                const overTimeHours = window.parseFloat2(row.find("input.overtime-hours").val()) || 0;
+                const reason = row.find("input.reason").val();
 
-    function request(attendnaces) {
-        const url = "/api/forms/hrm/attendance/bulk-import";
-        const data = JSON.stringify(attendnaces);
+                const attenance =
+                {
+                    AttendanceId: attendanceId,
+                    OfficeId: window.metaView.OfficeId,
+                    EmployeeId: employeeId,
+                    AttendanceDate: attendanceDate,
+                    WasPresent: isPresent,
+                    CheckInTime: isPresent ? checkInTime : null,
+                    CheckOutTime: isPresent ? checkOutTime : null,
+                    OvertimeHours: overTimeHours,
+                    WasAbsent: !isPresent,
+                    ReasonForAbsenteeism: !isPresent ? reason : null,
+                    AuditUserId: window.userId,
+                    AuditTs: new Date()
+                };
 
-        return window.getAjaxRequest(url, "POST", data);
-    };
+                return attenance;
+            };
 
-    function sendRequest(attendances) {
-        const ajax = request(attendances);
+            const candidates = $("table.attendance tbody tr");
+            const model = [];
+
+
+
+            $.each(candidates, function () {
+                const row = $(this);
+
+                const attendance = getAttendance(row);
+                model.push(attendance);
+            });
+
+
+            return model;
+        };
+
+        const model = getModel();
+        const ajax = request(model);
 
         ajax.success(function () {
             window.location = window.location.pathname;
         });
-
     };
 
-    function updateAll() {
-        const cards = $(".attendance.card");
-        var attendances = [];
+    $(".attendance.table thead input[type='checkbox']").off("change").on("change", function () {
+        const el = $(this);
+        const state = el.is(":checked");
 
-        cards.each(function () {
+        $(".attendance.table tbody input[type='checkbox']").prop("checked", state);
+    });
+
+    function updateCheckIns() {
+        var value = $(".attendance.table thead input.check-in.time").val();
+
+
+        $(".attendance.table tbody input.check-in.time").each(function () {
             const el = $(this);
-            attendances.push(getAttendance(el));
+            if (!el.val().trim()) {
+                el.val(value);
+            };
         });
+    };
 
-        sendRequest(attendances);
+
+    function updateCheckOuts() {
+        var value = $(".attendance.table thead input.check-out.time").val();
+
+
+        $(".attendance.table tbody input.check-out.time").each(function () {
+            const el = $(this);
+            if (!el.val().trim()) {
+                el.val(value);
+            };
+        });
     };
 </script>

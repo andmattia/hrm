@@ -155,13 +155,15 @@ WriteLiteral(">\r\n                        <input");
 
 WriteLiteral(" type=\"time\"");
 
-WriteLiteral(" class=\"time\"");
+WriteLiteral(" class=\"check-in time\"");
 
 WriteLiteral(" />\r\n                        <button");
 
 WriteLiteral(" class=\"ui icon button\"");
 
 WriteLiteral(" data-localized-title=\"UpdateEmptyCheckIns\"");
+
+WriteLiteral(" onclick=\"updateCheckIns()\"");
 
 WriteLiteral(">\r\n                            <i");
 
@@ -184,13 +186,15 @@ WriteLiteral(">\r\n                        <input");
 
 WriteLiteral(" type=\"time\"");
 
-WriteLiteral(" class=\"time\"");
+WriteLiteral(" class=\"check-out time\"");
 
 WriteLiteral(" />\r\n                        <button");
 
 WriteLiteral(" class=\"ui icon button\"");
 
 WriteLiteral(" data-localized-title=\"UpdateEmptyCheckOuts\"");
+
+WriteLiteral(" onclick=\"updateCheckOuts()\"");
 
 WriteLiteral(">\r\n                            <i");
 
@@ -294,25 +298,27 @@ WriteLiteral(">\r\n                            <label>Yes</label>\r\n           
 
 WriteLiteral(" type=\"time\"");
 
-WriteLiteral(" class=\"time\"");
+WriteLiteral(" class=\"check-in time\"");
 
 WriteLiteral(" />\r\n                    </td>\r\n                    <td>\r\n                       " +
 " <input");
 
 WriteLiteral(" type=\"time\"");
 
-WriteLiteral(" class=\"time\"");
+WriteLiteral(" class=\"check-out time\"");
 
 WriteLiteral(" />\r\n                    </td>\r\n                    <td>\r\n                       " +
 " <input");
 
 WriteLiteral(" type=\"text\"");
 
-WriteLiteral(" class=\"integer\"");
+WriteLiteral(" class=\"decimal overtime-hours\"");
 
 WriteLiteral(" />\r\n                    </td>\r\n                    <td><input");
 
 WriteLiteral(" type=\"text\"");
+
+WriteLiteral(" class=\"reason\"");
 
 WriteLiteral(" /></td>\r\n                    <td><button");
 
@@ -356,32 +362,47 @@ WriteLiteral(">Update All</button>\r\n    </div>\r\n\r\n</div>\r\n\r\n<script>\r
 "equest(attendnaces) {\r\n            const url = \"/api/forms/hrm/attendance/bulk-i" +
 "mport\";\r\n            const data = JSON.stringify(attendnaces);\r\n\r\n            re" +
 "turn window.getAjaxRequest(url, \"POST\", data);\r\n        };\r\n\r\n        function g" +
-"etModel() {\r\n            function getAttendance(row) {\r\n                const at" +
-"tendanceDate = window.parseLocalizedDate($(\"#DateInputText\").val());\r\n          " +
-"      const attendanceId = (row.attr(\"data-attendance-id\") || null);\r\n          " +
-"      const employeeId = row.attr(\"data-employee-id\");\r\n                const is" +
-"Present = row.find(\"input:checkbox\").is(\":checked\");\r\n                const chec" +
-"kInTime = window.getTime(row.find(\"input.check-in\"));\r\n                const che" +
-"ckOutTime = window.getTime(row.find(\"input.check-in\"));\r\n                const o" +
-"verTimeHours = window.parseFloat2(row.find(\"input.overtime-hours\").val()) || 0;\r" +
-"\n                const reason = row.find(\"input.reason\").val();\r\n\r\n             " +
-"   return new\r\n                {\r\n                    AttendanceId: attendanceId" +
-",\r\n                    OfficeId: window.metaView.OfficeId,\r\n                    " +
-"EmployeeId: employeeId,\r\n                    AttendanceDate: attendanceDate,\r\n  " +
-"                  WasPresent: isPresent,\r\n                    CheckInTime: isPre" +
-"sent ? checkInTime : null,\r\n                    CheckOutTime: isPresent ? checkO" +
-"utTime : null,\r\n                    OvertimeHours: overTimeHours,\r\n             " +
-"       WasAbsent: !isPresent,\r\n                    ReasonForAbsenteeism: !isPres" +
-"ent ? reason : null,\r\n                    AuditUserId: window.userId,\r\n         " +
-"           AuditTs: new Date()\r\n                };\r\n            };\r\n\r\n          " +
-"  const candidates = $(\"table.attendance tbody tr\");\r\n            const model = " +
-"[];\r\n\r\n\r\n\r\n            $.each(candidates, function () {\r\n                const r" +
-"ow = $(this);\r\n\r\n                const attendance = getAttendance(row);\r\n       " +
-"         model.push(attendance);\r\n            });\r\n\r\n\r\n            return model;" +
-"\r\n        };\r\n\r\n        const cards = $(\".attendance.card\");\r\n        const mode" +
-"l = getModel();\r\n        const ajax = request(model);\r\n\r\n        ajax.success(fu" +
-"nction () {\r\n            window.location = window.location.pathname;\r\n        })" +
-";\r\n\r\n    };\r\n\r\n</script>");
+"etModel() {\r\n            function getTime(el) {\r\n                const time = el" +
+".val();\r\n                const regex = /^\\s*([01]?\\d|2[0-3]):?([0-5]\\d)\\s*$/;\r\n\r" +
+"\n                if (regex.test(time)) {\r\n                    return time;\r\n    " +
+"            };\r\n\r\n                return null;\r\n            };\r\n\r\n            fu" +
+"nction getAttendance(row) {\r\n                const attendanceDate = window.parse" +
+"LocalizedDate($(\"#DateInputText\").val());\r\n                const attendanceId = " +
+"(row.attr(\"data-attendance-id\") || null);\r\n                const employeeId = ro" +
+"w.attr(\"data-employee-id\");\r\n                const isPresent = row.find(\"input:c" +
+"heckbox\").is(\":checked\");\r\n                const checkInTime = getTime(row.find(" +
+"\"input.check-in\"));\r\n                const checkOutTime = getTime(row.find(\"inpu" +
+"t.check-out\"));\r\n                const overTimeHours = window.parseFloat2(row.fi" +
+"nd(\"input.overtime-hours\").val()) || 0;\r\n                const reason = row.find" +
+"(\"input.reason\").val();\r\n\r\n                const attenance =\r\n                {\r" +
+"\n                    AttendanceId: attendanceId,\r\n                    OfficeId: " +
+"window.metaView.OfficeId,\r\n                    EmployeeId: employeeId,\r\n        " +
+"            AttendanceDate: attendanceDate,\r\n                    WasPresent: isP" +
+"resent,\r\n                    CheckInTime: isPresent ? checkInTime : null,\r\n     " +
+"               CheckOutTime: isPresent ? checkOutTime : null,\r\n                 " +
+"   OvertimeHours: overTimeHours,\r\n                    WasAbsent: !isPresent,\r\n  " +
+"                  ReasonForAbsenteeism: !isPresent ? reason : null,\r\n           " +
+"         AuditUserId: window.userId,\r\n                    AuditTs: new Date()\r\n " +
+"               };\r\n\r\n                return attenance;\r\n            };\r\n\r\n      " +
+"      const candidates = $(\"table.attendance tbody tr\");\r\n            const mode" +
+"l = [];\r\n\r\n\r\n\r\n            $.each(candidates, function () {\r\n                con" +
+"st row = $(this);\r\n\r\n                const attendance = getAttendance(row);\r\n   " +
+"             model.push(attendance);\r\n            });\r\n\r\n\r\n            return mo" +
+"del;\r\n        };\r\n\r\n        const model = getModel();\r\n        const ajax = requ" +
+"est(model);\r\n\r\n        ajax.success(function () {\r\n            window.location =" +
+" window.location.pathname;\r\n        });\r\n    };\r\n\r\n    $(\".attendance.table thea" +
+"d input[type=\'checkbox\']\").off(\"change\").on(\"change\", function () {\r\n        con" +
+"st el = $(this);\r\n        const state = el.is(\":checked\");\r\n\r\n        $(\".attend" +
+"ance.table tbody input[type=\'checkbox\']\").prop(\"checked\", state);\r\n    });\r\n\r\n  " +
+"  function updateCheckIns() {\r\n        var value = $(\".attendance.table thead in" +
+"put.check-in.time\").val();\r\n\r\n\r\n        $(\".attendance.table tbody input.check-i" +
+"n.time\").each(function () {\r\n            const el = $(this);\r\n            if (!e" +
+"l.val().trim()) {\r\n                el.val(value);\r\n            };\r\n        });\r\n" +
+"    };\r\n\r\n\r\n    function updateCheckOuts() {\r\n        var value = $(\".attendance" +
+".table thead input.check-out.time\").val();\r\n\r\n\r\n        $(\".attendance.table tbo" +
+"dy input.check-out.time\").each(function () {\r\n            const el = $(this);\r\n " +
+"           if (!el.val().trim()) {\r\n                el.val(value);\r\n            " +
+"};\r\n        });\r\n    };\r\n</script>");
 
         }
     }

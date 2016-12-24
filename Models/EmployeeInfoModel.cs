@@ -26,7 +26,7 @@ namespace MixERP.HRM.Models
         public static async Task<EmployeeInfo> FromStoreAsync(string tenant, int employeeId)
         {
             var details =
-                await Employees.GetEmployeeViewAsync(tenant, employeeId).ConfigureAwait(false);
+                await Employees.GetEmployeeAsync(tenant, employeeId).ConfigureAwait(false);
 
             var experiences =
                 await EmployeeExperiences.GetEmployeeExperiencesAsync(tenant, employeeId).ConfigureAwait(false);

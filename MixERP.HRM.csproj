@@ -138,6 +138,10 @@
     <Compile Include="Controllers\Tasks\ResignationController.cs" />
     <Compile Include="Controllers\Tasks\TerminationController.cs" />
     <Compile Include="DAL\EmployeeExperiences.cs" />
+    <Compile Include="DAL\EmployeeIdentificationDetails.cs" />
+    <Compile Include="DAL\EmployeeQualifications.cs" />
+    <Compile Include="DAL\Employees.cs" />
+    <Compile Include="DAL\EmployeeSocialNetworks.cs" />
     <Compile Include="DTO\EmployeeExperienceScrudView.cs" />
     <Compile Include="DTO\EmployeeIdentificationDetailScrudView.cs" />
     <Compile Include="DTO\EmployeeQualificationScrudView.cs" />
@@ -202,6 +206,11 @@
       <DependentUpon>Index.cshtml</DependentUpon>
     </Compile>
     <Compile Include="Views\Tasks\Attendance\Index.generated.cs">
+      <AutoGen>True</AutoGen>
+      <DesignTime>True</DesignTime>
+      <DependentUpon>Index.cshtml</DependentUpon>
+    </Compile>
+    <Compile Include="Views\Tasks\Attendance\Index1.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
       <DependentUpon>Index.cshtml</DependentUpon>
@@ -350,7 +359,7 @@
     </Content>
     <Content Include="Views\Tasks\Attendance\Index.cshtml">
       <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
+      <LastGenOutput>Index1.generated.cs</LastGenOutput>
     </Content>
     <Content Include="Views\Tasks\LeaveApplications\Index.cshtml">
       <Generator>RazorGenerator</Generator>
