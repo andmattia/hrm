@@ -129,19 +129,19 @@
 
     function updateAll() {
         function request(attendnaces) {
-            const url = "/api/forms/hrm/attendance/bulk-import";
+            const url = "/dashboard/hrm/tasks/attendance";
             const data = JSON.stringify(attendnaces);
 
             return window.getAjaxRequest(url, "POST", data);
         };
 
         function getModel() {
-            function getTime(el) {
+            function getTimeSpan(el) {
                 const time = el.val();
                 const regex = /^\s*([01]?\d|2[0-3]):?([0-5]\d)\s*$/;
 
                 if (regex.test(time)) {
-                    return time;
+                    return window.moment(time, "HH:mm").format('HH:mm:00');
                 };
 
                 return null;
@@ -150,10 +150,10 @@
             function getAttendance(row) {
                 const attendanceDate = window.parseLocalizedDate($("#DateInputText").val());
                 const attendanceId = (row.attr("data-attendance-id") || null);
-                const employeeId = row.attr("data-employee-id");
+                const employeeId = window.parseInt(row.attr("data-employee-id"));
                 const isPresent = row.find("input:checkbox").is(":checked");
-                const checkInTime = getTime(row.find("input.check-in"));
-                const checkOutTime = getTime(row.find("input.check-out"));
+                const checkInTime = getTimeSpan(row.find("input.check-in"));
+                const checkOutTime = getTimeSpan(row.find("input.check-out"));
                 const overTimeHours = window.parseFloat2(row.find("input.overtime-hours").val()) || 0;
                 const reason = row.find("input.reason").val();
 

@@ -137,11 +137,13 @@
     <Compile Include="Controllers\Tasks\LeaveApplicationController.cs" />
     <Compile Include="Controllers\Tasks\ResignationController.cs" />
     <Compile Include="Controllers\Tasks\TerminationController.cs" />
+    <Compile Include="DAL\Attendances.cs" />
     <Compile Include="DAL\EmployeeExperiences.cs" />
     <Compile Include="DAL\EmployeeIdentificationDetails.cs" />
     <Compile Include="DAL\EmployeeQualifications.cs" />
     <Compile Include="DAL\Employees.cs" />
     <Compile Include="DAL\EmployeeSocialNetworks.cs" />
+    <Compile Include="DTO\Attendance.cs" />
     <Compile Include="DTO\EmployeeExperienceScrudView.cs" />
     <Compile Include="DTO\EmployeeIdentificationDetailScrudView.cs" />
     <Compile Include="DTO\EmployeeQualificationScrudView.cs" />
@@ -150,11 +152,6 @@
     <Compile Include="Models\EmployeeInfoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\EmployeeInfo.cs" />
-    <Compile Include="Views\Reports\Attendances\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
     <Compile Include="Views\Setup\EducationLevels\Index.generated.cs">
       <AutoGen>True</AutoGen>
       <DesignTime>True</DesignTime>
@@ -210,96 +207,6 @@
       <DesignTime>True</DesignTime>
       <DependentUpon>Index.cshtml</DependentUpon>
     </Compile>
-    <Compile Include="Views\Tasks\Attendance\Index1.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Tasks\Contracts\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Tasks\Employees\Experiences.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Experiences.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Tasks\Employees\IdentificationDetails.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>IdentificationDetails.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Tasks\Employees\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Tasks\Employees\Info.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Info.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Tasks\Employees\LeaveApplication.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>LeaveApplication.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Tasks\Employees\Qualifications.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Qualifications.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Tasks\Employees\SocialNetworks.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>SocialNetworks.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Tasks\Exits\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Tasks\LeaveApplications\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Tasks\Resignations\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Tasks\Terminations\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Verification\Contracts\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Verification\Exits\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Verification\LeaveApplications\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Verification\Resignations\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Verification\Terminations\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -309,14 +216,8 @@
   </ItemGroup>
   <ItemGroup>
     <Content Include="web.config" />
-    <Content Include="Views\Tasks\Employees\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Tasks\Contracts\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
+    <Content Include="Views\Tasks\Employees\Index.cshtml" />
+    <Content Include="Views\Tasks\Contracts\Index.cshtml" />
     <Content Include="Views\Setup\EducationLevels\Index.cshtml">
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
@@ -357,74 +258,23 @@
       <Generator>RazorGenerator</Generator>
       <LastGenOutput>Index.generated.cs</LastGenOutput>
     </Content>
-    <Content Include="Views\Tasks\Attendance\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index1.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Tasks\LeaveApplications\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Tasks\Resignations\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Tasks\Terminations\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Tasks\Exits\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Verification\Contracts\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Verification\LeaveApplications\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Verification\Resignations\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Verification\Terminations\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Verification\Exits\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Reports\Attendances\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Tasks\Employees\Info.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Info.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Tasks\Employees\IdentificationDetails.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>IdentificationDetails.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Tasks\Employees\SocialNetworks.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>SocialNetworks.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Tasks\Employees\Experiences.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Experiences.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Tasks\Employees\Qualifications.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Qualifications.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Tasks\Employees\LeaveApplication.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>LeaveApplication.generated.cs</LastGenOutput>
-    </Content>
+    <Content Include="Views\Tasks\Attendance\Index.cshtml" />
+    <Content Include="Views\Tasks\LeaveApplications\Index.cshtml" />
+    <Content Include="Views\Tasks\Resignations\Index.cshtml" />
+    <Content Include="Views\Tasks\Terminations\Index.cshtml" />
+    <Content Include="Views\Tasks\Exits\Index.cshtml" />
+    <Content Include="Views\Verification\Contracts\Index.cshtml" />
+    <Content Include="Views\Verification\LeaveApplications\Index.cshtml" />
+    <Content Include="Views\Verification\Resignations\Index.cshtml" />
+    <Content Include="Views\Verification\Terminations\Index.cshtml" />
+    <Content Include="Views\Verification\Exits\Index.cshtml" />
+    <Content Include="Views\Reports\Attendances\Index.cshtml" />
+    <Content Include="Views\Tasks\Employees\Info.cshtml" />
+    <Content Include="Views\Tasks\Employees\IdentificationDetails.cshtml" />
+    <Content Include="Views\Tasks\Employees\SocialNetworks.cshtml" />
+    <Content Include="Views\Tasks\Employees\Experiences.cshtml" />
+    <Content Include="Views\Tasks\Employees\Qualifications.cshtml" />
+    <Content Include="Views\Tasks\Employees\LeaveApplication.cshtml" />
     <None Include="web.Debug.config">
       <DependentUpon>web.config</DependentUpon>
     </None>
