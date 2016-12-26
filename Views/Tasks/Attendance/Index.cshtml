@@ -101,12 +101,27 @@
     $(".attendance.segment").fadeIn(1000);
     $(".ui.checkbox").checkbox();
 
+    $("input.reason").on("blur", function () {
+        const el = $(this);
+
+        if(!el.val().trim()) {
+            return;
+        };
+
+        const row = el.closest("tr"); 
+        row.find("input.check-in").val("");        row.find("input.check-out").val("");
+        row.find(".was.present.checkbox input:checkbox").prop("checked", false);        row.find("input.overtime-hours").val("");
+    });
+
+
     $("#ShowButton").off("click").on("click", function () {
         function request(date) {
             const url = "/api/forms/hrm/attendances/get-where/-1/";
 
             const filters = [];
             filters.push(window.getAjaxColumnFilter("WHERE", "AttendanceDate", "System.DateTime", window.FilterConditions.IsEqualTo, date));
+            filters.push(window.getAjaxColumnFilter("AND", "OfficeId", "int", window.FilterConditions.IsEqualTo, window.metaView.OfficeId));
+
             const data = JSON.stringify(filters);
 
             return window.getAjaxRequest(url, "POST", data);
@@ -117,13 +132,14 @@
         const ajax = request(date);
 
         ajax.success(function (attendance) {
-            alert(JSON.stringify(attendance));
-            //const a = window.Enumerable.From(attendance)
-            //    .Where(function (x) { return x.EmployeeId === employee.EmployeeId }).FirstOrDefault() || new Object();
+            $.each(attendance, function() {
+                const model = this;
+                const target = $("tr[data-employee-id='" + model.EmployeeId + "']");
 
-            //a.CheckInTime = (a.CheckInTime || "").toString().toTime();
-            //a.CheckOutTime = (a.CheckOutTime || "").toString().toTime();
-            //employees[i].Attendance = a;
+                target.attr("data-attendance-id", model.AttendanceId);
+                target.find("input.check-in").val(model.CheckInTime.substring(0, 5));                target.find("input.check-out").val(model.CheckOutTime.substring(0, 5));
+                target.find(".was.present.checkbox input:checkbox").prop("checked", model.WasPresent);                target.find("input.overtime-hours").val(model.OvertimeHours);                target.find("input.reason").val(model.ReasonForAbsenteeism);
+            });
         });
     });
 
@@ -231,4 +247,8 @@
             };
         });
     };
+
+    setTimeout(function() {
+        $("#ShowButton").trigger("click");
+    }, 1000);
 </script>

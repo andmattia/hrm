@@ -113,6 +113,10 @@ SELECT 'MA-0004', 'Matthias', '', 'Fitzpatrick', 'Fitzpatrick, Matthias', 'F', '
 
 
 
+UPDATE hrm.employees
+SET office_id = 1;
+
+
 DO
 $$
     DECLARE _attendance_date date;

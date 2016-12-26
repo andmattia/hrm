@@ -439,7 +439,7 @@ CREATE TABLE hrm.attendances
     reason_for_absenteeism                  national character varying(1000),
     audit_user_id                           integer NULL REFERENCES account.users(user_id),
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE UNIQUE INDEX attendance_date_employee_id_uix
