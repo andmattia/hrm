@@ -5,9 +5,11 @@ using Frapid.Areas.Conventions.Attachments;
 using Frapid.Framework.Extensions;
 using Frapid.WebsiteBuilder;
 using Serilog;
+using Frapid.Areas.CSRF;
 
 namespace MixERP.HRM.Controllers.Services
 {
+    [AntiForgery]
     public class AttachmentController : FrapidController
     {
         [Route("dashboard/hrm/services/attachments")]
