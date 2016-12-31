@@ -1,3 +1,13 @@
+INSERT INTO hrm.week_days(week_day_id, week_day_code, week_day_name)
+SELECT  1,  'SUN',  'Sunday'    UNION ALL
+SELECT  2,  'MON',  'Monday'    UNION ALL
+SELECT  3,  'TUE',  'Tuesday'   UNION ALL
+SELECT  4,  'WED',  'Wednesday' UNION ALL
+SELECT  5,  'THU',  'Thursday'  UNION ALL
+SELECT  6,  'FRI',  'Friday'    UNION ALL
+SELECT  7,  'SAT',  'Saturday';
+ 
+
 INSERT INTO core.offices(office_code, office_name)
 SELECT 'BR', 'Branch Office';
 

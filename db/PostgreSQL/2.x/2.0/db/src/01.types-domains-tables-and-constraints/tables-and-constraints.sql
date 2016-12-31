@@ -229,7 +229,7 @@ CREATE TABLE hrm.employees
     phone_cell                              national character varying(128) DEFAULT(''),
     phone_office_extension                  national character varying(128) DEFAULT(''),
     phone_emergency                         national character varying(128) DEFAULT(''),
-    phone_emergency2                        national character varying(128) DEFAULT(''),
+    phone_emergency_2                       national character varying(128) DEFAULT(''),
     email_address                           national character varying(128) DEFAULT(''),
     website                                 national character varying(128) DEFAULT(''),
     blog                                    national character varying(128) DEFAULT(''),

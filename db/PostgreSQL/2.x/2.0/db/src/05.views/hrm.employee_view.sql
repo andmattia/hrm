@@ -47,7 +47,7 @@ SELECT
     hrm.employees.phone_cell,
     hrm.employees.phone_office_extension,
     hrm.employees.phone_emergency,
-    hrm.employees.phone_emergency2,
+    hrm.employees.phone_emergency_2,
     hrm.employees.email_address,
     hrm.employees.website,
     hrm.employees.blog,

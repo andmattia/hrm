@@ -33,7 +33,6 @@ namespace ASP
     using Frapid.Framework;
     using Frapid.i18n;
     using Frapid.Messaging;
-    using Frapid.Mapper.Decorators;
     using Frapid.WebsiteBuilder;
     using MixERP.HRM;
     
@@ -60,7 +59,7 @@ WriteLiteral(@"
 <script>
     var scrudFactory = new Object();
 
-    scrudFactory.title =  ""Shifts"";
+    scrudFactory.title = window.translate(""Shifts"");
 
     scrudFactory.viewAPI = ""/api/forms/hrm/shifts"";
     scrudFactory.viewTableName = ""hrm.shifts"";
@@ -68,7 +67,8 @@ WriteLiteral(@"
     scrudFactory.formAPI = ""/api/forms/hrm/shifts"";
     scrudFactory.formTableName = ""hrm.shifts"";
 
-    scrudFactory.excludedColumns = [""AuditUserId"", ""AuditTs""];
+    scrudFactory.excludedColumns = [""AuditUserId"", ""AuditTs"", ""Deleted""];
+
 
     scrudFactory.allowDelete = true;
     scrudFactory.allowEdit = true;
@@ -96,9 +96,9 @@ WriteLiteral(@"
     });
 
     scrudFactory.card = {        
-        header: ""shift_name"",
-        meta: ""begins_from"",
-        description: ""ends_on""
+        header: ""ShiftName"",
+        meta: ""BeginsFrom"",
+        description: ""EndsOn""
     };
 
 </script>
