@@ -642,7 +642,7 @@ BEGIN
     IF(NEW.verification_status_id > 0) THEN        
         UPDATE hrm.employees
         SET
-            service_ended_on = NEW.service_end_date
+            service_ended_on = _service_end
         WHERE employee_id = NEW.employee_id;
 
         IF(_new_status_id IS NOT NULL) THEN
@@ -906,10 +906,38 @@ FROM hrm.employment_status_codes
 WHERE NOT hrm.employment_status_codes.deleted;
 
 
--->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.exit_verification_scrud_view.sql --<--<--
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.exit_scrud_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.exit_scrud_view;
 
 CREATE VIEW hrm.exit_scrud_view
+AS
+SELECT
+    hrm.exits.exit_id,
+    hrm.exits.employee_id,
+    hrm.employees.employee_code || ' (' || hrm.employees.employee_name || ')' AS employee,
+    hrm.employees.photo,
+    hrm.exits.reason,
+    forwarded_to.employee_code || ' (' || forwarded_to.employee_name || ' )' AS forward_to,
+    hrm.employment_statuses.employment_status_code || ' (' || hrm.employment_statuses.employment_status_name || ')' AS employment_status,
+    hrm.exit_types.exit_type_code || ' (' || hrm.exit_types.exit_type_name || ')' AS exit_type,
+    hrm.exits.details,
+    hrm.exits.exit_interview_details
+FROM hrm.exits
+INNER JOIN hrm.employees
+ON hrm.employees.employee_id = hrm.exits.employee_id
+INNER JOIN hrm.employment_statuses
+ON hrm.employment_statuses.employment_status_id = hrm.exits.change_status_to
+INNER JOIN hrm.exit_types
+ON hrm.exit_types.exit_type_id = hrm.exits.exit_type_id
+INNER JOIN hrm.employees AS forwarded_to
+ON forwarded_to.employee_id = hrm.exits.forward_to
+AND NOT hrm.exits.deleted;
+
+
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.exit_verification_scrud_view.sql --<--<--
+DROP VIEW IF EXISTS hrm.exit_verification_scrud_view;
+
+CREATE VIEW hrm.exit_verification_scrud_view
 AS
 SELECT
     hrm.exits.exit_id,
@@ -1007,6 +1035,29 @@ INNER JOIN core.week_days
 ON core.week_days.week_day_id = hrm.office_hours.week_day_id
 WHERE NOT hrm.office_hours.deleted;
 
+-->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.resignation_scrud_view.sql --<--<--
+DROP VIEW IF EXISTS hrm.resignation_scrud_view;
+
+CREATE VIEW hrm.resignation_scrud_view
+AS
+SELECT
+    hrm.resignations.resignation_id,
+    account.users.name AS entered_by,
+    hrm.resignations.notice_date,
+    hrm.resignations.desired_resign_date,
+    hrm.employees.employee_code || ' (' || hrm.employees.employee_name || ')' AS employee,
+    hrm.employees.photo,
+    forward_to.employee_code || ' (' || forward_to.employee_name || ')' AS forward_to,
+    hrm.resignations.reason
+FROM hrm.resignations
+INNER JOIN account.users
+ON account.users.user_id = hrm.resignations.entered_by
+INNER JOIN hrm.employees
+ON hrm.employees.employee_id = hrm.resignations.employee_id
+INNER JOIN hrm.employees AS forward_to
+ON forward_to.employee_id = hrm.resignations.forward_to
+WHERE NOT hrm.resignations.deleted;
+
 -->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.resignation_verification_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.resignation_verification_scrud_view;
 
@@ -1030,29 +1081,6 @@ INNER JOIN hrm.employees AS forward_to
 ON forward_to.employee_id = hrm.resignations.forward_to
 WHERE verification_status_id = 0
 AND NOT hrm.resignations.deleted;
-
--->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.resignation_view.sql --<--<--
-DROP VIEW IF EXISTS hrm.resignation_scrud_view;
-
-CREATE VIEW hrm.resignation_scrud_view
-AS
-SELECT
-    hrm.resignations.resignation_id,
-    account.users.name AS entered_by,
-    hrm.resignations.notice_date,
-    hrm.resignations.desired_resign_date,
-    hrm.employees.employee_code || ' (' || hrm.employees.employee_name || ')' AS employee,
-    hrm.employees.photo,
-    forward_to.employee_code || ' (' || forward_to.employee_name || ')' AS forward_to,
-    hrm.resignations.reason
-FROM hrm.resignations
-INNER JOIN account.users
-ON account.users.user_id = hrm.resignations.entered_by
-INNER JOIN hrm.employees
-ON hrm.employees.employee_id = hrm.resignations.employee_id
-INNER JOIN hrm.employees AS forward_to
-ON forward_to.employee_id = hrm.resignations.forward_to
-WHERE NOT hrm.resignations.deleted;
 
 -->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/PostgreSQL/2.x/2.0/db/src/05.scrud-views/hrm.termination_scrud_view.sql --<--<--
 DROP VIEW IF EXISTS hrm.termination_scrud_view;
