@@ -25,6 +25,14 @@ CREATE TABLE hrm.week_days
 	deleted									boolean DEFAULT(false)
 );
 
+CREATE UNIQUE INDEX week_days_week_day_code_uix
+ON hrm.week_days(UPPER(week_day_code))
+WHERE NOT deleted;
+
+CREATE UNIQUE INDEX week_days_week_day_name_uix
+ON hrm.week_days(UPPER(week_day_name))
+WHERE NOT deleted;
+
 CREATE TABLE hrm.identification_types
 (
 	identification_type_code                national character varying(12) NOT NULL PRIMARY KEY,
@@ -34,6 +42,14 @@ CREATE TABLE hrm.identification_types
 	audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)    
 );
+
+CREATE UNIQUE INDEX identification_types_identification_type_code_uix
+ON hrm.identification_types(UPPER(identification_type_code))
+WHERE NOT deleted;
+
+CREATE UNIQUE INDEX identification_types_identification_type_name_uix
+ON hrm.identification_types(UPPER(identification_type_name))
+WHERE NOT deleted;
 
 CREATE TABLE hrm.social_networks
 (
@@ -56,6 +72,14 @@ CREATE TABLE hrm.departments
 	deleted									boolean DEFAULT(false)
 );
 
+CREATE UNIQUE INDEX departments_department_code_uix
+ON hrm.departments(UPPER(department_code))
+WHERE NOT deleted;
+
+CREATE UNIQUE INDEX departments_department_name_uix
+ON hrm.departments(UPPER(department_name))
+WHERE NOT deleted;
+
 CREATE TABLE hrm.roles
 (
     role_id                           		SERIAL PRIMARY KEY,
@@ -66,6 +90,14 @@ CREATE TABLE hrm.roles
 	deleted									boolean DEFAULT(false)
 );
 
+CREATE UNIQUE INDEX roles_role_code_uix
+ON hrm.roles(UPPER(role_code))
+WHERE NOT deleted;
+
+CREATE UNIQUE INDEX roles_role_name_uix
+ON hrm.roles(UPPER(role_name))
+WHERE NOT deleted;
+
 CREATE TABLE hrm.nationalities
 (
     nationality_code                        national character varying(12) PRIMARY KEY,
@@ -74,6 +106,14 @@ CREATE TABLE hrm.nationalities
     audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
+
+CREATE UNIQUE INDEX nationalities_nationality_code_uix
+ON hrm.nationalities(UPPER(nationality_code))
+WHERE NOT deleted;
+
+CREATE UNIQUE INDEX nationalities_nationality_name_uix
+ON hrm.nationalities(UPPER(nationality_name))
+WHERE NOT deleted;
 
 CREATE TABLE hrm.education_levels
 (
@@ -84,6 +124,10 @@ CREATE TABLE hrm.education_levels
 	deleted									boolean DEFAULT(false)
 );
 
+CREATE UNIQUE INDEX education_levels_education_level_name
+ON hrm.education_levels(UPPER(education_level_name))
+WHERE NOT deleted;
+
 CREATE TABLE hrm.employment_status_codes
 (
     employment_status_code_id               integer NOT NULL PRIMARY KEY,
@@ -93,6 +137,14 @@ CREATE TABLE hrm.employment_status_codes
     audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
+
+CREATE UNIQUE INDEX employment_status_codes_status_code_uix
+ON hrm.employment_status_codes(UPPER(status_code))
+WHERE NOT deleted;
+
+CREATE UNIQUE INDEX employment_status_codes_status_code_name_uix
+ON hrm.employment_status_codes(UPPER(status_code_name))
+WHERE NOT deleted;
 
 CREATE TABLE hrm.employment_statuses
 (
@@ -107,6 +159,14 @@ CREATE TABLE hrm.employment_statuses
 	deleted									boolean DEFAULT(false)
 );
 
+CREATE UNIQUE INDEX employment_statuses_employment_status_code_uix
+ON hrm.employment_statuses(UPPER(employment_status_code))
+WHERE NOT deleted;
+
+CREATE UNIQUE INDEX employment_statuses_employment_status_name_uix
+ON hrm.employment_statuses(UPPER(employment_status_name))
+WHERE NOT deleted;
+
 CREATE TABLE hrm.job_titles
 (
     job_title_id                            SERIAL NOT NULL PRIMARY KEY,
@@ -117,6 +177,14 @@ CREATE TABLE hrm.job_titles
     audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
+
+CREATE UNIQUE INDEX job_titles_job_title_code_uix
+ON hrm.job_titles(UPPER(job_title_code))
+WHERE NOT deleted;
+
+CREATE UNIQUE INDEX job_titles_job_title_name_uix
+ON hrm.job_titles(UPPER(job_title_name))
+WHERE NOT deleted;
 
 CREATE TABLE hrm.pay_grades
 (
@@ -132,6 +200,14 @@ CREATE TABLE hrm.pay_grades
 	deleted									boolean DEFAULT(false)
 );
 
+CREATE UNIQUE INDEX pay_grades_pay_grade_code_uix
+ON hrm.pay_grades(UPPER(pay_grade_code))
+WHERE NOT deleted;
+
+CREATE UNIQUE INDEX pay_grades_pay_grade_name_uix
+ON hrm.pay_grades(UPPER(pay_grade_name))
+WHERE NOT deleted;
+
 CREATE TABLE hrm.shifts
 (
     shift_id                            	SERIAL NOT NULL PRIMARY KEY,
@@ -145,6 +221,14 @@ CREATE TABLE hrm.shifts
 	deleted									boolean DEFAULT(false)
 );
 
+CREATE UNIQUE INDEX shifts_shift_code_uix
+ON hrm.shifts(UPPER(shift_code))
+WHERE NOT deleted;
+
+CREATE UNIQUE INDEX shifts_shift_name_uix
+ON hrm.shifts(UPPER(shift_name))
+WHERE NOT deleted;
+
 CREATE TABLE hrm.leave_types
 (
     leave_type_id                           SERIAL NOT NULL PRIMARY KEY,
@@ -155,6 +239,14 @@ CREATE TABLE hrm.leave_types
     audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
+
+CREATE UNIQUE INDEX leave_types_leave_type_code_uix
+ON hrm.leave_types(UPPER(leave_type_code))
+WHERE NOT deleted;
+
+CREATE UNIQUE INDEX leave_types_leave_type_name_uix
+ON hrm.leave_types(UPPER(leave_type_name))
+WHERE NOT deleted;
 
 CREATE TABLE hrm.office_hours
 (
@@ -180,6 +272,14 @@ CREATE TABLE hrm.leave_benefits
 	deleted									boolean DEFAULT(false)
 );
 
+CREATE UNIQUE INDEX leave_benefits_leave_benefit_code_uix
+ON hrm.leave_benefits(UPPER(leave_benefit_code))
+WHERE NOT deleted;
+
+CREATE UNIQUE INDEX leave_benefits_leave_benefit_name_uix
+ON hrm.leave_benefits(UPPER(leave_benefit_name))
+WHERE NOT deleted;
+
 CREATE TABLE hrm.employee_types
 (
     employee_type_id                        SERIAL NOT NULL PRIMARY KEY,
@@ -189,6 +289,14 @@ CREATE TABLE hrm.employee_types
     audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
+
+CREATE UNIQUE INDEX employee_types_employee_type_code_uix
+ON hrm.employee_types(UPPER(employee_type_code))
+WHERE NOT deleted;
+
+CREATE UNIQUE INDEX employee_types_employee_type_name_uix
+ON hrm.employee_types(UPPER(employee_type_name))
+WHERE NOT deleted;
 
 CREATE TABLE hrm.employees
 (
@@ -248,6 +356,10 @@ CREATE TABLE hrm.employees
 	deleted									boolean DEFAULT(false)
 );
 
+CREATE UNIQUE INDEX employees_employee_code_uix
+ON hrm.employees(UPPER(employee_code))
+WHERE NOT deleted;
+
 CREATE TABLE hrm.employee_identification_details
 (
     employee_identification_detail_id       BIGSERIAL NOT NULL PRIMARY KEY,
@@ -264,8 +376,6 @@ CREATE TABLE hrm.employee_identification_details
 CREATE UNIQUE INDEX employee_identification_details_employee_id_itc_uix
 ON hrm.employee_identification_details(employee_id, UPPER(identification_type_code))
 WHERE NOT deleted;
-
-
 
 CREATE TABLE hrm.employee_social_network_details
 (
@@ -398,6 +508,14 @@ CREATE TABLE hrm.exit_types
     audit_ts                                TIMESTAMP WITH TIME ZONE DEFAULT(NOW()),
 	deleted									boolean DEFAULT(false)
 );
+
+CREATE UNIQUE INDEX exit_types_exit_type_code_uix
+ON hrm.exit_types(exit_type_code)
+WHERE NOT deleted;
+
+CREATE UNIQUE INDEX exit_types_exit_type_name_uix
+ON hrm.exit_types(exit_type_name)
+WHERE NOT deleted;
 
 CREATE TABLE hrm.exits
 (
