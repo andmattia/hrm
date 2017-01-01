@@ -9,12 +9,14 @@
 
     scrudFactory.title = window.translate("VerifyExits");
 
-    scrudFactory.viewAPI = "/api/views/hrm/exit-scrud-view";
-    scrudFactory.viewTableName = "hrm.exit_scrud_view";
+    scrudFactory.viewAPI = "/api/views/hrm/exit-verification-scrud-view";
+    scrudFactory.viewTableName = "hrm.exit_verification_scrud_view";
 
-    scrudFactory.formAPI = "/api/forms/hrm/exit";
+    scrudFactory.formAPI = "/api/forms/hrm/exits";
     scrudFactory.formTableName = "hrm.exits";
-    scrudFactory.hasVerfication = true;
+
+    scrudFactory.hasVerification = true;
+    scrudFactory.verificationApi = "/dashboard/hrm/verification/exits";
 
     scrudFactory.excludedColumns = ["AuditUserId", "AuditTs", "Photo"];
     $.get('/ScrudFactory/View.html', function (view) {

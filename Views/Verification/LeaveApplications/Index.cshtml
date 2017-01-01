@@ -18,7 +18,9 @@
 
     scrudFactory.excludedColumns = ["AuditUserId", "AuditTs", "Photo"];
 
-    scrudFactory.hasVerfication = true;
+    scrudFactory.hasVerification = true;
+    scrudFactory.verificationApi = "/dashboard/hrm/verification/leave-applications";
+
     $.get('/ScrudFactory/View.html', function (view) {
         $("#ScrudFactoryView").html(view);
         $.cachedScript("/assets/js/scrudfactory-view.js");

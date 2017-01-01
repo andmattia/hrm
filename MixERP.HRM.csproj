@@ -82,6 +82,9 @@
       <HintPath>..\..\bin\Frapid.Messaging.dll</HintPath>
     </Reference>
     <Reference Include="Frapid.TokenManager, Version=1.0.0.0, Culture=neutral, PublicKeyToken=null" />
+    <Reference Include="Frapid.WebApi">
+      <HintPath>..\..\bin\Frapid.WebApi.dll</HintPath>
+    </Reference>
     <Reference Include="Frapid.WebsiteBuilder, Version=1.0.0.0, Culture=neutral, processorArchitecture=MSIL">
       <SpecificVersion>False</SpecificVersion>
       <HintPath>..\..\bin\Frapid.WebsiteBuilder.dll</HintPath>
@@ -101,6 +104,10 @@
     <Reference Include="System.Configuration" />
   </ItemGroup>
   <ItemGroup>
+    <Reference Include="System.Web.Http, Version=5.2.3.0, Culture=neutral, PublicKeyToken=31bf3856ad364e35, processorArchitecture=MSIL">
+      <SpecificVersion>False</SpecificVersion>
+      <HintPath>Bin\System.Web.Http.dll</HintPath>
+    </Reference>
     <Reference Include="System.Web.Webpages">
       <HintPath>packages\Microsoft.AspNet.Webpages.3.2.3\lib\net45\System.Web.Webpages.dll</HintPath>
     </Reference>
@@ -125,11 +132,11 @@
     <Compile Include="Controllers\Setup\OfficeHourController.cs" />
     <Compile Include="Controllers\Setup\PayGradeController.cs" />
     <Compile Include="Controllers\Setup\ShiftController.cs" />
-    <Compile Include="Controllers\Verification\ContractVerificationController.cs" />
-    <Compile Include="Controllers\Verification\ExitVerificationController.cs" />
-    <Compile Include="Controllers\Verification\LeaveApplicationVerificationController.cs" />
-    <Compile Include="Controllers\Verification\ResignationVerificationController.cs" />
-    <Compile Include="Controllers\Verification\TerminationVerificationController.cs" />
+    <Compile Include="Controllers\Verifications\ContractVerificationController.cs" />
+    <Compile Include="Controllers\Verifications\ExitVerificationController.cs" />
+    <Compile Include="Controllers\Verifications\LeaveApplicationVerificationController.cs" />
+    <Compile Include="Controllers\Verifications\ResignationVerificationController.cs" />
+    <Compile Include="Controllers\Verifications\TerminationVerificationController.cs" />
     <Compile Include="Controllers\Tasks\AttendanceController.cs" />
     <Compile Include="Controllers\Tasks\ContractController.cs" />
     <Compile Include="Controllers\Tasks\EmployeesController.cs" />
@@ -138,11 +145,16 @@
     <Compile Include="Controllers\Tasks\ResignationController.cs" />
     <Compile Include="Controllers\Tasks\TerminationController.cs" />
     <Compile Include="DAL\Attendances.cs" />
+    <Compile Include="DAL\Contracts.cs" />
     <Compile Include="DAL\EmployeeExperiences.cs" />
     <Compile Include="DAL\EmployeeIdentificationDetails.cs" />
     <Compile Include="DAL\EmployeeQualifications.cs" />
     <Compile Include="DAL\Employees.cs" />
     <Compile Include="DAL\EmployeeSocialNetworks.cs" />
+    <Compile Include="DAL\Exits.cs" />
+    <Compile Include="DAL\LeaveApplications.cs" />
+    <Compile Include="DAL\Resignations.cs" />
+    <Compile Include="DAL\Terminations.cs" />
     <Compile Include="DTO\Attendance.cs" />
     <Compile Include="DTO\EmployeeExperienceScrudView.cs" />
     <Compile Include="DTO\EmployeeIdentificationDetailScrudView.cs" />
@@ -152,61 +164,6 @@
     <Compile Include="Models\EmployeeInfoModel.cs" />
     <Compile Include="Properties\AssemblyInfo.cs" />
     <Compile Include="ViewModels\EmployeeInfo.cs" />
-    <Compile Include="Views\Setup\EducationLevels\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Setup\EmployeeTypes\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Setup\EmploymentStatuses\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Setup\ExitTypes\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Setup\JobTitles\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Setup\LeaveBenefits\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Setup\LeaveTypes\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Setup\OfficeHours\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Setup\PayGrades\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Setup\Shifts\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
-    <Compile Include="Views\Tasks\Attendance\Index.generated.cs">
-      <AutoGen>True</AutoGen>
-      <DesignTime>True</DesignTime>
-      <DependentUpon>Index.cshtml</DependentUpon>
-    </Compile>
   </ItemGroup>
   <ItemGroup>
     <Content Include="packages.config" />
@@ -218,46 +175,16 @@
     <Content Include="web.config" />
     <Content Include="Views\Tasks\Employees\Index.cshtml" />
     <Content Include="Views\Tasks\Contracts\Index.cshtml" />
-    <Content Include="Views\Setup\EducationLevels\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Setup\EmployeeTypes\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Setup\EmploymentStatuses\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Setup\ExitTypes\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Setup\JobTitles\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Setup\LeaveBenefits\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Setup\LeaveTypes\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Setup\OfficeHours\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Setup\PayGrades\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
-    <Content Include="Views\Setup\Shifts\Index.cshtml">
-      <Generator>RazorGenerator</Generator>
-      <LastGenOutput>Index.generated.cs</LastGenOutput>
-    </Content>
+    <Content Include="Views\Setup\EducationLevels\Index.cshtml" />
+    <Content Include="Views\Setup\EmployeeTypes\Index.cshtml" />
+    <Content Include="Views\Setup\EmploymentStatuses\Index.cshtml" />
+    <Content Include="Views\Setup\ExitTypes\Index.cshtml" />
+    <Content Include="Views\Setup\JobTitles\Index.cshtml" />
+    <Content Include="Views\Setup\LeaveBenefits\Index.cshtml" />
+    <Content Include="Views\Setup\LeaveTypes\Index.cshtml" />
+    <Content Include="Views\Setup\OfficeHours\Index.cshtml" />
+    <Content Include="Views\Setup\PayGrades\Index.cshtml" />
+    <Content Include="Views\Setup\Shifts\Index.cshtml" />
     <Content Include="Views\Tasks\Attendance\Index.cshtml" />
     <Content Include="Views\Tasks\LeaveApplications\Index.cshtml" />
     <Content Include="Views\Tasks\Resignations\Index.cshtml" />

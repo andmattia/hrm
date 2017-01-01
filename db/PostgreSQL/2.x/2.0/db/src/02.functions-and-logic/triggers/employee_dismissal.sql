@@ -24,7 +24,7 @@ BEGIN
     IF(NEW.verification_status_id > 0) THEN        
         UPDATE hrm.employees
         SET
-            service_ended_on = NEW.service_end_date
+            service_ended_on = _service_end
         WHERE employee_id = NEW.employee_id;
 
         IF(_new_status_id IS NOT NULL) THEN

@@ -1,9 +1,11 @@
-﻿IF OBJECT_ID('hrm.exit_verification_scrud_view') IS NOT NULL
-DROP VIEW hrm.exit_verification_scrud_view;
+﻿IF OBJECT_ID('hrm.exit_scrud_view') IS NOT NULL
+DROP VIEW hrm.exit_scrud_view;
 
 GO
 
-CREATE VIEW hrm.exit_verification_scrud_view
+
+
+CREATE VIEW hrm.exit_scrud_view
 AS
 SELECT
     hrm.exits.exit_id,
@@ -25,8 +27,7 @@ INNER JOIN hrm.exit_types
 ON hrm.exit_types.exit_type_id = hrm.exits.exit_type_id
 INNER JOIN hrm.employees AS forwarded_to
 ON forwarded_to.employee_id = hrm.exits.forward_to
-WHERE verification_status_id = 0
-AND hrm.exits.deleted = 0;
+WHERE hrm.exits.deleted = 0;
 
 
 GO

@@ -1,6 +1,6 @@
-DROP VIEW IF EXISTS hrm.exit_verification_scrud_view;
+DROP VIEW IF EXISTS hrm.exit_scrud_view;
 
-CREATE VIEW hrm.exit_verification_scrud_view
+CREATE VIEW hrm.exit_scrud_view
 AS
 SELECT
     hrm.exits.exit_id,
@@ -22,5 +22,4 @@ INNER JOIN hrm.exit_types
 ON hrm.exit_types.exit_type_id = hrm.exits.exit_type_id
 INNER JOIN hrm.employees AS forwarded_to
 ON forwarded_to.employee_id = hrm.exits.forward_to
-WHERE verification_status_id = 0
 AND NOT hrm.exits.deleted;
