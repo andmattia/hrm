@@ -28,6 +28,14 @@ CREATE TABLE hrm.week_days
     deleted                                    bit DEFAULT(0)
 );
 
+CREATE UNIQUE INDEX week_days_week_day_code_uix
+ON hrm.week_days(week_day_code)
+WHERE deleted = 0;
+
+CREATE UNIQUE INDEX week_days_week_day_name_uix
+ON hrm.week_days(week_day_name)
+WHERE deleted = 0;
+
 CREATE TABLE hrm.identification_types
 (
     identification_type_code                national character varying(12) NOT NULL PRIMARY KEY,
@@ -37,6 +45,14 @@ CREATE TABLE hrm.identification_types
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)    
 );
+
+CREATE UNIQUE INDEX identification_types_identification_type_code_uix
+ON hrm.identification_types(identification_type_code)
+WHERE deleted = 0;
+
+CREATE UNIQUE INDEX identification_types_identification_type_name_uix
+ON hrm.identification_types(identification_type_name)
+WHERE deleted = 0;
 
 CREATE TABLE hrm.social_networks
 (
@@ -59,6 +75,14 @@ CREATE TABLE hrm.departments
     deleted                                    bit DEFAULT(0)
 );
 
+CREATE UNIQUE INDEX departments_department_code_uix
+ON hrm.departments(department_code)
+WHERE deleted = 0;
+
+CREATE UNIQUE INDEX departments_department_name_uix
+ON hrm.departments(department_name)
+WHERE deleted = 0;
+
 CREATE TABLE hrm.roles
 (
     role_id                                   integer IDENTITY PRIMARY KEY,
@@ -69,6 +93,14 @@ CREATE TABLE hrm.roles
     deleted                                    bit DEFAULT(0)
 );
 
+CREATE UNIQUE INDEX roles_role_code_uix
+ON hrm.roles(role_code)
+WHERE deleted = 0;
+
+CREATE UNIQUE INDEX roles_role_name_uix
+ON hrm.roles(role_name)
+WHERE deleted = 0;
+
 CREATE TABLE hrm.nationalities
 (
     nationality_code                        national character varying(12) PRIMARY KEY,
@@ -77,6 +109,14 @@ CREATE TABLE hrm.nationalities
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
+
+CREATE UNIQUE INDEX nationalities_nationality_code_uix
+ON hrm.nationalities(nationality_code)
+WHERE deleted = 0;
+
+CREATE UNIQUE INDEX nationalities_nationality_name_uix
+ON hrm.nationalities(nationality_name)
+WHERE deleted = 0;
 
 CREATE TABLE hrm.education_levels
 (
@@ -87,6 +127,10 @@ CREATE TABLE hrm.education_levels
     deleted                                    bit DEFAULT(0)
 );
 
+CREATE UNIQUE INDEX education_levels_education_level_name
+ON hrm.education_levels(education_level_name)
+WHERE deleted = 0;
+
 CREATE TABLE hrm.employment_status_codes
 (
     employment_status_code_id               integer NOT NULL PRIMARY KEY,
@@ -96,6 +140,14 @@ CREATE TABLE hrm.employment_status_codes
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
+
+CREATE UNIQUE INDEX employment_status_codes_status_code_uix
+ON hrm.employment_status_codes(status_code)
+WHERE deleted = 0;
+
+CREATE UNIQUE INDEX employment_status_codes_status_code_name_uix
+ON hrm.employment_status_codes(status_code_name)
+WHERE deleted = 0;
 
 CREATE TABLE hrm.employment_statuses
 (
@@ -110,6 +162,14 @@ CREATE TABLE hrm.employment_statuses
     deleted                                    bit DEFAULT(0)
 );
 
+CREATE UNIQUE INDEX employment_statuses_employment_status_code_uix
+ON hrm.employment_statuses(employment_status_code)
+WHERE deleted = 0;
+
+CREATE UNIQUE INDEX employment_statuses_employment_status_name_uix
+ON hrm.employment_statuses(employment_status_name)
+WHERE deleted = 0;
+
 CREATE TABLE hrm.job_titles
 (
     job_title_id                            integer IDENTITY NOT NULL PRIMARY KEY,
@@ -120,6 +180,14 @@ CREATE TABLE hrm.job_titles
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
+
+CREATE UNIQUE INDEX job_titles_job_title_code_uix
+ON hrm.job_titles(job_title_code)
+WHERE deleted = 0;
+
+CREATE UNIQUE INDEX job_titles_job_title_name_uix
+ON hrm.job_titles(job_title_name)
+WHERE deleted = 0;
 
 CREATE TABLE hrm.pay_grades
 (
@@ -135,6 +203,14 @@ CREATE TABLE hrm.pay_grades
     deleted                                    bit DEFAULT(0)
 );
 
+CREATE UNIQUE INDEX pay_grades_pay_grade_code_uix
+ON hrm.pay_grades(pay_grade_code)
+WHERE deleted = 0;
+
+CREATE UNIQUE INDEX pay_grades_pay_grade_name_uix
+ON hrm.pay_grades(pay_grade_name)
+WHERE deleted = 0;
+
 CREATE TABLE hrm.shifts
 (
     shift_id                                integer IDENTITY NOT NULL PRIMARY KEY,
@@ -148,6 +224,14 @@ CREATE TABLE hrm.shifts
     deleted                                    bit DEFAULT(0)
 );
 
+CREATE UNIQUE INDEX shifts_shift_code_uix
+ON hrm.shifts(shift_code)
+WHERE deleted = 0;
+
+CREATE UNIQUE INDEX shifts_shift_name_uix
+ON hrm.shifts(shift_name)
+WHERE deleted = 0;
+
 CREATE TABLE hrm.leave_types
 (
     leave_type_id                           integer IDENTITY NOT NULL PRIMARY KEY,
@@ -158,6 +242,14 @@ CREATE TABLE hrm.leave_types
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
+
+CREATE UNIQUE INDEX leave_types_leave_type_code_uix
+ON hrm.leave_types(leave_type_code)
+WHERE deleted = 0;
+
+CREATE UNIQUE INDEX leave_types_leave_type_name_uix
+ON hrm.leave_types(leave_type_name)
+WHERE deleted = 0;
 
 CREATE TABLE hrm.office_hours
 (
@@ -183,6 +275,14 @@ CREATE TABLE hrm.leave_benefits
     deleted                                    bit DEFAULT(0)
 );
 
+CREATE UNIQUE INDEX leave_benefits_leave_benefit_code_uix
+ON hrm.leave_benefits(leave_benefit_code)
+WHERE deleted = 0;
+
+CREATE UNIQUE INDEX leave_benefits_leave_benefit_name_uix
+ON hrm.leave_benefits(leave_benefit_name)
+WHERE deleted = 0;
+
 CREATE TABLE hrm.employee_types
 (
     employee_type_id                        integer IDENTITY NOT NULL PRIMARY KEY,
@@ -192,6 +292,14 @@ CREATE TABLE hrm.employee_types
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
+
+CREATE UNIQUE INDEX employee_types_employee_type_code_uix
+ON hrm.employee_types(employee_type_code)
+WHERE deleted = 0;
+
+CREATE UNIQUE INDEX employee_types_employee_type_name_uix
+ON hrm.employee_types(employee_type_name)
+WHERE deleted = 0;
 
 CREATE TABLE hrm.employees
 (
@@ -251,6 +359,10 @@ CREATE TABLE hrm.employees
     deleted                                    bit DEFAULT(0)
 );
 
+CREATE UNIQUE INDEX employees_employee_code_uix
+ON hrm.employees(employee_code)
+WHERE deleted = 0;
+
 CREATE TABLE hrm.employee_identification_details
 (
     employee_identification_detail_id       bigint IDENTITY NOT NULL PRIMARY KEY,
@@ -267,8 +379,6 @@ CREATE TABLE hrm.employee_identification_details
 CREATE UNIQUE INDEX employee_identification_details_employee_id_itc_uix
 ON hrm.employee_identification_details(employee_id, identification_type_code)
 WHERE deleted = 0;
-
-
 
 CREATE TABLE hrm.employee_social_network_details
 (
@@ -401,6 +511,14 @@ CREATE TABLE hrm.exit_types
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
     deleted                                    bit DEFAULT(0)
 );
+
+CREATE UNIQUE INDEX exit_types_exit_type_code_uix
+ON hrm.exit_types(exit_type_code)
+WHERE deleted = 0;
+
+CREATE UNIQUE INDEX exit_types_exit_type_name_uix
+ON hrm.exit_types(exit_type_name)
+WHERE deleted = 0;
 
 CREATE TABLE hrm.exits
 (
