@@ -11,7 +11,7 @@
     }
 </style>
 <div class="ui attached padded attendance segment" style="display: none;">
-    <div class="ui huge header" data-localize="UpdateAttendanceRecord"></div>
+    <div class="ui huge header">Update Attendance Record</div>
     <div class="ui divider"></div>
 
     <div class="ui form bpad16" style="width: 440px;">
@@ -58,7 +58,7 @@
                     </div>
                 </th>
                 <th class="mini" data-localize="OvertimeHours"></th>
-                <th data-localize="AbsenteismReason"></th>
+                <th data-localize="AbsenteeismReason"></th>
                 <th class="mini" data-localize="Update"></th>
             </tr>
         </thead>
@@ -109,8 +109,10 @@
         };
 
         const row = el.closest("tr"); 
-        row.find("input.check-in").val("");        row.find("input.check-out").val("");
-        row.find(".was.present.checkbox input:checkbox").prop("checked", false);        row.find("input.overtime-hours").val("");
+        row.find("input.check-in").val("");
+        row.find("input.check-out").val("");
+        row.find(".was.present.checkbox input:checkbox").prop("checked", false);
+        row.find("input.overtime-hours").val("");
     });
 
 
@@ -137,8 +139,11 @@
                 const target = $("tr[data-employee-id='" + model.EmployeeId + "']");
 
                 target.attr("data-attendance-id", model.AttendanceId);
-                target.find("input.check-in").val(model.CheckInTime.substring(0, 5));                target.find("input.check-out").val(model.CheckOutTime.substring(0, 5));
-                target.find(".was.present.checkbox input:checkbox").prop("checked", model.WasPresent);                target.find("input.overtime-hours").val(model.OvertimeHours);                target.find("input.reason").val(model.ReasonForAbsenteeism);
+                target.find("input.check-in").val(model.CheckInTime.substring(0, 5));
+                target.find("input.check-out").val(model.CheckOutTime.substring(0, 5));
+                target.find(".was.present.checkbox input:checkbox").prop("checked", model.WasPresent);
+                target.find("input.overtime-hours").val(model.OvertimeHours);
+                target.find("input.reason").val(model.ReasonForAbsenteeism);
             });
         });
     });

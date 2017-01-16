@@ -26,7 +26,7 @@ CREATE TABLE hrm.week_days
     week_day_name                           national character varying(50) NOT NULL UNIQUE,
     audit_user_id                           integer REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                              	bit DEFAULT(0)
 );
 
 CREATE UNIQUE INDEX week_days_week_day_code_uix
@@ -39,12 +39,13 @@ WHERE deleted = 0;
 
 CREATE TABLE hrm.identification_types
 (
-    identification_type_code                national character varying(12) NOT NULL PRIMARY KEY,
+	identification_type_id					integer IDENTITY PRIMARY KEY,
+    identification_type_code                national character varying(12) NOT NULL,
     identification_type_name                national character varying(100) NOT NULL UNIQUE,
-    can_expire                              bit NOT NULL DEFAULT(0),
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    can_expire                           	bit NOT NULL DEFAULT(0),
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)    
+    deleted                              	bit DEFAULT(0)    
 );
 
 CREATE UNIQUE INDEX identification_types_identification_type_code_uix
@@ -57,13 +58,13 @@ WHERE deleted = 0;
 
 CREATE TABLE hrm.social_networks
 (
-    social_network_name                     national character varying(128) NOT NULL PRIMARY KEY,
-    semantic_css_class                      national character varying(128),
+	social_network_id						integer IDENTITY PRIMARY KEY,
+    social_network_name                     national character varying(128) NOT NULL,
+    icon_css_class                          national character varying(128),
     base_url                                national character varying(128) DEFAULT(''),
-    profile_url                             national character varying(128) DEFAULT(''),
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)    
+    deleted                              	bit DEFAULT(0)    
 );
 
 CREATE TABLE hrm.departments
@@ -71,9 +72,9 @@ CREATE TABLE hrm.departments
     department_id                           integer IDENTITY PRIMARY KEY,
     department_code                         national character varying(12) NOT NULL,
     department_name                         national character varying(50) NOT NULL,
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE UNIQUE INDEX departments_department_code_uix
@@ -89,9 +90,9 @@ CREATE TABLE hrm.roles
     role_id                                   integer IDENTITY PRIMARY KEY,
     role_code                                 national character varying(12) NOT NULL,
     role_name                                 national character varying(50) NOT NULL,
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE UNIQUE INDEX roles_role_code_uix
@@ -104,11 +105,12 @@ WHERE deleted = 0;
 
 CREATE TABLE hrm.nationalities
 (
-    nationality_code                        national character varying(12) PRIMARY KEY,
+	nationality_id							integer IDENTITY PRIMARY KEY,
+    nationality_code                        national character varying(12),
     nationality_name                        national character varying(50) NOT NULL,
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE UNIQUE INDEX nationalities_nationality_code_uix
@@ -123,9 +125,9 @@ CREATE TABLE hrm.education_levels
 (
     education_level_id                      integer IDENTITY NOT NULL PRIMARY KEY,
     education_level_name                    national character varying(50) NOT NULL UNIQUE,
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE UNIQUE INDEX education_levels_education_level_name
@@ -137,9 +139,9 @@ CREATE TABLE hrm.employment_status_codes
     employment_status_code_id               integer NOT NULL PRIMARY KEY,
     status_code                             national character varying(12) NOT NULL UNIQUE,
     status_code_name                        national character varying(100) NOT NULL,
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE UNIQUE INDEX employment_status_codes_status_code_uix
@@ -155,12 +157,12 @@ CREATE TABLE hrm.employment_statuses
     employment_status_id                    integer IDENTITY NOT NULL PRIMARY KEY,
     employment_status_code                  national character varying(12) NOT NULL UNIQUE,
     employment_status_name                  national character varying(100) NOT NULL,
-    is_contract                             bit NOT NULL DEFAULT(0),
+    is_contract                          bit NOT NULL DEFAULT(0),
     default_employment_status_code_id       integer NOT NULL REFERENCES hrm.employment_status_codes,
     description                             national character varying(1000) DEFAULT(''),    
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE UNIQUE INDEX employment_statuses_employment_status_code_uix
@@ -177,9 +179,9 @@ CREATE TABLE hrm.job_titles
     job_title_code                          national character varying(12) NOT NULL UNIQUE,
     job_title_name                          national character varying(100) NOT NULL,
     description                             national character varying(1000) DEFAULT(''),
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE UNIQUE INDEX job_titles_job_title_code_uix
@@ -199,9 +201,9 @@ CREATE TABLE hrm.pay_grades
     maximum_salary                          numeric(30, 6) NOT NULL,
                                             CHECK(maximum_salary >= minimum_salary),
     description                             national character varying(1000) DEFAULT(''),
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE UNIQUE INDEX pay_grades_pay_grade_code_uix
@@ -220,9 +222,9 @@ CREATE TABLE hrm.shifts
     begins_from                             time NOT NULL,
     ends_on                                 time NOT NULL,
     description                             national character varying(1000) DEFAULT(''),
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE UNIQUE INDEX shifts_shift_code_uix
@@ -239,9 +241,9 @@ CREATE TABLE hrm.leave_types
     leave_type_code                         national character varying(12) NOT NULL UNIQUE,
     leave_type_name                         national character varying(100) NOT NULL,
     description                             national character varying(1000) DEFAULT(''),
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE UNIQUE INDEX leave_types_leave_type_code_uix
@@ -255,14 +257,14 @@ WHERE deleted = 0;
 CREATE TABLE hrm.office_hours
 (
     office_hour_id                          integer IDENTITY NOT NULL PRIMARY KEY,
-    office_id                               integer NOT NULL REFERENCES core.offices(office_id),
+    office_id                               integer NOT NULL REFERENCES core.offices,
     shift_id                                integer NOT NULL REFERENCES hrm.shifts,
-    week_day_id                             integer NOT NULL REFERENCES hrm.week_days(week_day_id),
+    week_day_id                             integer NOT NULL REFERENCES hrm.week_days,
     begins_from                             time NOT NULL,
     ends_on                                 time NOT NULL,
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)    
+    deleted                                 bit DEFAULT(0)    
 );
 
 CREATE TABLE hrm.leave_benefits
@@ -271,9 +273,9 @@ CREATE TABLE hrm.leave_benefits
     leave_benefit_code                      national character varying(12) NOT NULL UNIQUE,
     leave_benefit_name                      national character varying(128) NOT NULL,
     total_days                              integer NOT NULL,
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE UNIQUE INDEX leave_benefits_leave_benefit_code_uix
@@ -289,9 +291,9 @@ CREATE TABLE hrm.employee_types
     employee_type_id                        integer IDENTITY NOT NULL PRIMARY KEY,
     employee_type_code                      national character varying(12) NOT NULL UNIQUE,
     employee_type_name                      national character varying(128) NOT NULL,
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE UNIQUE INDEX employee_types_employee_type_code_uix
@@ -311,19 +313,19 @@ CREATE TABLE hrm.employees
     last_name                               national character varying(50) DEFAULT(''),
     employee_name                           national character varying(160) NOT NULL,
     gender_code                             national character varying(4) NOT NULL 
-                                            REFERENCES core.genders(gender_code),
-    marital_status_id                       integer NOT NULL REFERENCES core.marital_statuses(marital_status_id),
+                                            REFERENCES core.genders,
+    marital_status_id                       integer NOT NULL REFERENCES core.marital_statuses,
     joined_on                               date NULL,
-    office_id                               integer NOT NULL REFERENCES core.offices(office_id),
-    user_id                                 integer REFERENCES account.users(user_id),
-    employee_type_id                        integer NOT NULL REFERENCES hrm.employee_types(employee_type_id),
-    current_department_id                   integer NOT NULL REFERENCES hrm.departments(department_id),
-    current_role_id                         integer REFERENCES hrm.roles(role_id),
-    current_employment_status_id            integer NOT NULL REFERENCES hrm.employment_statuses(employment_status_id),
-    current_job_title_id                    integer NOT NULL REFERENCES hrm.job_titles(job_title_id),
-    current_pay_grade_id                    integer NOT NULL REFERENCES hrm.pay_grades(pay_grade_id),
-    current_shift_id                        integer NOT NULL REFERENCES hrm.shifts(shift_id),
-    nationality_code                        national character varying(12) REFERENCES hrm.nationalities(nationality_code),
+    office_id                               integer NOT NULL REFERENCES core.offices,
+    user_id                                 integer REFERENCES account.users,
+    employee_type_id                        integer NOT NULL REFERENCES hrm.employee_types,
+    current_department_id                   integer NOT NULL REFERENCES hrm.departments,
+    current_role_id                         integer REFERENCES hrm.roles,
+    current_employment_status_id            integer NOT NULL REFERENCES hrm.employment_statuses,
+    current_job_title_id                    integer NOT NULL REFERENCES hrm.job_titles,
+    current_pay_grade_id                    integer NOT NULL REFERENCES hrm.pay_grades,
+    current_shift_id                        integer NOT NULL REFERENCES hrm.shifts,
+    nationality_id                        	integer REFERENCES hrm.nationalities,
     date_of_birth                           date,
     photo                                   dbo.photo,
     bank_account_number                     national character varying(128) DEFAULT(''),
@@ -345,19 +347,19 @@ CREATE TABLE hrm.employees
     email_address                           national character varying(128) DEFAULT(''),
     website                                 national character varying(128) DEFAULT(''),
     blog                                    national character varying(128) DEFAULT(''),
-    is_smoker                               bit,
-    is_alcoholic                            bit,
-    with_disabilities                       bit,
-    low_vision                              bit,
-    uses_wheelchair                         bit,
-    hard_of_hearing                         bit,
-    is_aphonic                              bit,
-    is_cognitively_disabled                 bit,
-    is_autistic                             bit,
+    is_smoker                           	bit,
+    is_alcoholic                         	bit,
+    with_disabilities                    	bit,
+    low_vision                           	bit,
+    uses_wheelchair                      	bit,
+    hard_of_hearing                      	bit,
+    is_aphonic                           	bit,
+    is_cognitively_disabled              	bit,
+    is_autistic                          	bit,
     service_ended_on                        date NULL,
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE UNIQUE INDEX employees_employee_code_uix
@@ -367,72 +369,70 @@ WHERE deleted = 0;
 CREATE TABLE hrm.employee_identification_details
 (
     employee_identification_detail_id       bigint IDENTITY NOT NULL PRIMARY KEY,
-    employee_id                             integer NOT NULL REFERENCES hrm.employees(employee_id),
-    identification_type_code                national character varying(12) NOT NULL 
-                                            REFERENCES hrm.identification_types,
+    employee_id                             integer NOT NULL REFERENCES hrm.employees,
+    identification_type_id                	integer NOT NULL REFERENCES hrm.identification_types,
     identification_number                   national character varying(128) NOT NULL,
     expires_on                              date,
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)                                  
+    deleted                              	bit DEFAULT(0)                                  
 );
 
 CREATE UNIQUE INDEX employee_identification_details_employee_id_itc_uix
-ON hrm.employee_identification_details(employee_id, identification_type_code)
+ON hrm.employee_identification_details(employee_id, identification_type_id)
 WHERE deleted = 0;
 
 CREATE TABLE hrm.employee_social_network_details
 (
     employee_social_network_detail_id       bigint IDENTITY NOT NULL PRIMARY KEY,
-    employee_id                             integer NOT NULL REFERENCES hrm.employees(employee_id),
-    social_network_name                     national character varying(128) NOT NULL
-                                            REFERENCES hrm.social_networks(social_network_name),
-    social_network_id                       national character varying(128) NOT NULL,
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    employee_id                             integer NOT NULL REFERENCES hrm.employees,
+    social_network_id                     	integer NOT NULL REFERENCES hrm.social_networks,
+    profile_link                       		national character varying(1000) NOT NULL,
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                              	bit DEFAULT(0)
 );
 
 CREATE TABLE hrm.contracts
 (
     contract_id                             bigint IDENTITY NOT NULL PRIMARY KEY,
-    employee_id                             integer NOT NULL REFERENCES hrm.employees(employee_id),
-    office_id                               integer NOT NULL REFERENCES core.offices(office_id),
-    department_id                           integer NOT NULL REFERENCES hrm.departments(department_id),
-    role_id                                 integer REFERENCES hrm.roles(role_id),
-    leave_benefit_id                        integer REFERENCES hrm.leave_benefits(leave_benefit_id),
+    employee_id                             integer NOT NULL REFERENCES hrm.employees,
+    office_id                               integer NOT NULL REFERENCES core.offices,
+    department_id                           integer NOT NULL REFERENCES hrm.departments,
+    role_id                                 integer REFERENCES hrm.roles,
+    leave_benefit_id                        integer REFERENCES hrm.leave_benefits,
     began_on                                date,
     ended_on                                date,
-    employment_status_code_id               integer NOT NULL REFERENCES hrm.employment_status_codes(employment_status_code_id),
-    verification_status_id                  smallint NOT NULL REFERENCES core.verification_statuses(verification_status_id),
-    verified_by_user_id                     integer REFERENCES account.users(user_id),
+    employment_status_code_id               integer NOT NULL REFERENCES hrm.employment_status_codes,
+    verification_status_id                  smallint NOT NULL REFERENCES core.verification_statuses,
+    verified_by_user_id                     integer REFERENCES account.users,
     verified_on                             date,
     verification_reason                     national character varying(128) NULL,
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    audit_user_id                           integer NULL REFERENCES account.users,
     
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE TABLE hrm.employee_experiences
 (
     employee_experience_id                  bigint IDENTITY NOT NULL PRIMARY KEY,
-    employee_id                             integer NOT NULL REFERENCES hrm.employees(employee_id),
+    employee_id                             integer NOT NULL REFERENCES hrm.employees,
     organization_name                       national character varying(128) NOT NULL,
     title                                   national character varying(128) NOT NULL,
     started_on                              date,
     ended_on                                date,
     details                                 national character varying(1000),
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),    
+    audit_user_id                           integer NULL REFERENCES account.users,    
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE TABLE hrm.employee_qualifications
 (
     employee_qualification_id               bigint IDENTITY NOT NULL PRIMARY KEY,
-    employee_id                             integer NOT NULL REFERENCES hrm.employees(employee_id),
-    education_level_id                      integer NOT NULL REFERENCES hrm.education_levels(education_level_id),
+    employee_id                             integer NOT NULL REFERENCES hrm.employees,
+    education_level_id                      integer NOT NULL REFERENCES hrm.education_levels,
     institution                             national character varying(128) NOT NULL,
     majors                                  national character varying(128) NOT NULL,
     total_years                             integer,
@@ -440,66 +440,66 @@ CREATE TABLE hrm.employee_qualifications
     started_on                              date,
     completed_on                            date,
     details                                 national character varying(1000),
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),    
+    audit_user_id                           integer NULL REFERENCES account.users,    
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE TABLE hrm.leave_applications
 (
     leave_application_id                    bigint IDENTITY NOT NULL PRIMARY KEY,
-    employee_id                             integer NOT NULL REFERENCES hrm.employees(employee_id),
-    leave_type_id                           integer NOT NULL REFERENCES hrm.leave_types(leave_type_id),
-    entered_by                              integer NOT NULL REFERENCES account.users(user_id),
+    employee_id                             integer NOT NULL REFERENCES hrm.employees,
+    leave_type_id                           integer NOT NULL REFERENCES hrm.leave_types,
+    entered_by                              integer NOT NULL REFERENCES account.users,
     applied_on                              date DEFAULT(GETUTCDATE()),
     reason                                  national character varying(1000),
     start_date                              date,
     end_date                                date,
-    verification_status_id                  smallint NOT NULL REFERENCES core.verification_statuses(verification_status_id),
-    verified_by_user_id                     integer REFERENCES account.users(user_id),
+    verification_status_id                  smallint NOT NULL REFERENCES core.verification_statuses,
+    verified_by_user_id                     integer REFERENCES account.users,
     verified_on                             date,
     verification_reason                     national character varying(128) NULL,
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),    
+    audit_user_id                           integer NULL REFERENCES account.users,    
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE TABLE hrm.resignations
 (
     resignation_id                          integer IDENTITY NOT NULL PRIMARY KEY,
-    entered_by                              integer NOT NULL REFERENCES account.users(user_id),
+    entered_by                              integer NOT NULL REFERENCES account.users,
     notice_date                             date NOT NULL,
     desired_resign_date                     date NOT NULL,
-    employee_id                             integer NOT NULL REFERENCES hrm.employees(employee_id),
-    forward_to                              integer REFERENCES hrm.employees(employee_id),
+    employee_id                             integer NOT NULL REFERENCES hrm.employees,
+    forward_to                              integer REFERENCES hrm.employees,
     reason                                  national character varying(128) NOT NULL,
     details                                 national character varying(1000),
-    verification_status_id                  smallint NOT NULL REFERENCES core.verification_statuses(verification_status_id),
-    verified_by_user_id                     integer REFERENCES account.users(user_id),
+    verification_status_id                  smallint NOT NULL REFERENCES core.verification_statuses,
+    verified_by_user_id                     integer REFERENCES account.users,
     verified_on                             date,
     verification_reason                     national character varying(128) NULL,
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),    
+    audit_user_id                           integer NULL REFERENCES account.users,    
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE TABLE hrm.terminations
 (
     termination_id                          integer IDENTITY NOT NULL PRIMARY KEY,
     notice_date                             date NOT NULL,
-    employee_id                             integer NOT NULL REFERENCES hrm.employees(employee_id) UNIQUE,
-    forward_to                              integer REFERENCES hrm.employees(employee_id),
-    change_status_to                        integer NOT NULL REFERENCES hrm.employment_statuses(employment_status_id),
+    employee_id                             integer NOT NULL REFERENCES hrm.employees UNIQUE,
+    forward_to                              integer REFERENCES hrm.employees,
+    change_status_to                        integer NOT NULL REFERENCES hrm.employment_statuses,
     reason                                  national character varying(128) NOT NULL,
     details                                 national character varying(1000),
     service_end_date                        date NOT NULL,
-    verification_status_id                  smallint NOT NULL REFERENCES core.verification_statuses(verification_status_id),
-    verified_by_user_id                     integer REFERENCES account.users(user_id),
+    verification_status_id                  smallint NOT NULL REFERENCES core.verification_statuses,
+    verified_by_user_id                     integer REFERENCES account.users,
     verified_on                             date,
     verification_reason                     national character varying(128) NULL,
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),    
+    audit_user_id                           integer NULL REFERENCES account.users,    
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
     
 );
 
@@ -508,9 +508,9 @@ CREATE TABLE hrm.exit_types
     exit_type_id                            integer IDENTITY NOT NULL PRIMARY KEY,
     exit_type_code                          national character varying(12) NOT NULL UNIQUE,
     exit_type_name                          national character varying(128) NOT NULL,
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),    
+    audit_user_id                           integer NULL REFERENCES account.users,    
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 CREATE UNIQUE INDEX exit_types_exit_type_code_uix
@@ -524,40 +524,40 @@ WHERE deleted = 0;
 CREATE TABLE hrm.exits
 (
     exit_id                                 bigint IDENTITY NOT NULL PRIMARY KEY,
-    employee_id                             integer NOT NULL REFERENCES hrm.employees(employee_id),
-    forward_to                              integer REFERENCES hrm.employees(employee_id),
-    change_status_to                        integer NOT NULL REFERENCES hrm.employment_statuses(employment_status_id),
-    exit_type_id                            integer NOT NULL REFERENCES hrm.exit_types(exit_type_id),
+    employee_id                             integer NOT NULL REFERENCES hrm.employees,
+    forward_to                              integer REFERENCES hrm.employees,
+    change_status_to                        integer NOT NULL REFERENCES hrm.employment_statuses,
+    exit_type_id                            integer NOT NULL REFERENCES hrm.exit_types,
     exit_interview_details                  national character varying(1000),
     reason                                  national character varying(128) NOT NULL,
     details                                 national character varying(1000),
-    verification_status_id                  smallint NOT NULL REFERENCES core.verification_statuses(verification_status_id),
-    verified_by_user_id                     integer REFERENCES account.users(user_id),
+    verification_status_id                  smallint NOT NULL REFERENCES core.verification_statuses,
+    verified_by_user_id                     integer REFERENCES account.users,
     verified_on                             date,
     verification_reason                     national character varying(128) NULL,
     service_end_date                        date NOT NULL,
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),    
+    audit_user_id                           integer NULL REFERENCES account.users,    
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                    bit DEFAULT(0)
+    deleted                                 bit DEFAULT(0)
 );
 
 
 CREATE TABLE hrm.attendances
 (
     attendance_id                           bigint IDENTITY NOT NULL PRIMARY KEY,
-    office_id                               integer NOT NULL REFERENCES core.offices(office_id),
-    employee_id                             integer NOT NULL REFERENCES hrm.employees(employee_id),
+    office_id                               integer NOT NULL REFERENCES core.offices,
+    employee_id                             integer NOT NULL REFERENCES hrm.employees,
     attendance_date                         date NOT NULL,
-    was_present                             bit NOT NULL,
+    was_present                          	bit NOT NULL,
     check_in_time                           time NULL,
     check_out_time                          time NULL,
     overtime_hours                          numeric(30, 6) NOT NULL,
-    was_absent                              bit NOT NULL,
+    was_absent                           	bit NOT NULL,
                                             CHECK(was_absent != was_present),
     reason_for_absenteeism                  national character varying(1000),
-    audit_user_id                           integer NULL REFERENCES account.users(user_id),
+    audit_user_id                           integer NULL REFERENCES account.users,
     audit_ts                                DATETIMEOFFSET DEFAULT(GETUTCDATE()),
-    deleted                                 bit DEFAULT(0)
+    deleted                              	bit DEFAULT(0)
 );
 
 CREATE UNIQUE INDEX attendance_date_employee_id_uix
@@ -672,15 +672,18 @@ EXECUTE core.create_menu 'HRM', 'Leave Applications', '/dashboard/hrm/tasks/leav
 EXECUTE core.create_menu 'HRM', 'Resignations', '/dashboard/hrm/tasks/resignations', 'remove user', 'Tasks';
 EXECUTE core.create_menu 'HRM', 'Terminations', '/dashboard/hrm/tasks/terminations', 'remove circle', 'Tasks';
 EXECUTE core.create_menu 'HRM', 'Exits', '/dashboard/hrm/tasks/exits', 'remove circle outline', 'Tasks';
+
 EXECUTE core.create_menu 'HRM', 'Verification', '', 'check circle', '';
 EXECUTE core.create_menu 'HRM', 'Verify Contracts', '/dashboard/hrm/verification/contracts', 'write square', 'Verification';
 EXECUTE core.create_menu 'HRM', 'Verify Leave Applications', '/dashboard/hrm/verification/leave-applications', 'checked calendar', 'Verification';
 EXECUTE core.create_menu 'HRM', 'Verify Resignations', '/dashboard/hrm/verification/resignations', 'mail forward', 'Verification';
 EXECUTE core.create_menu 'HRM', 'Verify Terminations', '/dashboard/hrm/verification/terminations', 'erase', 'Verification';
 EXECUTE core.create_menu 'HRM', 'Verify Exits', '/dashboard/hrm/verification/exits', 'send', 'Verification';
+
 EXECUTE core.create_menu 'HRM', 'Setup & Configuration', '', 'configure', '';
 EXECUTE core.create_menu 'HRM', 'Employment Statuses', '/dashboard/hrm/setup/employment-statuses', 'info', 'Setup & Configuration';
 EXECUTE core.create_menu 'HRM', 'Employee Types', '/dashboard/hrm/setup/employee-types', 'child', 'Setup & Configuration';
+EXECUTE core.create_menu 'HRM', 'Identification Types', '/dashboard/hrm/setup/identification-types', 'child', 'Setup & Configuration';
 EXECUTE core.create_menu 'HRM', 'Education Levels', '/dashboard/hrm/setup/education-levels', 'student', 'Setup & Configuration';
 EXECUTE core.create_menu 'HRM', 'Job Titles', '/dashboard/hrm/setup/job-titles', 'suitcase', 'Setup & Configuration';
 EXECUTE core.create_menu 'HRM', 'Pay Grades', '/dashboard/hrm/setup/pay-grades', 'payment', 'Setup & Configuration';
@@ -689,6 +692,10 @@ EXECUTE core.create_menu 'HRM', 'Office Hours', '/dashboard/hrm/setup/office-hou
 EXECUTE core.create_menu 'HRM', 'Leave Types', '/dashboard/hrm/setup/leave-types', 'hotel', 'Setup & Configuration';
 EXECUTE core.create_menu 'HRM', 'Leave Benefits', '/dashboard/hrm/setup/leave-benefits', 'car', 'Setup & Configuration';
 EXECUTE core.create_menu 'HRM', 'Exit Types', '/dashboard/hrm/setup/exit-types', 'remove', 'Setup & Configuration';
+EXECUTE core.create_menu 'HRM', 'Social Networks', '/dashboard/hrm/setup/social-networks', 'users', 'Setup & Configuration';
+EXECUTE core.create_menu 'HRM', 'Nationalities', '/dashboard/hrm/setup/nationalities', 'flag', 'Setup & Configuration';
+EXECUTE core.create_menu 'HRM', 'Marital Statuses', '/dashboard/hrm/setup/marital-statuses', 'smile', 'Setup & Configuration';
+
 EXECUTE core.create_menu 'HRM', 'Reports', '', 'block layout', '';
 EXECUTE core.create_menu 'HRM', 'Attendances', '/dashboard/hrm/reports/attendances', 'bullseye', 'Reports';
 
@@ -706,6 +713,11 @@ GO
 
 
 -->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/SQL Server/2.x/2.0/db/src/04.default-values/01.default-values.sql --<--<--
+INSERT INTO hrm.identification_types(identification_type_code, identification_type_name, can_expire)
+SELECT 'SSN', 'Social Security Number', 0 UNION ALL
+SELECT 'DLN', 'Driving License Number', 1;
+
+
 
 
 -->-->-- src/Frapid.Web/Areas/MixERP.HRM/db/SQL Server/2.x/2.0/db/src/05.scrud-views/hrm.contract_scrud_view.sql --<--<--
@@ -821,15 +833,14 @@ DROP VIEW hrm.employee_identification_detail_scrud_view;
 
 GO
 
-
-
 CREATE VIEW hrm.employee_identification_detail_scrud_view
 AS
 SELECT
     hrm.employee_identification_details.employee_identification_detail_id,
     hrm.employee_identification_details.employee_id,
     hrm.employees.employee_name,
-    hrm.employee_identification_details.identification_type_code,
+    hrm.employee_identification_details.identification_type_id,
+    hrm.identification_types.identification_type_code,
     hrm.identification_types.identification_type_name,
     hrm.employee_identification_details.identification_number,
     hrm.employee_identification_details.expires_on
@@ -837,10 +848,8 @@ FROM hrm.employee_identification_details
 INNER JOIN hrm.employees
 ON hrm.employee_identification_details.employee_id = hrm.employees.employee_id
 INNER JOIN hrm.identification_types
-ON hrm.employee_identification_details.identification_type_code = hrm.identification_types.identification_type_code
+ON hrm.employee_identification_details.identification_type_id = hrm.identification_types.identification_type_id
 WHERE hrm.employee_identification_details.deleted = 0;
-
-
 
 
 GO
@@ -885,24 +894,22 @@ DROP VIEW hrm.employee_social_network_detail_scrud_view;
 
 GO
 
-
-
 CREATE VIEW hrm.employee_social_network_detail_scrud_view
 AS
 SELECT
     hrm.employee_social_network_details.employee_social_network_detail_id,
     hrm.employee_social_network_details.employee_id,
     hrm.employees.employee_name,
-    hrm.employee_social_network_details.social_network_name,
     hrm.employee_social_network_details.social_network_id,
-    hrm.social_networks.semantic_css_class,
+    hrm.social_networks.social_network_name,
+    hrm.social_networks.icon_css_class,
     hrm.social_networks.base_url,
-    hrm.social_networks.profile_url
+    hrm.employee_social_network_details.profile_link
 FROM hrm.employee_social_network_details
 INNER JOIN hrm.employees
 ON hrm.employee_social_network_details.employee_id = hrm.employees.employee_id
 INNER JOIN hrm.social_networks
-ON hrm.social_networks.social_network_name = hrm.employee_social_network_details.social_network_name
+ON hrm.social_networks.social_network_id = hrm.employee_social_network_details.social_network_id
 WHERE hrm.employee_social_network_details.deleted = 0;
 
 
@@ -1033,6 +1040,7 @@ CREATE VIEW hrm.leave_application_scrud_view
 AS
 SELECT
     hrm.leave_applications.leave_application_id,
+    hrm.leave_applications.employee_id,
     hrm.employees.employee_code + ' (' + hrm.employees.employee_name + ')' AS employee,
     hrm.leave_types.leave_type_code + ' (' + hrm.leave_types.leave_type_name + ')' AS leave_type,
     account.users.name AS entered_by,
@@ -1066,6 +1074,7 @@ CREATE VIEW hrm.leave_application_verification_scrud_view
 AS
 SELECT
     hrm.leave_applications.leave_application_id,
+    hrm.leave_applications.employee_id,
     hrm.employees.employee_code + ' (' + hrm.employees.employee_name + ')' AS employee,
     hrm.employees.photo,
     hrm.leave_types.leave_type_code + ' (' + hrm.leave_types.leave_type_name + ')' AS leave_type,
@@ -1334,7 +1343,7 @@ SELECT
     hrm.pay_grades.pay_grade_code + ' (' + hrm.pay_grades.pay_grade_name + ')' AS pay_grade,
     hrm.employees.current_shift_id,
     hrm.shifts.shift_code + ' (' + hrm.shifts.shift_name + ')' AS shift,
-    hrm.employees.nationality_code,
+    hrm.employees.nationality_id,
     hrm.nationalities.nationality_code + ' (' + hrm.nationalities.nationality_name + ')' AS nationality,
     hrm.employees.date_of_birth,
     hrm.employees.photo,
@@ -1387,7 +1396,7 @@ ON hrm.employees.user_id = account.users.user_id
 LEFT JOIN hrm.roles
 ON hrm.employees.current_role_id = hrm.roles.role_id
 LEFT JOIN hrm.nationalities
-ON hrm.employees.nationality_code = hrm.nationalities.nationality_code
+ON hrm.employees.nationality_id = hrm.nationalities.nationality_id
 LEFT JOIN core.countries
 ON hrm.employees.country_code = core.countries.country_code
 WHERE (service_ended_on IS NULL OR COALESCE(service_ended_on, CAST(CAST(-53690 AS datetime) AS date)) >= GETUTCDATE())

@@ -42,7 +42,7 @@
                 ["EmployeeId"],
                 ["EmployeeName", "EmployeeCode"],
                 ["FirstName", "MiddleName", "LastName", "GenderCode"],
-                ["MaritalStatusId", "NationalityCode"],
+                ["MaritalStatusId", "NationalityId"],
                 ["DateOfBirth", ""]
             ]
         },
@@ -215,8 +215,8 @@
             textField: "Value"
         },
         {
-            property: "NationalityCode",
-            url: '/api/forms/hrm/nationalities/lookup-fields',
+            property: "NationalityId",
+            url: '/api/forms/hrm/nationalities/display-fields',
             data: null,
             valueField: "Key",
             textField: "Value"
@@ -291,6 +291,5 @@
     $(document).on("formready", function() {
         $("#service_ended_on").val("");
     });
-
 </script>
 

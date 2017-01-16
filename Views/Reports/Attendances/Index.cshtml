@@ -11,18 +11,23 @@
         color: #8A0F88;
         border-color: #8A0F88;
     }
+
+    .centered.segment {
+        text-align: center;
+    }
 </style>
 <script src="https://cdnjs.cloudflare.com/ajax/libs/vis/4.8.2/vis.min.js" type="text/javascript"></script>
 <link rel="stylesheet" type="text/css" href="https://cdnjs.cloudflare.com/ajax/libs/vis/4.8.2/vis.min.css" />
 
 
-<div class="ui huge grey header">
-    <span data-localize="Titles.Attendances"></span>
+<div class="ui attached padded segment">
+    <div class="ui huge grey header">
+        <span data-localize="Attendances"></span>
+    </div>
+    <div class="ui active large inline loader"></div>
+
+    <div id="visualization" class="vpad8" style="display: none;"></div>
 </div>
-<div class="ui active large inline loader"></div>
-
-<div id="visualization" class="vpad8" style="display: none;"></div>
-
 <script>
     function getAttendance() {
         const url = "/api/views/hrm/attendance-view/all";
@@ -103,6 +108,7 @@
         labels.each(function () {
             const el = $(this);
             const inner = el.find(".vis-inner");
+            inner.addClass("centered");
 
             const photo = el.attr("title");
             el.removeAttr("title");
@@ -112,9 +118,9 @@
 
             const img = $("<img />");
 
-            img.attr("class", "ui small centered rounded circular bordered image");
+            img.attr("class", "ui centered rounded circular bordered image");
             img.attr("title", inner.html());
-            img.attr("src", "/api/core/attachment/document/400/400/" + photo);
+            img.attr("src", photo + "?Width=100&Height=100");
 
             inner.addClass("ui attached secondary segment");
             inner.prepend(img);
@@ -124,4 +130,5 @@
         $(container).fadeIn(1000);
     };
 
+    window.localize();
 </script>

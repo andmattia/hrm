@@ -6,7 +6,8 @@ SELECT
     hrm.employee_identification_details.employee_identification_detail_id,
     hrm.employee_identification_details.employee_id,
     hrm.employees.employee_name,
-    hrm.employee_identification_details.identification_type_code,
+    hrm.employee_identification_details.identification_type_id,
+    hrm.identification_types.identification_type_code,
     hrm.identification_types.identification_type_name,
     hrm.employee_identification_details.identification_number,
     hrm.employee_identification_details.expires_on
@@ -14,7 +15,6 @@ FROM hrm.employee_identification_details
 INNER JOIN hrm.employees
 ON hrm.employee_identification_details.employee_id = hrm.employees.employee_id
 INNER JOIN hrm.identification_types
-ON hrm.employee_identification_details.identification_type_code = hrm.identification_types.identification_type_code
+ON hrm.employee_identification_details.identification_type_id = hrm.identification_types.identification_type_id
 WHERE NOT hrm.employee_identification_details.deleted;
-
 

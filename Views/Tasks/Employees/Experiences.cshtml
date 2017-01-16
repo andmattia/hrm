@@ -24,7 +24,7 @@
     scrudFactory.live = "Title";
 
     scrudFactory.back = {
-        Title: "Employee",
+        Title: "Return Back",
         Url: "/dashboard/hrm/tasks/employee-info/" + getQueryStringByName("EmployeeId")
     };
 
@@ -60,6 +60,7 @@
             $.cachedScript("/assets/js/scrudfactory-form.js");
         });
     });
+    window.overridePath = "/dashboard/hrm/tasks/employees";
 </script>
 
 <div id="ScrudFactoryForm"></div>

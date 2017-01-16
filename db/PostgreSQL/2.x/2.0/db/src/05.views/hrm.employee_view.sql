@@ -31,7 +31,7 @@ SELECT
     hrm.pay_grades.pay_grade_code || ' (' || hrm.pay_grades.pay_grade_name || ')' AS pay_grade,
     hrm.employees.current_shift_id,
     hrm.shifts.shift_code || ' (' || hrm.shifts.shift_name || ')' AS shift,
-    hrm.employees.nationality_code,
+    hrm.employees.nationality_id,
     hrm.nationalities.nationality_code || ' (' || hrm.nationalities.nationality_name || ')' AS nationality,
     hrm.employees.date_of_birth,
     hrm.employees.photo,
@@ -84,7 +84,7 @@ ON hrm.employees.user_id = account.users.user_id
 LEFT JOIN hrm.roles
 ON hrm.employees.current_role_id = hrm.roles.role_id
 LEFT JOIN hrm.nationalities
-ON hrm.employees.nationality_code = hrm.nationalities.nationality_code
+ON hrm.employees.nationality_id = hrm.nationalities.nationality_id
 LEFT JOIN core.countries
 ON hrm.employees.country_code = core.countries.country_code
 WHERE (service_ended_on IS NULL OR COALESCE(service_ended_on, 'infinity') >= NOW())

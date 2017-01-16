@@ -21,10 +21,10 @@
     scrudFactory.allowDelete = true;
     scrudFactory.allowEdit = true;
 
-    scrudFactory.live = "Title";
+    scrudFactory.live = "IdentificationNumber";
 
     scrudFactory.back = {
-        Title: "Employee",
+        Title: "Return Back",
         Url: "/dashboard/hrm/tasks/employee-info/" + getQueryStringByName("EmployeeId")
     };
 
@@ -46,8 +46,8 @@
             textField: "Value"
         },
         {
-            property: "IdentificationTypeCode",
-            url: '/api/forms/hrm/identification-types/lookup-fields',
+            property: "IdentificationTypeId",
+            url: '/api/forms/hrm/identification-types/display-fields',
             data: null,
             valueField: "Key",
             textField: "Value"
@@ -69,27 +69,27 @@
 <div id="ScrudFactoryView"></div>
 
 <script>
-    function identificationTypeExpires(filters) {
-        const url = "/api/forms/hrm/identification-types/get-where/1";
-        const data = JSON.stringify(filters);
-        return window.getAjaxRequest(url, "POST", data, false);
-    };
 
     function checkIfExpires() {
-        const value = $("#identification_type_code").getSelectedValue();
+        function request(filters) {
+            const url = "/api/forms/hrm/identification-types/get-where/1";
+            const data = JSON.stringify(filters);
+            return window.getAjaxRequest(url, "POST", data, false);
+        };
+
+        const value = $("#identification_type_id").getSelectedValue();
 
         if (!value) {
             return;
         };
 
         const filters = [];
-        filters.push(window.getAjaxColumnFilter("WHERE", "IdentificationTypeCode", "string", window.FilterConditions.IsEqualTo, value));
+        filters.push(window.getAjaxColumnFilter("WHERE", "IdentificationTypeId", "int", window.FilterConditions.IsEqualTo, value));
 
-        const ajaxIdentificationTypeExpires = identificationTypeExpires(filters);
+        const ajax = request(filters);
 
-        ajaxIdentificationTypeExpires.success(function (msg) {
+        ajax.success(function (msg) {
             const canExpire = msg[0].CanExpire;
-
 
             if (!canExpire) {
                 $("#expires_on").val("");
@@ -100,10 +100,12 @@
     };
 
     $(document).on("formready", function () {
+        //window.docready();
         checkIfExpires();
 
-        $("#identification_type_code").change(function () {
+        $("#identification_type_id").change(function () {
             checkIfExpires();
-        });;
+        });
     });
+    window.overridePath = "/dashboard/hrm/tasks/employees";
 </script>

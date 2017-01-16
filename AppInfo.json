@@ -6,6 +6,8 @@
 	"Url": "http://mixerp.org",
 	"DocumentationUrl": "http://mixerp.org/knowledgebase",
 	"AssemblyName": "MixERP.HRM",
+	"Hasi18N": true,
+	"I18NTarget": "",
 	"Version": "2.0",
 	"RealeasedOn": null,
 	"Description": "MixERP Human Resource Management Solution.",

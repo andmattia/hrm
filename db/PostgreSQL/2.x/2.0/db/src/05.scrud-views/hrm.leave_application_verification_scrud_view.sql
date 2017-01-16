@@ -4,6 +4,7 @@ CREATE VIEW hrm.leave_application_verification_scrud_view
 AS
 SELECT
     hrm.leave_applications.leave_application_id,
+    hrm.leave_applications.employee_id,
     hrm.employees.employee_code || ' (' || hrm.employees.employee_name || ')' AS employee,
     hrm.employees.photo,
     hrm.leave_types.leave_type_code || ' (' || hrm.leave_types.leave_type_name || ')' AS leave_type,
