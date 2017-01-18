@@ -1,7 +1,7 @@
 ﻿@model IEnumerable<MixERP.HRM.DTO.EmployeeView>
 
 @{
-    ViewBag.Title = "Attendance";
+    ViewBag.Title = I18N.Attendance;
     Layout = ViewBag.Layout;
 }
 
@@ -10,19 +10,20 @@
         width: 150px;
     }
 </style>
+
 <div class="ui attached padded attendance segment" style="display: none;">
-    <div class="ui huge header">Update Attendance Record</div>
+    <div class="ui huge header">@I18N.UpdateAttendanceRecord</div>
     <div class="ui divider"></div>
 
     <div class="ui form bpad16" style="width: 440px;">
         <div class="two fields">
             <div class="ui field">
-                <label>For Date</label>
-                <input type="text" id="DateInputText" class="date" />
+                <label>@I18N.ForDate</label>
+                <input type="text" id="DateInputText" class="date">
             </div>
             <div class="ui field">
                 <label>&nbsp;</label>
-                <button id="ShowButton" class="ui green button">Show</button>
+                <button id="ShowButton" class="ui green button">@I18N.Show</button>
             </div>
         </div>
     </div>
@@ -30,36 +31,36 @@
     <table class="ui attached form attendance table">
         <thead>
             <tr>
-                <th class="mini" data-localize="EmployeeId"></th>
-                <th data-localize="EmployeeName"></th>
+                <th class="mini" data-localize="@I18N.EmployeeId"></th>
+                <th data-localize="@I18N.EmployeeName"></th>
                 <th class="mini">
-                    <div data-localize="WasPresent"></div>
+                    <div data-localize="@I18N.WasPresent"></div>
                     <div class="ui was present checkbox" style="padding: 0.5em;">
                         <input type="checkbox">
-                        <label data-localize="Yes"></label>
+                        <label data-localize="@I18N.Yes"></label>
                     </div>
                 </th>
                 <th class="mini">
-                    <label data-localize="CheckInTime"></label>
+                    <label data-localize="@I18N.CheckInTime"></label>
                     <div class="ui action fluid input">
-                        <input type="time" class="check-in time" />
-                        <button class="ui icon button" data-localized-title="UpdateEmptyCheckIns" onclick="updateCheckIns()">
+                        <input type="time" class="check-in time">
+                        <button class="ui icon button" data-localized-title="@I18N.UpdateEmptyCheckIns" onclick="updateCheckIns()">
                             <i class="chevron right icon"></i>
                         </button>
                     </div>
                 </th>
                 <th class="mini">
-                    <label data-localize="CheckOutTime"></label>
+                    <label data-localize="@I18N.CheckOutTime"></label>
                     <div class="ui action fluid input">
-                        <input type="time" class="check-out time" />
-                        <button class="ui icon button" data-localized-title="UpdateEmptyCheckOuts" onclick="updateCheckOuts()">
+                        <input type="time" class="check-out time">
+                        <button class="ui icon button" data-localized-title="@I18N.UpdateEmptyCheckOuts" onclick="updateCheckOuts()">
                             <i class="chevron right icon"></i>
                         </button>
                     </div>
                 </th>
-                <th class="mini" data-localize="OvertimeHours"></th>
-                <th data-localize="AbsenteeismReason"></th>
-                <th class="mini" data-localize="Update"></th>
+                <th class="mini" data-localize="@I18N.OvertimeHours"></th>
+                <th data-localize="@I18N.AbsenteeismReason"></th>
+                <th class="mini" data-localize="@I18N.Update"></th>
             </tr>
         </thead>
         <tbody>
@@ -75,23 +76,23 @@
                         </div>
                     </td>
                     <td>
-                        <input type="time" class="check-in time" />
+                        <input type="time" class="check-in time">
                     </td>
                     <td>
-                        <input type="time" class="check-out time" />
+                        <input type="time" class="check-out time">
                     </td>
                     <td>
-                        <input type="text" class="decimal overtime-hours" />
+                        <input type="text" class="decimal overtime-hours">
                     </td>
-                    <td><input type="text" class="reason" /></td>
-                    <td><button class="ui button">Update</button></td>
+                    <td><input type="text" class="reason"></td>
+                    <td><button class="ui button">@I18N.Update</button></td>
                 </tr>
             }
         </tbody>
     </table>
 
     <div class="vpad8">
-        <button onclick="updateAll()" class="ui teal button">Update All</button>
+        <button onclick="updateAll()" class="ui teal button">@I18N.UpdateAll</button>
     </div>
 
 </div>
@@ -101,14 +102,14 @@
     $(".attendance.segment").fadeIn(1000);
     $(".ui.checkbox").checkbox();
 
-    $("input.reason").on("blur", function () {
+    $("input.reason").on("blur", function() {
         const el = $(this);
 
-        if(!el.val().trim()) {
+        if (!el.val().trim()) {
             return;
         };
 
-        const row = el.closest("tr"); 
+        const row = el.closest("tr");
         row.find("input.check-in").val("");
         row.find("input.check-out").val("");
         row.find(".was.present.checkbox input:checkbox").prop("checked", false);
@@ -116,7 +117,7 @@
     });
 
 
-    $("#ShowButton").off("click").on("click", function () {
+    $("#ShowButton").off("click").on("click", function() {
         function request(date) {
             const url = "/api/forms/hrm/attendances/get-where/-1/";
 
@@ -133,7 +134,7 @@
 
         const ajax = request(date);
 
-        ajax.success(function (attendance) {
+        ajax.success(function(attendance) {
             $.each(attendance, function() {
                 const model = this;
                 const target = $("tr[data-employee-id='" + model.EmployeeId + "']");
@@ -201,8 +202,7 @@
             const model = [];
 
 
-
-            $.each(candidates, function () {
+            $.each(candidates, function() {
                 const row = $(this);
 
                 const attendance = getAttendance(row);
@@ -216,12 +216,12 @@
         const model = getModel();
         const ajax = request(model);
 
-        ajax.success(function () {
+        ajax.success(function() {
             window.location = window.location.pathname;
         });
     };
 
-    $(".attendance.table thead input[type='checkbox']").off("change").on("change", function () {
+    $(".attendance.table thead input[type='checkbox']").off("change").on("change", function() {
         const el = $(this);
         const state = el.is(":checked");
 
@@ -232,7 +232,7 @@
         var value = $(".attendance.table thead input.check-in.time").val();
 
 
-        $(".attendance.table tbody input.check-in.time").each(function () {
+        $(".attendance.table tbody input.check-in.time").each(function() {
             const el = $(this);
             if (!el.val().trim()) {
                 el.val(value);
@@ -245,7 +245,7 @@
         var value = $(".attendance.table thead input.check-out.time").val();
 
 
-        $(".attendance.table tbody input.check-out.time").each(function () {
+        $(".attendance.table tbody input.check-out.time").each(function() {
             const el = $(this);
             if (!el.val().trim()) {
                 el.val(value);

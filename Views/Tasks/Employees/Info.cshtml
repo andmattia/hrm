@@ -1,7 +1,7 @@
 ﻿@model MixERP.HRM.ViewModels.EmployeeInfo
 
 @{
-    ViewBag.Title = "Employee Info " + Model.Details.EmployeeName;
+    ViewBag.Title = I18N.EmployeeInfo;
     Layout = ViewBag.Layout;
 }
 
@@ -22,20 +22,20 @@
         <div class="bpad8">
             <div class="ui basic buttons">
                 <a href="/dashboard/hrm/tasks/employees" class="ui basic button">Employees</a>
-                <a href="/dashboard/hrm/tasks/employees/identification-details?EmployeeId=@Model.Details.EmployeeId" class="ui basic button">Identification Details</a>
-                <a href="/dashboard/hrm/tasks/employees/social-networks?EmployeeId=@Model.Details.EmployeeId" class="ui basic button">Social Networks</a>
-                <a href="/dashboard/hrm/tasks/employees/experiences?EmployeeId=@Model.Details.EmployeeId" class="ui basic button">Experiences</a>
-                <a href="/dashboard/hrm/tasks/employees/qualifications?EmployeeId=@Model.Details.EmployeeId" class="ui basic button">Qualifications</a>
-                <a href="/dashboard/hrm/tasks/employees/leave-application?EmployeeId=@Model.Details.EmployeeId" class="ui basic button">Leave Application</a>
+                <a href="/dashboard/hrm/tasks/employees/identification-details?EmployeeId=@Model.Details.EmployeeId" class="ui basic button">@I18N.IdentificationDetails</a>
+                <a href="/dashboard/hrm/tasks/employees/social-networks?EmployeeId=@Model.Details.EmployeeId" class="ui basic button">@I18N.SocialNetworks</a>
+                <a href="/dashboard/hrm/tasks/employees/experiences?EmployeeId=@Model.Details.EmployeeId" class="ui basic button">@I18N.Experiences</a>
+                <a href="/dashboard/hrm/tasks/employees/qualifications?EmployeeId=@Model.Details.EmployeeId" class="ui basic button">@I18N.Qualifications</a>
+                <a href="/dashboard/hrm/tasks/employees/leave-application?EmployeeId=@Model.Details.EmployeeId" class="ui basic button">@I18N.LeaveApplication</a>
             </div>
         </div>
 
         <div class="ui attached tabular menu">
-            <a class="active item" data-tab="general-info-tab">General Information</a>
-            <a class="item" data-tab="identification-tab">Identification Details</a>
-            <a class="item" data-tab="social-networks-tab">Social Networks</a>
-            <a class="item" data-tab="experiences-tab">Experiences</a>
-            <a class="item" data-tab="qualifications-tab">Qualifications</a>
+            <a class="active item" data-tab="general-info-tab">@I18N.GeneralInformation</a>
+            <a class="item" data-tab="identification-tab">@I18N.IdentificationDetails</a>
+            <a class="item" data-tab="social-networks-tab">@I18N.SocialNetworks</a>
+            <a class="item" data-tab="experiences-tab">@I18N.Experiences</a>
+            <a class="item" data-tab="qualifications-tab">@I18N.Qualifications</a>
         </div>
         <div class="ui active tab attached segment" data-tab="general-info-tab">
             <div class="ui stackable grid">
@@ -45,15 +45,14 @@
                             @Model.Details.EmployeeName
                         </div>
                         <a href="/dashboard/hrm/services/attachments/@Model.Details.Photo" target="_blank">
-                            <img src="/dashboard/hrm/services/attachments/@Model.Details.Photo?Height=300&Width=272" class="ui image"
-                                 alt="@Model.Details.EmployeeName" />
+                            <img src="/dashboard/hrm/services/attachments/@Model.Details.Photo?Height=300&Width=272" class="ui image" alt="@Model.Details.EmployeeName" />
                         </a>
                         <br />
                         <table class="ui striped definition table">
                             <tbody>
                                 <tr>
                                     <td>
-                                        Email Address
+                                        @I18N.EmailAddress
                                     </td>
                                     <td>
                                         <i class="mail icon"></i>
@@ -62,7 +61,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Website
+                                        @I18N.Website
                                     </td>
                                     <td>
                                         <i class="world icon"></i>
@@ -71,7 +70,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Blog
+                                        @I18N.Blog
                                     </td>
                                     <td>
                                         <i class="world icon"></i>
@@ -80,7 +79,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Home Phone
+                                        @I18N.HomePhone
                                     </td>
                                     <td>
                                         <i class="phone icon"></i>
@@ -90,7 +89,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Cell Phone
+                                        @I18N.CellPhone
                                     </td>
                                     <td>
                                         <i class="mobile icon"></i>
@@ -100,7 +99,7 @@
                                 </tr>
                                 <tr>
                                     <td>
-                                        Phone (Office Extension)
+                                        @I18N.PhoneOfficeExtension
                                     </td>
                                     <td>
                                         <i class="phone icon"></i>
@@ -110,7 +109,7 @@
                                 </tr>
                                 <tr class="negative">
                                     <td>
-                                        Emergency Phone
+                                        @I18N.EmergencyPhone
                                     </td>
                                     <td>
                                         <i class="red phone icon"></i>
@@ -119,7 +118,7 @@
                                 </tr>
                                 <tr class="negative">
                                     <td>
-                                        Emergency Phone 2
+                                        @I18N.EmergencyPhone2
                                     </td>
                                     <td>
                                         <i class="red phone icon"></i>
@@ -128,7 +127,7 @@
                                 </tr>
                                 <tr>
                                     <td style="width: 200px;">
-                                        User
+                                        @I18N.User
                                     </td>
                                     <td>
                                         <i class="user icon"></i>
@@ -145,7 +144,7 @@
                         <tbody>
                             <tr>
                                 <td style="width: 200px;">
-                                    Joined On
+                                    @I18N.JoinedOn
                                 </td>
                                 <td title="@Model.Details.JoinedOn.ToString()">
                                     @Model.Details.JoinedOn
@@ -153,7 +152,7 @@
                             </tr>
                             <tr>
                                 <td style="width: 200px;">
-                                    Office
+                                    @I18N.Office
                                 </td>
                                 <td>
                                     @Model.Details.Office
@@ -161,7 +160,7 @@
                             </tr>
                             <tr>
                                 <td style="width: 200px;">
-                                    Gender
+                                    @I18N.Gender
                                 </td>
                                 <td>
                                     @Model.Details.GenderName
@@ -169,7 +168,7 @@
                             </tr>
                             <tr>
                                 <td style="width: 200px;">
-                                    Marital Status
+                                    @I18N.MaritalStatus
                                 </td>
                                 <td>
                                     @Model.Details.MaritalStatus
@@ -177,7 +176,7 @@
                             </tr>
                             <tr>
                                 <td style="width: 200px;">
-                                    Employee Type
+                                    @I18N.EmployeeType
                                 </td>
                                 <td>
                                     @Model.Details.EmployeeType
@@ -185,7 +184,7 @@
                             </tr>
                             <tr>
                                 <td style="width: 200px;">
-                                    Department
+                                    @I18N.Department
                                 </td>
                                 <td>
                                     @Model.Details.CurrentDepartment
@@ -193,7 +192,7 @@
                             </tr>
                             <tr>
                                 <td style="width: 200px;">
-                                    Role
+                                    @I18N.Role
                                 </td>
                                 <td>
                                     @Model.Details.Role
@@ -201,7 +200,7 @@
                             </tr>
                             <tr class="negative">
                                 <td style="width: 200px;">
-                                    Employment Status
+                                    @I18N.EmploymentStatus
                                 </td>
                                 <td>
                                     @Model.Details.EmploymentStatus
@@ -209,7 +208,7 @@
                             </tr>
                             <tr>
                                 <td style="width: 200px;">
-                                    Job Title
+                                    @I18N.JobTitle
                                 </td>
                                 <td>
                                     @Model.Details.JobTitle
@@ -217,7 +216,7 @@
                             </tr>
                             <tr>
                                 <td style="width: 200px;">
-                                    Pay Grade
+                                    @I18N.PayGrade
                                 </td>
                                 <td>
                                     @Model.Details.PayGrade
@@ -225,7 +224,7 @@
                             </tr>
                             <tr>
                                 <td style="width: 200px;">
-                                    Shift
+                                    @I18N.Shift
                                 </td>
                                 <td>
                                     @Model.Details.Shift
@@ -233,7 +232,7 @@
                             </tr>
                             <tr>
                                 <td style="width: 200px;">
-                                    Nationality
+                                    @I18N.Nationality
                                 </td>
                                 <td>
                                     @Model.Details.Nationality
@@ -241,7 +240,7 @@
                             </tr>
                             <tr>
                                 <td style="width: 200px;">
-                                    Date Of Birth
+                                    @I18N.DateOfBirth
                                 </td>
                                 <td title="@Model.Details.DateOfBirth.ToString()">
                                     @Model.Details.DateOfBirth
@@ -249,7 +248,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Address Line 1
+                                    @I18N.AddressLine1
                                 </td>
                                 <td>
                                     @Model.Details.AddressLine1
@@ -257,7 +256,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Address Line 2
+                                    @I18N.AddressLine2
                                 </td>
                                 <td>
                                     @Model.Details.AddressLine2
@@ -265,7 +264,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Zip Code
+                                    @I18N.ZipCode
                                 </td>
                                 <td>
                                     @Model.Details.ZipCode
@@ -273,7 +272,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Street
+                                    @I18N.Street
                                 </td>
                                 <td>
                                     @Model.Details.Street
@@ -281,7 +280,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    City
+                                    @I18N.City
                                 </td>
                                 <td>
                                     @Model.Details.City
@@ -289,7 +288,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    State
+                                    @I18N.State
                                 </td>
                                 <td>
                                     @Model.Details.State
@@ -297,7 +296,7 @@
                             </tr>
                             <tr>
                                 <td>
-                                    Country
+                                    @I18N.Country
                                 </td>
                                 <td>
                                     <i class="{{getCountryCode(employee.Country)}} flag"></i>@Model.Details.Country
@@ -310,15 +309,15 @@
         </div>
         <div class="ui tab attached segment" data-tab="identification-tab">
             <div class="ui grey header">
-                Identification Details
+                @I18N.IdentificationDetails
             </div>
 
             <table class="ui striped table">
                 <thead>
                     <tr>
-                        <th>Identification Type Code</th>
-                        <th>Identification Type Name</th>
-                        <th>Identification #</th>
+                        <th>@I18N.IdentificationTypeCode</th>
+                        <th>@I18N.IdentificationTypeName</th>
+                        <th>@I18N.IdentificationNumber</th>
                         <th>Expires On</th>
                     </tr>
                 </thead>
@@ -335,19 +334,19 @@
                 </tbody>
             </table>
             <a href="/dashboard/hrm/tasks/employees/identification-details?View=FormView&EmployeeId=@Model.Details.EmployeeId&ReturnUrl={{thispage}}&data-tab=identification-tab" class="ui green button">
-                Add New
+                @I18N.AddNew
             </a>
         </div>
         <div class="ui tab attached segment" data-tab="social-networks-tab">
             <div class="ui grey header">
-                Social Networks
+                @I18N.SocialNetworks
             </div>
 
             <table class="ui striped table">
                 <thead>
                     <tr>
-                        <th>Social Network Name</th>
-                        <th>Social Network Id</th>
+                        <th>@I18N.SocialNetworkName</th>
+                        <th>@I18N.SocialNetworkId</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -371,21 +370,21 @@
                 </tbody>
             </table>
             <a href="/dashboard/hrm/tasks/employees/social-networks?View=FormView&EmployeeId=@Model.Details.EmployeeId&ReturnUrl={{thispage}}&data-tab=social-networks-tab" class="ui green button">
-                Add New
+                @I18N.AddNew
             </a>
         </div>
         <div class="ui tab attached segment" data-tab="experiences-tab">
             <div class="ui grey header">
-                Experiences
+                @I18N.Experiences
             </div>
 
             <table class="ui striped table">
                 <thead>
                     <tr>
-                        <th>Organization Name</th>
-                        <th>Title</th>
-                        <th>Started On</th>
-                        <th>Ended On</th>
+                        <th>@I18N.OrganizationName</th>
+                        <th>@I18N.Title</th>
+                        <th>@I18N.StartedOn</th>
+                        <th>@I18N.EndedOn</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -402,23 +401,23 @@
             </table>
 
             <a href="/dashboard/hrm/tasks/employees/experiences?View=FormView&EmployeeId=@Model.Details.EmployeeId&ReturnUrl={{thispage}}&data-tab=experiences-tab" class="ui green button">
-                Add New
+                @I18N.AddNew
             </a>
         </div>
         <div class="ui tab attached segment" data-tab="qualifications-tab">
             <div class="ui grey header">
-                Qualifications
+                @I18N.Qualifications
             </div>
 
             <table class="ui striped table">
                 <thead>
                     <tr>
-                        <th>Education Level Name</th>
-                        <th>Institution</th>
-                        <th>Majors</th>
-                        <th>Total Years</th>
-                        <th>Started On</th>
-                        <th>Completed On</th>
+                        <th>@I18N.EducationLevelName</th>
+                        <th>@I18N.Institution</th>
+                        <th>@I18N.Majors</th>
+                        <th>@I18N.TotalYears</th>
+                        <th>@I18N.StartedOn</th>
+                        <th>@I18N.CompletedOn</th>
                     </tr>
                 </thead>
                 <tbody>
@@ -437,7 +436,7 @@
             </table>
 
             <a href="/dashboard/hrm/tasks/employees/qualifications?View=FormView&EmployeeId=@Model.Details.EmployeeId&ReturnUrl={{thispage}}&data-tab=qualifications-tab" class="ui green button">
-                Add New
+                @I18N.AddNew
             </a>
         </div>
     </div>
