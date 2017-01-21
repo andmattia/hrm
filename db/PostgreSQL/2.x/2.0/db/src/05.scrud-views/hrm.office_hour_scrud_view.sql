@@ -4,10 +4,10 @@ CREATE VIEW hrm.office_hour_scrud_view
 AS
 SELECT
     hrm.office_hours.office_hour_id,
-    core.offices.office_code + ' (' + core.offices.office_name + ')' AS office,
+    core.offices.office_code || ' (' || core.offices.office_name || ')' AS office,
     core.offices.logo as photo,
-    hrm.shifts.shift_code + ' (' + hrm.shifts.shift_name + ')' AS shift,
-    hrm.week_days.week_day_code + ' (' + hrm.week_days.week_day_name + ')' AS week_day,
+    hrm.shifts.shift_code || ' (' || hrm.shifts.shift_name || ')' AS shift,
+    hrm.week_days.week_day_code || ' (' || hrm.week_days.week_day_name || ')' AS week_day,
     hrm.office_hours.begins_from,
     hrm.office_hours.ends_on
 FROM hrm.office_hours
