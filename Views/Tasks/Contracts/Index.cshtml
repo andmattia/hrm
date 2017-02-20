@@ -88,7 +88,10 @@
 <script>
     $(document).on("formready", function () {
         $("#verification_status_id").val("0");
-        $("#employment_status_code_id").dropdown("set selected", "0");
+
+        //Todo: Remove Semantic UI Dropdown dependency 
+        //$("#employment_status_code_id").dropdown("set selected", "0");
+        $("#employment_status_code_id").val("0");
     });
 </script>
 

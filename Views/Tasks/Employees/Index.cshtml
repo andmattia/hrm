@@ -258,7 +258,10 @@
 
 
     function initialize() {
-        $("#status").dropdown("set selected", "yes");
+        //Todo: Remove Semantic UI Dropdown dependency 
+        //$("#status").dropdown("set selected", "yes");
+        $("#status").val("yes");
+
         var firstName = $("#first_name");
         var middleName = $("#middle_name");
         var lastName = $("#last_name");
