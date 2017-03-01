@@ -41,7 +41,7 @@ namespace MixERP.HRM.Controllers.Services
 
         [RestrictAnonymous]
         [Route("dashboard/hrm/services/attachments/{*path}")]
-        [FrapidOutputCache(ProfileName = "StaticFile.xml", Location = OutputCacheLocation.Client)]
+        [FileOutputCache(ProfileName = "StaticFile.xml", Duration = 60 * 60, Location = OutputCacheLocation.Client)]
         public ActionResult AttachmentResult(string path)
         {
             int width = this.Request.QueryString["width"].To<int>();
