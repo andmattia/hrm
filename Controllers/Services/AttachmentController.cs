@@ -39,7 +39,6 @@ namespace MixERP.HRM.Controllers.Services
             }
         }
 
-        [RestrictAnonymous]
         [Route("dashboard/hrm/services/attachments/{*path}")]
         [FileOutputCache(ProfileName = "StaticFile.xml", Duration = 60 * 60, Location = OutputCacheLocation.Client)]
         public ActionResult AttachmentResult(string path)

@@ -8,7 +8,7 @@
 <div class="ui container">
     <div class="ui attached padded segment">
         <div class="ui purple header">
-            <img src="/dashboard/hrm/services/attachments/@Model.Details.Photo?Width=200&Height=200"
+            <img src="@Model.Details.Photo?Width=200&Height=200"
                  class="ui circular image" alt="@Model.Details.EmployeeName" />
             <div class="content">
                 @Model.Details.EmployeeName
@@ -44,8 +44,8 @@
                         <div class="ui large header">
                             @Model.Details.EmployeeName
                         </div>
-                        <a href="/dashboard/hrm/services/attachments/@Model.Details.Photo" target="_blank">
-                            <img src="/dashboard/hrm/services/attachments/@Model.Details.Photo?Height=300&Width=272" class="ui image" alt="@Model.Details.EmployeeName" />
+                        <a href="@Model.Details.Photo" target="_blank">
+                            <img src="@Model.Details.Photo?Height=300&Width=272" class="ui image" alt="@Model.Details.EmployeeName" />
                         </a>
                         <br />
                         <table class="ui striped definition table">
