@@ -9,7 +9,6 @@ namespace MixERP.HRM.Controllers.Tasks
     public class ExitController : DashboardController
     {
         [Route("dashboard/hrm/tasks/exits")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()

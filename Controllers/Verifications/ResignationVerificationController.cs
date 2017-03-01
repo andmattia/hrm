@@ -17,7 +17,6 @@ namespace MixERP.HRM.Controllers.Verifications
     public class ResignationVerificationController : DashboardController
     {
         [Route("dashboard/hrm/verification/resignations")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()
@@ -26,7 +25,6 @@ namespace MixERP.HRM.Controllers.Verifications
         }
 
         [Route("dashboard/hrm/verification/resignations")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         [HttpPut]

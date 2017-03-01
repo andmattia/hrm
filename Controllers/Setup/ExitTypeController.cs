@@ -9,7 +9,6 @@ namespace MixERP.HRM.Controllers.Setup
     public class ExitTypeController : DashboardController
     {
         [Route("dashboard/hrm/setup/exit-types")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()

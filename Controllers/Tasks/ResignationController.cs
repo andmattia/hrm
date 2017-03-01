@@ -9,7 +9,6 @@ namespace MixERP.HRM.Controllers.Tasks
     public class ResignationController : DashboardController
     {
         [Route("dashboard/hrm/tasks/resignations")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()

@@ -9,7 +9,6 @@ namespace MixERP.HRM.Controllers.Setup
     public class ShiftController : DashboardController
     {
         [Route("dashboard/hrm/setup/shifts")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()

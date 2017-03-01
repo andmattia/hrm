@@ -1,17 +1,21 @@
 using System.Net;
 using System.Web.Mvc;
+using System.Web.UI;
 using Frapid.Areas;
+using Frapid.Areas.Authorization;
 using Frapid.Areas.Conventions.Attachments;
 using Frapid.Framework.Extensions;
 using Frapid.WebsiteBuilder;
 using Serilog;
 using Frapid.Areas.CSRF;
+using Frapid.Areas.Caching;
 
 namespace MixERP.HRM.Controllers.Services
 {
     [AntiForgery]
     public class AttachmentController : FrapidController
     {
+        [RestrictAnonymous]
         [Route("dashboard/hrm/services/attachments")]
         [HttpPost]
         public ActionResult Post()
@@ -35,7 +39,9 @@ namespace MixERP.HRM.Controllers.Services
             }
         }
 
+        [RestrictAnonymous]
         [Route("dashboard/hrm/services/attachments/{*path}")]
+        [FrapidOutputCache(ProfileName = "StaticFile.xml", Location = OutputCacheLocation.Client)]
         public ActionResult AttachmentResult(string path)
         {
             int width = this.Request.QueryString["width"].To<int>();

@@ -12,7 +12,6 @@ namespace MixERP.HRM.Controllers.Tasks
     public class EmployeeController: DashboardController
     {
         [Route("dashboard/hrm/tasks/employees")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()
@@ -21,7 +20,6 @@ namespace MixERP.HRM.Controllers.Tasks
         }
 
         [Route("dashboard/hrm/tasks/employees/experiences")]
-        [RestrictAnonymous]
         [MenuPolicy(OverridePath = "/dashboard/hrm/tasks/employees")]
         [ScrudFactory]
         public ActionResult DisplayExpriences()
@@ -30,7 +28,6 @@ namespace MixERP.HRM.Controllers.Tasks
         }
 
         [Route("dashboard/hrm/tasks/employees/identification-details")]
-        [RestrictAnonymous]
         [MenuPolicy(OverridePath = "/dashboard/hrm/tasks/employees")]
         [ScrudFactory]
         public ActionResult DisplayIdentificationDetails()
@@ -39,7 +36,6 @@ namespace MixERP.HRM.Controllers.Tasks
         }
 
         [Route("dashboard/hrm/tasks/employees/leave-application")]
-        [RestrictAnonymous]
         [MenuPolicy(OverridePath = "/dashboard/hrm/tasks/employees")]
         [ScrudFactory]
         public ActionResult DisplayLeaveApplication()
@@ -48,7 +44,6 @@ namespace MixERP.HRM.Controllers.Tasks
         }
 
         [Route("dashboard/hrm/tasks/employees/qualifications")]
-        [RestrictAnonymous]
         [MenuPolicy(OverridePath = "/dashboard/hrm/tasks/employees")]
         [ScrudFactory]
         public ActionResult DisplayQualifications()
@@ -57,7 +52,6 @@ namespace MixERP.HRM.Controllers.Tasks
         }
 
         [Route("dashboard/hrm/tasks/employees/social-networks")]
-        [RestrictAnonymous]
         [MenuPolicy(OverridePath = "/dashboard/hrm/tasks/employees")]
         [ScrudFactory]
         public ActionResult DisplaySocialNetworks()
@@ -66,7 +60,6 @@ namespace MixERP.HRM.Controllers.Tasks
         }
 
         [Route("dashboard/hrm/tasks/employee-info/{employeeId}")]
-        [RestrictAnonymous]
         [MenuPolicy(OverridePath = "/dashboard/hrm/tasks/employees")]
         public async Task<ActionResult> EmployeeInfoAsync(int employeeId)
         {

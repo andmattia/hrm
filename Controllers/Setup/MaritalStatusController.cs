@@ -9,7 +9,6 @@ namespace MixERP.HRM.Controllers.Setup
     public class MaritalStatusController : DashboardController
     {
         [Route("dashboard/hrm/setup/marital-statuses")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()

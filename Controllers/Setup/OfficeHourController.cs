@@ -9,7 +9,6 @@ namespace MixERP.HRM.Controllers.Setup
     public class OfficeHourController : DashboardController
     {
         [Route("dashboard/hrm/setup/office-hours")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()

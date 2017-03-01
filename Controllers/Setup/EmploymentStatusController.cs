@@ -9,7 +9,6 @@ namespace MixERP.HRM.Controllers.Setup
     public class EmploymentStatusController : DashboardController
     {
         [Route("dashboard/hrm/setup/employment-statuses")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()

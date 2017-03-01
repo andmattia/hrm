@@ -9,7 +9,6 @@ namespace MixERP.HRM.Controllers.Setup
     public class JobTitleController : DashboardController
     {
         [Route("dashboard/hrm/setup/job-titles")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()

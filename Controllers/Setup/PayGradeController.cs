@@ -9,7 +9,6 @@ namespace MixERP.HRM.Controllers.Setup
     public class PayGradeController : DashboardController
     {
         [Route("dashboard/hrm/setup/pay-grades")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()

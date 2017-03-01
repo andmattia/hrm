@@ -15,7 +15,6 @@ namespace MixERP.HRM.Controllers.Tasks
     public class AttendanceController : DashboardController
     {
         [Route("dashboard/hrm/tasks/attendance")]
-        [RestrictAnonymous]
         [MenuPolicy]
         public async Task<ActionResult> IndexAsync()
         {

@@ -8,7 +8,6 @@ namespace MixERP.HRM.Controllers.Tasks
     public class LeaveApplicationController : DashboardController
     {
         [Route("dashboard/hrm/tasks/leave-applications")]
-        [RestrictAnonymous]
         [MenuPolicy]
         public ActionResult Index()
         {

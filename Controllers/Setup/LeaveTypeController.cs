@@ -9,7 +9,6 @@ namespace MixERP.HRM.Controllers.Setup
     public class LeaveTypeController : DashboardController
     {
         [Route("dashboard/hrm/setup/leave-types")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()

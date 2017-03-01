@@ -8,7 +8,6 @@ namespace MixERP.HRM.Controllers.Setup
 {
     public class EducationLevelController : DashboardController
     {
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         [Route("dashboard/hrm/setup/education-levels")]

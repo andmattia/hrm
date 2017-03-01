@@ -9,7 +9,6 @@ namespace MixERP.HRM.Controllers.Setup
     public class NationalityController : DashboardController
     {
         [Route("dashboard/hrm/setup/nationalities")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()

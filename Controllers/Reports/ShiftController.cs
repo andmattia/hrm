@@ -8,7 +8,6 @@ namespace MixERP.HRM.Controllers.Reports
     public class AttendanceReportController : DashboardController
     {
         [Route("dashboard/hrm/reports/attendances")]
-        [RestrictAnonymous]
         [MenuPolicy]
         public ActionResult Index()
         {

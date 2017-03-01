@@ -17,7 +17,6 @@ namespace MixERP.HRM.Controllers.Verifications
     public class LeaveApplicationVerificationController : DashboardController
     {
         [Route("dashboard/hrm/verification/leave-applications")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()
@@ -26,7 +25,6 @@ namespace MixERP.HRM.Controllers.Verifications
         }
 
         [Route("dashboard/hrm/verification/leave-applications")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         [HttpPut]

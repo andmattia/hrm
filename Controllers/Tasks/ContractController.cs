@@ -9,7 +9,6 @@ namespace MixERP.HRM.Controllers.Tasks
     public class ContractController : DashboardController
     {
         [Route("dashboard/hrm/tasks/contracts")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()

@@ -9,7 +9,6 @@ namespace MixERP.HRM.Controllers.Tasks
     public class TerminationController : DashboardController
     {
         [Route("dashboard/hrm/tasks/terminations")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()

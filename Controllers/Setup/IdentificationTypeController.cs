@@ -9,7 +9,6 @@ namespace MixERP.HRM.Controllers.Setup
     public class IdentificationTypeController : DashboardController
     {
         [Route("dashboard/hrm/setup/identification-types")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()

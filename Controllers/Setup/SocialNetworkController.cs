@@ -9,7 +9,6 @@ namespace MixERP.HRM.Controllers.Setup
     public class SocialNetworkController : DashboardController
     {
         [Route("dashboard/hrm/setup/social-networks")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()

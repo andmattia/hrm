@@ -9,7 +9,6 @@ namespace MixERP.HRM.Controllers.Setup
     public class EmployeeTypeController : DashboardController
     {
         [Route("dashboard/hrm/setup/employee-types")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()

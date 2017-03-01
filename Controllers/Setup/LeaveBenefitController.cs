@@ -9,7 +9,6 @@ namespace MixERP.HRM.Controllers.Setup
     public class LeaveBenefitController : DashboardController
     {
         [Route("dashboard/hrm/setup/leave-benefits")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()

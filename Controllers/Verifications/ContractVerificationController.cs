@@ -17,7 +17,6 @@ namespace MixERP.HRM.Controllers.Verifications
     public class ContractVerificationController : DashboardController
     {
         [Route("dashboard/hrm/verification/contracts")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         public ActionResult Index()
@@ -26,7 +25,6 @@ namespace MixERP.HRM.Controllers.Verifications
         }
 
         [Route("dashboard/hrm/verification/contracts")]
-        [RestrictAnonymous]
         [MenuPolicy]
         [ScrudFactory]
         [HttpPut]
