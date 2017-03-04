@@ -2,10 +2,10 @@
 using System.Threading.Tasks;
 using System.Web.Mvc;
 using Frapid.ApplicationState.Cache;
-using Frapid.Areas.Authorization;
 using Frapid.Areas.CSRF;
 using Frapid.Dashboard;
 using Frapid.Dashboard.Controllers;
+using Frapid.DataAccess.Models;
 using MixERP.HRM.DAL;
 using MixERP.HRM.DTO;
 
@@ -16,6 +16,7 @@ namespace MixERP.HRM.Controllers.Tasks
     {
         [Route("dashboard/hrm/tasks/attendance")]
         [MenuPolicy]
+        [AccessPolicy("hrm", "attendances", AccessTypeEnum.Read)]
         public async Task<ActionResult> IndexAsync()
         {
             var meta = await AppUsers.GetCurrentAsync().ConfigureAwait(true);
@@ -27,6 +28,7 @@ namespace MixERP.HRM.Controllers.Tasks
         [Route("dashboard/hrm/tasks/attendance")]
         [MenuPolicy]
         [HttpPost]
+        [AccessPolicy("hrm", "attendances", AccessTypeEnum.Create)]
         public async Task<ActionResult> PutAsync(List<Attendance> model)
         {
             await Attendances.PostAsync(this.Tenant, model).ConfigureAwait(true);

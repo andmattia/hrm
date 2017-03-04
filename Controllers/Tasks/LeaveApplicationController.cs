@@ -1,7 +1,7 @@
 ﻿using System.Web.Mvc;
-using Frapid.Areas.Authorization;
 using Frapid.Dashboard;
 using Frapid.Dashboard.Controllers;
+using Frapid.DataAccess.Models;
 
 namespace MixERP.HRM.Controllers.Tasks
 {
@@ -9,6 +9,7 @@ namespace MixERP.HRM.Controllers.Tasks
     {
         [Route("dashboard/hrm/tasks/leave-applications")]
         [MenuPolicy]
+        [AccessPolicy("hrm", "leave_applications", AccessTypeEnum.Read)]
         public ActionResult Index()
         {
             return this.FrapidView(this.GetRazorView<AreaRegistration>("Tasks/LeaveApplications/Index.cshtml", this.Tenant));
