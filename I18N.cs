@@ -319,14 +319,14 @@ namespace MixERP.HRM
 		public static string City => I18NResource.GetString(ResourceDirectory, "City");
 
 		/// <summary>
-		///Low Vision
-		/// </summary>
-		public static string LowVision => I18NResource.GetString(ResourceDirectory, "LowVision");
-
-		/// <summary>
 		///Was Absent
 		/// </summary>
 		public static string WasAbsent => I18NResource.GetString(ResourceDirectory, "WasAbsent");
+
+		/// <summary>
+		///Low Vision
+		/// </summary>
+		public static string LowVision => I18NResource.GetString(ResourceDirectory, "LowVision");
 
 		/// <summary>
 		///Audit User Id
@@ -349,6 +349,11 @@ namespace MixERP.HRM
 		public static string EndsOn => I18NResource.GetString(ResourceDirectory, "EndsOn");
 
 		/// <summary>
+		///Overtime Hours
+		/// </summary>
+		public static string OvertimeHours => I18NResource.GetString(ResourceDirectory, "OvertimeHours");
+
+		/// <summary>
 		///Deleted
 		/// </summary>
 		public static string Deleted => I18NResource.GetString(ResourceDirectory, "Deleted");
@@ -357,11 +362,6 @@ namespace MixERP.HRM
 		///Bank Account Number
 		/// </summary>
 		public static string BankAccountNumber => I18NResource.GetString(ResourceDirectory, "BankAccountNumber");
-
-		/// <summary>
-		///Overtime Hours
-		/// </summary>
-		public static string OvertimeHours => I18NResource.GetString(ResourceDirectory, "OvertimeHours");
 
 		/// <summary>
 		///Employee Type Name
@@ -654,14 +654,14 @@ namespace MixERP.HRM
 		public static string ZipCode => I18NResource.GetString(ResourceDirectory, "ZipCode");
 
 		/// <summary>
-		///Job Title Code
-		/// </summary>
-		public static string JobTitleCode => I18NResource.GetString(ResourceDirectory, "JobTitleCode");
-
-		/// <summary>
 		///Check Out Time
 		/// </summary>
 		public static string CheckOutTime => I18NResource.GetString(ResourceDirectory, "CheckOutTime");
+
+		/// <summary>
+		///Job Title Code
+		/// </summary>
+		public static string JobTitleCode => I18NResource.GetString(ResourceDirectory, "JobTitleCode");
 
 		/// <summary>
 		///Employee Code
@@ -724,14 +724,14 @@ namespace MixERP.HRM
 		public static string MinimumSalary => I18NResource.GetString(ResourceDirectory, "MinimumSalary");
 
 		/// <summary>
-		///Leave Type Name
-		/// </summary>
-		public static string LeaveTypeName => I18NResource.GetString(ResourceDirectory, "LeaveTypeName");
-
-		/// <summary>
 		///Attendance Id
 		/// </summary>
 		public static string AttendanceId => I18NResource.GetString(ResourceDirectory, "AttendanceId");
+
+		/// <summary>
+		///Leave Type Name
+		/// </summary>
+		public static string LeaveTypeName => I18NResource.GetString(ResourceDirectory, "LeaveTypeName");
 
 		/// <summary>
 		///Is Cognitively Disabled
@@ -844,6 +844,11 @@ namespace MixERP.HRM
 		public static string BeginsFrom => I18NResource.GetString(ResourceDirectory, "BeginsFrom");
 
 		/// <summary>
+		///Attendance Date
+		/// </summary>
+		public static string AttendanceDate => I18NResource.GetString(ResourceDirectory, "AttendanceDate");
+
+		/// <summary>
 		///Leave Type Code
 		/// </summary>
 		public static string LeaveTypeCode => I18NResource.GetString(ResourceDirectory, "LeaveTypeCode");
@@ -852,11 +857,6 @@ namespace MixERP.HRM
 		///Bank Reference Number
 		/// </summary>
 		public static string BankReferenceNumber => I18NResource.GetString(ResourceDirectory, "BankReferenceNumber");
-
-		/// <summary>
-		///Attendance Date
-		/// </summary>
-		public static string AttendanceDate => I18NResource.GetString(ResourceDirectory, "AttendanceDate");
 
 		/// <summary>
 		///Is Alcoholic
