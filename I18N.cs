@@ -44,14 +44,14 @@ namespace MixERP.HRM
 		public static string VerifiedByUserId => I18NResource.GetString(ResourceDirectory, "VerifiedByUserId");
 
 		/// <summary>
-		///Employee
-		/// </summary>
-		public static string Employee => I18NResource.GetString(ResourceDirectory, "Employee");
-
-		/// <summary>
 		///Leave Type Id
 		/// </summary>
 		public static string LeaveTypeId => I18NResource.GetString(ResourceDirectory, "LeaveTypeId");
+
+		/// <summary>
+		///Employee
+		/// </summary>
+		public static string Employee => I18NResource.GetString(ResourceDirectory, "Employee");
 
 		/// <summary>
 		///Description
@@ -74,14 +74,14 @@ namespace MixERP.HRM
 		public static string CurrentDepartment => I18NResource.GetString(ResourceDirectory, "CurrentDepartment");
 
 		/// <summary>
-		///Office
-		/// </summary>
-		public static string Office => I18NResource.GetString(ResourceDirectory, "Office");
-
-		/// <summary>
 		///Check In Time
 		/// </summary>
 		public static string CheckInTime => I18NResource.GetString(ResourceDirectory, "CheckInTime");
+
+		/// <summary>
+		///Office
+		/// </summary>
+		public static string Office => I18NResource.GetString(ResourceDirectory, "Office");
 
 		/// <summary>
 		///Applied On
@@ -99,6 +99,11 @@ namespace MixERP.HRM
 		public static string EmploymentStatusName => I18NResource.GetString(ResourceDirectory, "EmploymentStatusName");
 
 		/// <summary>
+		///Education Level Id
+		/// </summary>
+		public static string EducationLevelId => I18NResource.GetString(ResourceDirectory, "EducationLevelId");
+
+		/// <summary>
 		///Education Level Name
 		/// </summary>
 		public static string EducationLevelName => I18NResource.GetString(ResourceDirectory, "EducationLevelName");
@@ -109,19 +114,14 @@ namespace MixERP.HRM
 		public static string LeaveApplicationId => I18NResource.GetString(ResourceDirectory, "LeaveApplicationId");
 
 		/// <summary>
-		///Education Level Id
+		///Week Day Id
 		/// </summary>
-		public static string EducationLevelId => I18NResource.GetString(ResourceDirectory, "EducationLevelId");
+		public static string WeekDayId => I18NResource.GetString(ResourceDirectory, "WeekDayId");
 
 		/// <summary>
 		///Title
 		/// </summary>
 		public static string Title => I18NResource.GetString(ResourceDirectory, "Title");
-
-		/// <summary>
-		///Week Day Id
-		/// </summary>
-		public static string WeekDayId => I18NResource.GetString(ResourceDirectory, "WeekDayId");
 
 		/// <summary>
 		///Gender Code
@@ -174,19 +174,14 @@ namespace MixERP.HRM
 		public static string PhoneEmergency => I18NResource.GetString(ResourceDirectory, "PhoneEmergency");
 
 		/// <summary>
-		///Photo
-		/// </summary>
-		public static string Photo => I18NResource.GetString(ResourceDirectory, "Photo");
-
-		/// <summary>
 		///Current Employment Status Id
 		/// </summary>
 		public static string CurrentEmploymentStatusId => I18NResource.GetString(ResourceDirectory, "CurrentEmploymentStatusId");
 
 		/// <summary>
-		///Resignation Id
+		///Photo
 		/// </summary>
-		public static string ResignationId => I18NResource.GetString(ResourceDirectory, "ResignationId");
+		public static string Photo => I18NResource.GetString(ResourceDirectory, "Photo");
 
 		/// <summary>
 		///Leave Benefit Code
@@ -194,9 +189,9 @@ namespace MixERP.HRM
 		public static string LeaveBenefitCode => I18NResource.GetString(ResourceDirectory, "LeaveBenefitCode");
 
 		/// <summary>
-		///Termination Id
+		///Resignation Id
 		/// </summary>
-		public static string TerminationId => I18NResource.GetString(ResourceDirectory, "TerminationId");
+		public static string ResignationId => I18NResource.GetString(ResourceDirectory, "ResignationId");
 
 		/// <summary>
 		///Joined On
@@ -207,6 +202,11 @@ namespace MixERP.HRM
 		///Hard Of Hearing
 		/// </summary>
 		public static string HardOfHearing => I18NResource.GetString(ResourceDirectory, "HardOfHearing");
+
+		/// <summary>
+		///Termination Id
+		/// </summary>
+		public static string TerminationId => I18NResource.GetString(ResourceDirectory, "TerminationId");
 
 		/// <summary>
 		///Employee Id
@@ -249,11 +249,6 @@ namespace MixERP.HRM
 		public static string ServiceEndedOn => I18NResource.GetString(ResourceDirectory, "ServiceEndedOn");
 
 		/// <summary>
-		///Started On
-		/// </summary>
-		public static string StartedOn => I18NResource.GetString(ResourceDirectory, "StartedOn");
-
-		/// <summary>
 		///Shift Id
 		/// </summary>
 		public static string ShiftId => I18NResource.GetString(ResourceDirectory, "ShiftId");
@@ -262,6 +257,11 @@ namespace MixERP.HRM
 		///Job Title Name
 		/// </summary>
 		public static string JobTitleName => I18NResource.GetString(ResourceDirectory, "JobTitleName");
+
+		/// <summary>
+		///Started On
+		/// </summary>
+		public static string StartedOn => I18NResource.GetString(ResourceDirectory, "StartedOn");
 
 		/// <summary>
 		///Pay Grade Code
@@ -304,11 +304,6 @@ namespace MixERP.HRM
 		public static string CountryCode => I18NResource.GetString(ResourceDirectory, "CountryCode");
 
 		/// <summary>
-		///Service End Date
-		/// </summary>
-		public static string ServiceEndDate => I18NResource.GetString(ResourceDirectory, "ServiceEndDate");
-
-		/// <summary>
 		///Shift Name
 		/// </summary>
 		public static string ShiftName => I18NResource.GetString(ResourceDirectory, "ShiftName");
@@ -319,9 +314,9 @@ namespace MixERP.HRM
 		public static string City => I18NResource.GetString(ResourceDirectory, "City");
 
 		/// <summary>
-		///Was Absent
+		///Service End Date
 		/// </summary>
-		public static string WasAbsent => I18NResource.GetString(ResourceDirectory, "WasAbsent");
+		public static string ServiceEndDate => I18NResource.GetString(ResourceDirectory, "ServiceEndDate");
 
 		/// <summary>
 		///Low Vision
@@ -329,29 +324,14 @@ namespace MixERP.HRM
 		public static string LowVision => I18NResource.GetString(ResourceDirectory, "LowVision");
 
 		/// <summary>
+		///Was Absent
+		/// </summary>
+		public static string WasAbsent => I18NResource.GetString(ResourceDirectory, "WasAbsent");
+
+		/// <summary>
 		///Audit User Id
 		/// </summary>
 		public static string AuditUserId => I18NResource.GetString(ResourceDirectory, "AuditUserId");
-
-		/// <summary>
-		///Employee Qualification Id
-		/// </summary>
-		public static string EmployeeQualificationId => I18NResource.GetString(ResourceDirectory, "EmployeeQualificationId");
-
-		/// <summary>
-		///Exit Type
-		/// </summary>
-		public static string ExitType => I18NResource.GetString(ResourceDirectory, "ExitType");
-
-		/// <summary>
-		///Ends On
-		/// </summary>
-		public static string EndsOn => I18NResource.GetString(ResourceDirectory, "EndsOn");
-
-		/// <summary>
-		///Overtime Hours
-		/// </summary>
-		public static string OvertimeHours => I18NResource.GetString(ResourceDirectory, "OvertimeHours");
 
 		/// <summary>
 		///Deleted
@@ -359,9 +339,29 @@ namespace MixERP.HRM
 		public static string Deleted => I18NResource.GetString(ResourceDirectory, "Deleted");
 
 		/// <summary>
+		///Ends On
+		/// </summary>
+		public static string EndsOn => I18NResource.GetString(ResourceDirectory, "EndsOn");
+
+		/// <summary>
+		///Employee Qualification Id
+		/// </summary>
+		public static string EmployeeQualificationId => I18NResource.GetString(ResourceDirectory, "EmployeeQualificationId");
+
+		/// <summary>
 		///Bank Account Number
 		/// </summary>
 		public static string BankAccountNumber => I18NResource.GetString(ResourceDirectory, "BankAccountNumber");
+
+		/// <summary>
+		///Overtime Hours
+		/// </summary>
+		public static string OvertimeHours => I18NResource.GetString(ResourceDirectory, "OvertimeHours");
+
+		/// <summary>
+		///Exit Type
+		/// </summary>
+		public static string ExitType => I18NResource.GetString(ResourceDirectory, "ExitType");
 
 		/// <summary>
 		///Employee Type Name
@@ -474,14 +474,14 @@ namespace MixERP.HRM
 		public static string CurrentPayGradeId => I18NResource.GetString(ResourceDirectory, "CurrentPayGradeId");
 
 		/// <summary>
-		///Identification Type Id
-		/// </summary>
-		public static string IdentificationTypeId => I18NResource.GetString(ResourceDirectory, "IdentificationTypeId");
-
-		/// <summary>
 		///Nationality Id
 		/// </summary>
 		public static string NationalityId => I18NResource.GetString(ResourceDirectory, "NationalityId");
+
+		/// <summary>
+		///Identification Type Id
+		/// </summary>
+		public static string IdentificationTypeId => I18NResource.GetString(ResourceDirectory, "IdentificationTypeId");
 
 		/// <summary>
 		///Total Days
@@ -494,14 +494,14 @@ namespace MixERP.HRM
 		public static string WasPresent => I18NResource.GetString(ResourceDirectory, "WasPresent");
 
 		/// <summary>
-		///Exit Id
-		/// </summary>
-		public static string ExitId => I18NResource.GetString(ResourceDirectory, "ExitId");
-
-		/// <summary>
 		///Details
 		/// </summary>
 		public static string Details => I18NResource.GetString(ResourceDirectory, "Details");
+
+		/// <summary>
+		///Exit Id
+		/// </summary>
+		public static string ExitId => I18NResource.GetString(ResourceDirectory, "ExitId");
 
 		/// <summary>
 		///Department Id
@@ -554,14 +554,14 @@ namespace MixERP.HRM
 		public static string ChangeStatusTo => I18NResource.GetString(ResourceDirectory, "ChangeStatusTo");
 
 		/// <summary>
-		///Total Years
-		/// </summary>
-		public static string TotalYears => I18NResource.GetString(ResourceDirectory, "TotalYears");
-
-		/// <summary>
 		///Employee Type Code
 		/// </summary>
 		public static string EmployeeTypeCode => I18NResource.GetString(ResourceDirectory, "EmployeeTypeCode");
+
+		/// <summary>
+		///Total Years
+		/// </summary>
+		public static string TotalYears => I18NResource.GetString(ResourceDirectory, "TotalYears");
 
 		/// <summary>
 		///Entered By
@@ -569,24 +569,24 @@ namespace MixERP.HRM
 		public static string EnteredBy => I18NResource.GetString(ResourceDirectory, "EnteredBy");
 
 		/// <summary>
-		///Employment Status
-		/// </summary>
-		public static string EmploymentStatus => I18NResource.GetString(ResourceDirectory, "EmploymentStatus");
-
-		/// <summary>
 		///Nationality Name
 		/// </summary>
 		public static string NationalityName => I18NResource.GetString(ResourceDirectory, "NationalityName");
 
 		/// <summary>
-		///Institution
+		///Employment Status
 		/// </summary>
-		public static string Institution => I18NResource.GetString(ResourceDirectory, "Institution");
+		public static string EmploymentStatus => I18NResource.GetString(ResourceDirectory, "EmploymentStatus");
 
 		/// <summary>
 		///Job Title Id
 		/// </summary>
 		public static string JobTitleId => I18NResource.GetString(ResourceDirectory, "JobTitleId");
+
+		/// <summary>
+		///Institution
+		/// </summary>
+		public static string Institution => I18NResource.GetString(ResourceDirectory, "Institution");
 
 		/// <summary>
 		///Audit Ts
@@ -619,24 +619,14 @@ namespace MixERP.HRM
 		public static string PhoneEmergency2 => I18NResource.GetString(ResourceDirectory, "PhoneEmergency2");
 
 		/// <summary>
-		///Desired Resign Date
-		/// </summary>
-		public static string DesiredResignDate => I18NResource.GetString(ResourceDirectory, "DesiredResignDate");
-
-		/// <summary>
 		///Phone Office Extension
 		/// </summary>
 		public static string PhoneOfficeExtension => I18NResource.GetString(ResourceDirectory, "PhoneOfficeExtension");
 
 		/// <summary>
-		///Role
+		///Desired Resign Date
 		/// </summary>
-		public static string Role => I18NResource.GetString(ResourceDirectory, "Role");
-
-		/// <summary>
-		///Exit Interview Details
-		/// </summary>
-		public static string ExitInterviewDetails => I18NResource.GetString(ResourceDirectory, "ExitInterviewDetails");
+		public static string DesiredResignDate => I18NResource.GetString(ResourceDirectory, "DesiredResignDate");
 
 		/// <summary>
 		///Status Code
@@ -654,14 +644,24 @@ namespace MixERP.HRM
 		public static string ZipCode => I18NResource.GetString(ResourceDirectory, "ZipCode");
 
 		/// <summary>
-		///Check Out Time
+		///Exit Interview Details
 		/// </summary>
-		public static string CheckOutTime => I18NResource.GetString(ResourceDirectory, "CheckOutTime");
+		public static string ExitInterviewDetails => I18NResource.GetString(ResourceDirectory, "ExitInterviewDetails");
+
+		/// <summary>
+		///Role
+		/// </summary>
+		public static string Role => I18NResource.GetString(ResourceDirectory, "Role");
 
 		/// <summary>
 		///Job Title Code
 		/// </summary>
 		public static string JobTitleCode => I18NResource.GetString(ResourceDirectory, "JobTitleCode");
+
+		/// <summary>
+		///Check Out Time
+		/// </summary>
+		public static string CheckOutTime => I18NResource.GetString(ResourceDirectory, "CheckOutTime");
 
 		/// <summary>
 		///Employee Code
@@ -689,11 +689,6 @@ namespace MixERP.HRM
 		public static string RoleName => I18NResource.GetString(ResourceDirectory, "RoleName");
 
 		/// <summary>
-		///Employment Status Code Name
-		/// </summary>
-		public static string EmploymentStatusCodeName => I18NResource.GetString(ResourceDirectory, "EmploymentStatusCodeName");
-
-		/// <summary>
 		///User Id
 		/// </summary>
 		public static string UserId => I18NResource.GetString(ResourceDirectory, "UserId");
@@ -709,14 +704,9 @@ namespace MixERP.HRM
 		public static string EmailAddress => I18NResource.GetString(ResourceDirectory, "EmailAddress");
 
 		/// <summary>
-		///Employee Experience Id
+		///Employment Status Code Name
 		/// </summary>
-		public static string EmployeeExperienceId => I18NResource.GetString(ResourceDirectory, "EmployeeExperienceId");
-
-		/// <summary>
-		///Identification Type Code
-		/// </summary>
-		public static string IdentificationTypeCode => I18NResource.GetString(ResourceDirectory, "IdentificationTypeCode");
+		public static string EmploymentStatusCodeName => I18NResource.GetString(ResourceDirectory, "EmploymentStatusCodeName");
 
 		/// <summary>
 		///Minimum Salary
@@ -724,14 +714,24 @@ namespace MixERP.HRM
 		public static string MinimumSalary => I18NResource.GetString(ResourceDirectory, "MinimumSalary");
 
 		/// <summary>
-		///Attendance Id
+		///Identification Type Code
 		/// </summary>
-		public static string AttendanceId => I18NResource.GetString(ResourceDirectory, "AttendanceId");
+		public static string IdentificationTypeCode => I18NResource.GetString(ResourceDirectory, "IdentificationTypeCode");
+
+		/// <summary>
+		///Employee Experience Id
+		/// </summary>
+		public static string EmployeeExperienceId => I18NResource.GetString(ResourceDirectory, "EmployeeExperienceId");
 
 		/// <summary>
 		///Leave Type Name
 		/// </summary>
 		public static string LeaveTypeName => I18NResource.GetString(ResourceDirectory, "LeaveTypeName");
+
+		/// <summary>
+		///Attendance Id
+		/// </summary>
+		public static string AttendanceId => I18NResource.GetString(ResourceDirectory, "AttendanceId");
 
 		/// <summary>
 		///Is Cognitively Disabled
@@ -844,11 +844,6 @@ namespace MixERP.HRM
 		public static string BeginsFrom => I18NResource.GetString(ResourceDirectory, "BeginsFrom");
 
 		/// <summary>
-		///Attendance Date
-		/// </summary>
-		public static string AttendanceDate => I18NResource.GetString(ResourceDirectory, "AttendanceDate");
-
-		/// <summary>
 		///Leave Type Code
 		/// </summary>
 		public static string LeaveTypeCode => I18NResource.GetString(ResourceDirectory, "LeaveTypeCode");
@@ -857,6 +852,11 @@ namespace MixERP.HRM
 		///Bank Reference Number
 		/// </summary>
 		public static string BankReferenceNumber => I18NResource.GetString(ResourceDirectory, "BankReferenceNumber");
+
+		/// <summary>
+		///Attendance Date
+		/// </summary>
+		public static string AttendanceDate => I18NResource.GetString(ResourceDirectory, "AttendanceDate");
 
 		/// <summary>
 		///Is Alcoholic
@@ -889,14 +889,14 @@ namespace MixERP.HRM
 		public static string FirstName => I18NResource.GetString(ResourceDirectory, "FirstName");
 
 		/// <summary>
-		///Leave Benefit
-		/// </summary>
-		public static string LeaveBenefit => I18NResource.GetString(ResourceDirectory, "LeaveBenefit");
-
-		/// <summary>
 		///Start Date
 		/// </summary>
 		public static string StartDate => I18NResource.GetString(ResourceDirectory, "StartDate");
+
+		/// <summary>
+		///Leave Benefit
+		/// </summary>
+		public static string LeaveBenefit => I18NResource.GetString(ResourceDirectory, "LeaveBenefit");
 
 		/// <summary>
 		///End Date
