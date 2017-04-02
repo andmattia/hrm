@@ -172,7 +172,7 @@
             function getAttendance(row) {
                 const attendanceDate = window.parseLocalizedDate($("#DateInputText").val());
                 const attendanceId = (row.attr("data-attendance-id") || null);
-                const employeeId = window.parseInt(row.attr("data-employee-id"));
+                const employeeId = window.parseInt2(row.attr("data-employee-id"));
                 const isPresent = row.find("input:checkbox").is(":checked");
                 const checkInTime = getTimeSpan(row.find("input.check-in"));
                 const checkOutTime = getTimeSpan(row.find("input.check-out"));
