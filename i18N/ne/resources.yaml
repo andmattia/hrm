@@ -65,7 +65,7 @@ EmployeeIdentificationDetailId: "कर्मचारी पहिचान व
 EmployeeInfo: "Employee Info"
 EmployeeName: "कर्मचारीको नाम"
 EmployeeQualificationId: "कर्मचारी योग्यता Id"
-Employees: "काउन्टर Id"
+Employees: "कर्मचारीहरु"
 EmployeeSocialNetworkDetailId: "कर्मचारी सामाजिक सञ्जाल विवरण Id"
 EmployeeType: "कर्मचारी प्रकार Id"
 EmployeeTypeCode: "कर्मचारी प्रकार कोड"
