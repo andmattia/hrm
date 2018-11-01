@@ -116,6 +116,32 @@
         row.find("input.overtime-hours").val("");
     });
 
+    $("tr[data-employee-id] td button.ui.button").on("click", function () {
+        function request(attendnaces) {
+            const url = "/dashboard/hrm/tasks/attendance";
+            const data = JSON.stringify(attendnaces);
+            return window.getAjaxRequest(url, "POST", data);
+        };
+
+        function getModel() {
+            const row = $(this).closest("tr");
+
+            const model = [];
+
+            const attendance = getAttendance(row);
+
+            model.push(attendance);
+
+            return model;
+        };
+
+        const model = getModel();
+        const ajax = request(model);
+
+        ajax.success(function () {
+            window.displayMessage("Saved", "success");
+        });
+    });
 
     $("#ShowButton").off("click").on("click", function() {
         function request(date) {
@@ -126,19 +152,24 @@
             filters.push(window.getAjaxColumnFilter("AND", "OfficeId", "int", window.FilterConditions.IsEqualTo, window.metaView.OfficeId));
 
             const data = JSON.stringify(filters);
-
             return window.getAjaxRequest(url, "POST", data);
         };
 
-        const date = window.parseLocalizedDate($("#DateInputText").val());
+        const date = $("#DateInputText").datepicker("getDate");
+		const target = $("tr[data-employee-id]");
+        target.attr("data-attendance-id", 0);
+        target.find("input.check-in").val("");
+        target.find("input.check-out").val("");
+        target.find(".was.present.checkbox input:checkbox").prop("checked", false);
+        target.find("input.overtime-hours").val("");
+        target.find("input.reason").val("");
 
         const ajax = request(date);
 
-        ajax.success(function(attendance) {
-            $.each(attendance, function() {
+        ajax.success(function (attendance) {
+            $.each(attendance, function () {
                 const model = this;
                 const target = $("tr[data-employee-id='" + model.EmployeeId + "']");
-
                 target.attr("data-attendance-id", model.AttendanceId);
                 target.find("input.check-in").val(model.CheckInTime.substring(0, 5));
                 target.find("input.check-out").val(model.CheckOutTime.substring(0, 5));
@@ -149,6 +180,47 @@
         });
     });
 
+
+    function getAttendance(row) {
+        function getTimeSpan(el) {
+            const time = el.val();
+            const regex = /^\s*([01]?\d|2[0-3]):?([0-5]\d)\s*$/;
+
+            if (regex.test(time)) {
+                return window.moment(time, "HH:mm").format('HH:mm:00');
+            };
+
+            return null;
+        };
+
+        const attendanceDate = window.parseLocalizedDate($("#DateInputText").val());
+        const attendanceId = (row.attr("data-attendance-id") || null);
+        const employeeId = window.parseInt(row.attr("data-employee-id"));
+        const isPresent = row.find("input:checkbox").is(":checked");
+        const checkInTime = getTimeSpan(row.find("input.check-in"));
+        const checkOutTime = getTimeSpan(row.find("input.check-out"));
+        const overTimeHours = window.parseFloat2(row.find("input.overtime-hours").val()) || 0;
+        const reason = row.find("input.reason").val();
+
+        const attenance =
+        {
+            AttendanceId: attendanceId,
+            OfficeId: window.metaView.OfficeId,
+            EmployeeId: employeeId,
+            AttendanceDate: attendanceDate,
+            WasPresent: isPresent,
+            CheckInTime: isPresent ? checkInTime : null,
+            CheckOutTime: isPresent ? checkOutTime : null,
+            OvertimeHours: overTimeHours,
+            WasAbsent: !isPresent,
+            ReasonForAbsenteeism: !isPresent ? reason : null,
+            AuditUserId: window.userId,
+            AuditTs: new Date()
+        };
+
+        return attenance;
+    };
+
     function updateAll() {
         function request(attendnaces) {
             const url = "/dashboard/hrm/tasks/attendance";
@@ -158,46 +230,6 @@
         };
 
         function getModel() {
-            function getTimeSpan(el) {
-                const time = el.val();
-                const regex = /^\s*([01]?\d|2[0-3]):?([0-5]\d)\s*$/;
-
-                if (regex.test(time)) {
-                    return window.moment(time, "HH:mm").format('HH:mm:00');
-                };
-
-                return null;
-            };
-
-            function getAttendance(row) {
-                const attendanceDate = window.parseLocalizedDate($("#DateInputText").val());
-                const attendanceId = (row.attr("data-attendance-id") || null);
-                const employeeId = window.parseInt(row.attr("data-employee-id"));
-                const isPresent = row.find("input:checkbox").is(":checked");
-                const checkInTime = getTimeSpan(row.find("input.check-in"));
-                const checkOutTime = getTimeSpan(row.find("input.check-out"));
-                const overTimeHours = window.parseFloat2(row.find("input.overtime-hours").val()) || 0;
-                const reason = row.find("input.reason").val();
-
-                const attenance =
-                {
-                    AttendanceId: attendanceId,
-                    OfficeId: window.metaView.OfficeId,
-                    EmployeeId: employeeId,
-                    AttendanceDate: attendanceDate,
-                    WasPresent: isPresent,
-                    CheckInTime: isPresent ? checkInTime : null,
-                    CheckOutTime: isPresent ? checkOutTime : null,
-                    OvertimeHours: overTimeHours,
-                    WasAbsent: !isPresent,
-                    ReasonForAbsenteeism: !isPresent ? reason : null,
-                    AuditUserId: window.userId,
-                    AuditTs: new Date()
-                };
-
-                return attenance;
-            };
-
             const candidates = $("table.attendance tbody tr");
             const model = [];
 
